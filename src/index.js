@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {nanoid} from 'nanoid';
-import { ScatterChart, Scatter, LineChart, Line, PieChart, Pie, CartesianGrid, XAxis, YAxis, ZAxis, Tooltip, Legend } from 'recharts';
+import { ScatterChart, Scatter, LineChart, Line, CartesianGrid, XAxis, YAxis, ZAxis, Tooltip, Legend } from 'recharts';
 
 // npm i -D typescript @types/node @types/react @types/react-dom
 
