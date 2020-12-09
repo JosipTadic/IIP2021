@@ -9,7 +9,7 @@ const Navigation = () => {
                 <NavLink to="/">Home</NavLink>      
                 <NavLink to="/about">About</NavLink>
                 <NavLink to="/contact" >Contact</NavLink>
-                <NavLink to="/data">Page for d3</NavLink>
+                <NavLink to="/index">Page for d3</NavLink>
           
            </div>
     );

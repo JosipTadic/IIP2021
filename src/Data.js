@@ -136,3 +136,5 @@ const TableRow = ({deleteRow, modifyRow}) => {
 export default Data;
 
  
+
+

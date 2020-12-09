@@ -6,7 +6,7 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Error from './components/Error';
 import Navigation from './components/Navigation';
-import index from './d3/Data';
+import Data from '../src/Data';
  
 class App extends Component {
   render() {
@@ -18,7 +18,7 @@ class App extends Component {
              <Route path="/" component={Home} exact/>
              <Route path="/about" component={About}/>
              <Route path="/contact" component={Contact}/>
-             <Route path="/data" component={index} />
+             <Route path="/index" component={Data} />
             <Route component={Error}/>
            </Switch>
         </div> 
