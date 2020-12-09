@@ -26,7 +26,7 @@ import { ScatterChart, Scatter, LineChart, Line, CartesianGrid, XAxis, YAxis, ZA
  * }
  */
 
-const d3 = () => {
+const Data = () => {
 
   const [rows, setRows] = useState([])
   //const [data, setData] = useState([]);
@@ -133,6 +133,6 @@ const TableRow = ({deleteRow, modifyRow}) => {
   )
 }
 
-export default d3;
+export default Data;
 
  
