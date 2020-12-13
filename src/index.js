@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Table from 'react-bootstrap/Table';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
 import {nanoid} from 'nanoid';
-import { ScatterChart, Scatter, LineChart, Line, CartesianGrid, XAxis, YAxis, ZAxis, Tooltip, Legend } from 'recharts';
+import './index.css';
+import { ScatterChart, Scatter,ResponsiveContainer, LineChart, Line, CartesianGrid, XAxis, YAxis, ZAxis, Tooltip, Legend } from 'recharts';
+import { ButtonGroup } from 'react-bootstrap';
 
 // npm i -D typescript @types/node @types/react @types/react-dom
 
@@ -65,17 +72,13 @@ const App = () => {
   console.log({rows});
   return (
     <>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-sm-3">
-            <Table rows={rows} deleteRow={deleteRow} modifyRow={modifyRow}/>
-            <Button onClick={increaseRows} text='Add new row'/>
-            <Button text='Generate' onClick={generate}/>
-          </div>
-          <div class="col-sm-1"></div>
-          <div class="col-sm-8">
-            <LineChart width={800} height={250} data={rows}
-            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+      <div class="">
+        <div class="">
+        <Container>
+        <ResponsiveContainer className="justify-content-md-center">
+          <Row>
+            <LineChart width={1200} height={400} data={rows}
+            margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis />
             <YAxis />
@@ -84,42 +87,45 @@ const App = () => {
             <Line type="monotone" dataKey="x" stroke="#8884d8" />
             <Line type="monotone" dataKey="y" stroke="#82ca9d" />
             </LineChart>
-            <ScatterChart width={800} height={250}
-            margin={{ top: 20, right: 20, bottom: 10, left: 10 }}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="x" name="stature" unit="cm" />
-            <YAxis dataKey="y" name="weight" unit="kg" />
-            <ZAxis dataKey="z" range={[64, 144]} name="score" unit="km" />
-            <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-            <Legend />
-            <Scatter name="A school" data={rows} fill="#8884d8" />
-            </ScatterChart>
-          </div>
+          </Row>
+          </ResponsiveContainer>
+          </Container>
+          <Container className="fixed scroll">
+          <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow}/>
+          </Container>
+          <Container>
+          <Row>
+            <ButtonGroup>
+            <Col md={{ offset: 3 }}><ButtonComp variant={"primary"} onClick={increaseRows} text='Add new row'/></Col>
+            <Col md={{ offset: 1 }}><ButtonComp variant={"primary"} text='Generate' onClick={generate}/></Col>
+            </ButtonGroup>
+          </Row>
+          </Container>
         </div>
       </div>
     </>
   )
 }
 
-const Button = (props) => {
+const ButtonComp = (props) => {
 return(
-  <button {...props} type="button" className={"btn btn-primary btn-lg"}>{props.text}</button>
+  <Button block {...props}>{props.text}</Button>
 )
 }
-const Table = ({rows, deleteRow, modifyRow}) => {
+const TableComp = ({rows, deleteRow, modifyRow}) => {
 
   return(
-    <table className={"table table-hover"}>
+    <Table striped bordered hover size="sm">
       <tbody>
         <tr>
           <th>x</th>
           <th>y</th>
-          <th></th>
+          <th>z</th>
         </tr>{
           rows.map(row => <TableRow key={row.id} deleteRow={() => deleteRow(row.id)} modifyRow={(axis, newValue) => modifyRow(row.id, axis, newValue)}/>)
         }
         </tbody>
-    </table>
+    </Table>
   )
 }
 const TableRow = ({deleteRow, modifyRow}) => {
@@ -128,7 +134,7 @@ const TableRow = ({deleteRow, modifyRow}) => {
         <tr>
           <td><input type="text" onChange={(e) => modifyRow('x', e.target.value)}/></td>
           <td><input type="text" onChange={(e) => modifyRow('y', e.target.value)}/></td>
-          <td><Button text='Delete' onClick={deleteRow}/></td>
+          <td><ButtonComp variant={"danger"} text='Delete' onClick={deleteRow}/></td>
         </tr>
   )
 }
