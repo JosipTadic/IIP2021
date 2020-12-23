@@ -1,42 +1,25 @@
-import React, { useState } from 'react'; 
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Table from 'react-bootstrap/Table';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
+//import Modal from 'react-bootstrap/Modal';
 import {nanoid} from 'nanoid';
 import './index.css';
 import { ResponsiveContainer, LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts';
 import { ButtonGroup } from 'react-bootstrap';
-
+import { useRechartToPng } from "recharts-to-png";
+import FileSaver from "file-saver";
+import { BsFillTrashFill } from "react-icons/bs";
 
 // npm i -D typescript @types/node @types/react @types/react-dom
-
-/**
- * 
- * Row {
- *  id: string;
- *  x: string;
- *  y: string;
- * }
- * 
- * modify(id, 'x' | 'y', newValue) => void;
- * 
- * <Row onChange={(e) => modify(props.id, 'x', e.target.value)} />
- * 
- * generate() => void;
- * 
- * generate = () => {
- *  setData(rows)
- *  setRows([])
- * }
- */
 
 const Data = () => {
 
   const [rows, setRows] = useState([]);
-  //const [data, setData] = useState([]);
 
   const increaseRows = () => {
     const newRow = {
@@ -55,7 +38,7 @@ const Data = () => {
       return row;
     }));
   }
-  const generate = () => {
+  const deleteAll = () => {
     setRows([]);
   }
   const deleteRow = (id) => {
@@ -64,15 +47,21 @@ const Data = () => {
     }))
   }
 
+  const [png, ref] = useRechartToPng();
+
+  const handleDownload = React.useCallback(async () => {
+    FileSaver.saveAs(png, "myChart.png");
+  }, [png]);
+
   return (
     <>
-      <div class="">
-        <div class="">
+      <div>
+        <div>
         <Container className="marginTop">
           <ResponsiveContainer className="justify-content-md-center">
             <Row>
-              <LineChart width={1200} height={400} data={rows}
-              margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
+              <LineChart width={1200} height={400} ref={ref} data={rows}
+              margin={{ top: 10, right: 50, left: 5, bottom: 10 }}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="z"/>
               <YAxis />
@@ -90,8 +79,9 @@ const Data = () => {
           <Container>
             <Row>
               <ButtonGroup>
-              <Col md={{ offset: 3 }}><ButtonComp variant={"primary"} onClick={increaseRows} text='Add new row'/></Col>
-              <Col md={{ offset: 1 }}><ButtonComp variant={"primary"} text='Generate' onClick={generate}/></Col>
+              <Col md={{ offset: 2 }}><ButtonComp variant={"primary"} onClick={increaseRows} text='Add new row'/></Col>
+              <Col md={{ offset: 0 }}><ButtonComp variant={"primary"} text='Download Chart' onClick={handleDownload}/></Col>
+              <Col md={{ offset: 0 }}><ButtonComp variant={"danger"} text='Delete Table' onClick={deleteAll}/></Col>
               </ButtonGroup>
             </Row>
           </Container>
@@ -99,12 +89,7 @@ const Data = () => {
       </div>
     </>
   )
-
-  
 }
-
-
-
 const ButtonComp = (props) => {
   return(
     <Button block {...props}>{props.text}</Button>
@@ -124,7 +109,7 @@ const TableComp = ({rows, deleteRow, modifyRow}) => {
             <th>1st Value</th>
             <th>2nd Value</th>
             <th>Name</th>
-            <th></th>
+            <th className="table-icons"></th>
           </tr>{
             rows.map(row => <TableRow key={row.id} deleteRow={() => deleteRow(row.id)} modifyRow={(axis, newValue) => modifyRow(row.id, axis, newValue)}/>)
           }
@@ -136,10 +121,10 @@ const TableComp = ({rows, deleteRow, modifyRow}) => {
 const TableRow = ({deleteRow, modifyRow}) => {
   return(
         <tr>
-          <td><input type="number" placeholder="enter 1st value" onChange={(e) => modifyRow('x', e.target.value)}/></td>
-          <td><input type="number" placeholder="enter 2nd value" onChange={(e) => modifyRow('y', e.target.value)}/></td>
-          <td><input type="text" placeholder="enter name" onChange={(e) => modifyRow('z', e.target.value)}/></td>
-          <td><ButtonComp size="sm" variant={"danger"} text='Delete' onClick={deleteRow}/></td>
+          <td><input className="input-style" type="number" placeholder="enter 1st value" onChange={(e) => modifyRow('x', e.target.value)}/></td>
+          <td><input className="input-style" type="number" placeholder="enter 2nd value" onChange={(e) => modifyRow('y', e.target.value)}/></td>
+          <td><input className="input-style" type="text" placeholder="enter name" onChange={(e) => modifyRow('z', e.target.value)}/></td>
+          <td className="table-icons" onClick={deleteRow}><BsFillTrashFill  className="react-icons"/></td>
         </tr>
   )
 }

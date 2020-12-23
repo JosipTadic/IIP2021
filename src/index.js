@@ -1,3 +1,4 @@
+
 import React from 'react'
 import ReactDOM from 'react-dom' 
 import {
@@ -9,7 +10,6 @@ import {
 import Navigation from './Navigation' 
 import Data from './components/data'
 import Home from './components/Home'
-
 const routing = (
   <Router>
     <div>
@@ -36,9 +36,12 @@ const routing = (
         <Route path="/home" component={Home} />
         <Route path="/data" component={Data} />
 
+
       </Switch>
     </div>
   </Router>
 )
 
 ReactDOM.render(routing, document.getElementById('root'))
+
+   
