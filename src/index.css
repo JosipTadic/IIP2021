@@ -32,3 +32,13 @@ code {
   align-items: center;
   height: 30vh;
 }
+.table-icons {
+  width:3%;
+}
+.react-icons {
+  height: 10%;
+  width: 100%;
+}
+.input-style {
+  width: 100%;
+}
