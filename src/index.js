@@ -6,7 +6,6 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-//import Modal from 'react-bootstrap/Modal';
 import {nanoid} from 'nanoid';
 import './index.css';
 import { ResponsiveContainer, LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts';
@@ -14,6 +13,7 @@ import { ButtonGroup } from 'react-bootstrap';
 import { useRechartToPng } from "recharts-to-png";
 import FileSaver from "file-saver";
 import { BsFillTrashFill } from "react-icons/bs";
+import {BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
 
 // npm i -D typescript @types/node @types/react @types/react-dom
 
@@ -38,13 +38,14 @@ const App = () => {
       return row;
     }));
   }
-  const deleteAll = () => {
-    setRows([]);
-  }
+  
   const deleteRow = (id) => {
     setRows(rows.filter((row) => {
       return row.id !== id;
     }))
+  }
+  const deleteAll = () => {
+    setRows([]);
   }
 
   const [png, ref] = useRechartToPng();
@@ -55,8 +56,25 @@ const App = () => {
 
   return (
     <>
+    <Router>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/line">Line Chart</Link>
+            </li>
+          </ul>
+        </nav>
       <div>
+      <Switch>
+        <Route exact path="/">
         <div>
+        </div>
+        </Route>
+        <Route exact path="/line">
+        
         <Container className="marginTop">
           <ResponsiveContainer className="justify-content-md-center">
             <Row>
@@ -73,6 +91,8 @@ const App = () => {
               </Row>
           </ResponsiveContainer>
         </Container>
+        
+        
           <Container className="fixed scroll">
             <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow}/>
           </Container>
@@ -81,15 +101,18 @@ const App = () => {
               <ButtonGroup>
               <Col md={{ offset: 2 }}><ButtonComp variant={"primary"} onClick={increaseRows} text='Add new row'/></Col>
               <Col md={{ offset: 0 }}><ButtonComp variant={"primary"} text='Download Chart' onClick={handleDownload}/></Col>
-              <Col md={{ offset: 0 }}><ButtonComp variant={"danger"} text='Delete Table' onClick={deleteAll}/></Col>
+              <Col md={{ offset: 0 }}><ButtonComp variant={"danger"} text='Delete Table'  onClick={deleteAll} /></Col>
               </ButtonGroup>
             </Row>
           </Container>
-        </div>
+          </Route>
+        </Switch>
       </div>
+      </Router>
     </>
-  )
+  );
 }
+
 const ButtonComp = (props) => {
   return(
     <Button block {...props}>{props.text}</Button>
