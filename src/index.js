@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Table from 'react-bootstrap/Table';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import {nanoid} from 'nanoid';
@@ -21,10 +23,28 @@ const App = () => {
 
   const [rows, setRows] = useState([]);
 
-  const [chartVar, setChart] = useState();
-
-  const chooseChart = () => setChart(chartVar + 1)
-
+  const [params, setParams] = useState(
+    [
+        {
+          id: 1,
+          color: "#111222",
+          firstLegendName: 'x'
+        },
+        {
+          id: 2,
+          color: "#222555",
+          firstLegendName: 'y'
+        }
+    ]
+  )
+  const modifyParams = (id, selectedParam, newValue) => {
+    setParams(params.map(param => {
+      if (param.id === id) {
+        param[selectedParam] = newValue;
+      }
+      return param;
+    }));
+  }
   const increaseRows = () => {
     const newRow = {
       id: nanoid(),
@@ -58,49 +78,42 @@ const App = () => {
 
   const handleDownload = React.useCallback(async () => {
     FileSaver.saveAs(png, "myChart.png");
-  }, [png]);
+  }, [png]); 
 
   return (
     <>
     <Router>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/line">Line Chart</Link>
-            </li>
-            <li>
-              <Link to="/area">Area Chart</Link>
-            </li>
-            <li>
-              <Link to="/composed" onLoad={chooseChart} >Composed Chart</Link>
-            </li>
-            <li>
-              <Link to="/bar">Bar Chart</Link>
-            </li>
-          </ul>
-        </nav>
+        <Navbar variant="light" bg="light" justify className="justify-content-between">
+        <Navbar.Brand as={Link}  to="/"><b>D-Wiz</b></Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Nav className="mr-auto">
+            <Nav.Link as={Link}  to="/area"><b>Area Chart</b></Nav.Link>
+            <Nav.Link as={Link}  to="/line"><b>Line Chart</b></Nav.Link>
+            <Nav.Link as={Link}  to="/bar"><b>Bar Chart</b></Nav.Link>
+            <Nav.Link as={Link}  to="/composed"><b>Composed Chart</b></Nav.Link>
+            </Nav>
+        </Navbar>
       <Switch>
         <Route exact path="/">
         <div>
         </div>
         </Route>
         <Route exact path="/line">
-        
+          <div>
+            <ParameterCustomization params={params} modifyParams={modifyParams}/>
+          </div>
         <Container className="marginTop">
           <ResponsiveContainer className="justify-content-md-center">
             <Row>
-              <LineChart width={1200} height={400} ref={ref} data={rows}
-              margin={{ top: 10, right: 50, left: 5, bottom: 10 }}>
+              <LineChart width={1400} height={350} ref={ref} data={rows}
+              margin={{ top: 10, right: 130, left: 5, bottom: 10 }}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="c"/>
               <YAxis />
               <Tooltip />
               <Legend />
-              <Line type="monotone" dataKey="a" stroke="#8884d8" />
-              <Line type="monotone" dataKey="b" stroke="#82ca9d" />
+              <Line type="monotone" dataKey="a" stroke={params[0].color} />
+              <Line type="monotone" dataKey="b" stroke={params[1].color} />
               </LineChart>
               </Row>
           </ResponsiveContainer>
@@ -123,8 +136,8 @@ const App = () => {
 
         <Route exact path="/area">
         <Container className="marginTop">
-        <AreaChart width={730} height={250} ref={ref} data={rows}
-          margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+        <AreaChart width={1400} height={350} ref={ref} data={rows}
+              margin={{ top: 10, right: 130, left: 5, bottom: 10 }}>
           <defs>
             <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
@@ -160,7 +173,8 @@ const App = () => {
           </Route>
           <Route exact path="/composed">
         <Container className="marginTop">
-        <ComposedChart width={730} height={250} ref={ref} data={rows}>
+        <ComposedChart width={1400} height={350} ref={ref} data={rows}
+              margin={{ top: 10, right: 130, left: 5, bottom: 10 }}>
           <XAxis dataKey="c" />
           <YAxis />
           <Tooltip />
@@ -188,7 +202,8 @@ const App = () => {
           </Route>
           <Route exact path="/bar">
         <Container className="marginTop">
-        <BarChart width={730} height={250} ref={ref} data={rows}>
+        <BarChart width={1400} height={350} ref={ref} data={rows}
+              margin={{ top: 10, right: 130, left: 5, bottom: 10 }}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="c" />
           <YAxis />
@@ -218,14 +233,30 @@ const App = () => {
     </>
   );
 }
+const ParameterCustomization = ({params,modifyParams}) => {
+  return( 
+  <>
+  {
+    params.map(param => <InputComp key={param.id} modifyParams={modifyParams} param={param}/>)
+  }
+  </>
+  )}
 
+const InputComp = ({modifyParams,param}) => {
+  return(
+    <>
+    <input className="input-style" type="text"  placeholder="enter 1st name" onChange={e => modifyParams(param.id, 'firstLegendName', e.target.value)}/>
+    <input type="color" name="color"  onChange={e => modifyParams(param.id, 'color', e.target.value)}/>
+    </>
+  )
+}
 const ButtonComp = (props) => {
   return(
     <Button block {...props}>{props.text}</Button>
   )
 }
-const TableComp = ({rows, deleteRow, modifyRow, chartVar}) => {
-  if (rows <= 0 && chartVar === 1){
+const TableComp = ({rows, deleteRow, modifyRow}) => {
+  if (rows <= 0){
     return(
       <h3 className="center">Create new row to start visualizing</h3>
     )
