@@ -28,12 +28,14 @@ const App = () => {
         {
           id: 1,
           color: "#111222",
-          firstLegendName: 'x'
+          firstLegendName: 'a',
+          lineType: "stepBefore"
         },
         {
           id: 2,
           color: "#222555",
-          firstLegendName: 'y'
+          firstLegendName: 'b'
+          //lineType: "stepBefore"
         }
     ]
   )
@@ -101,6 +103,7 @@ const App = () => {
         <Route exact path="/line">
           <div>
             <ParameterCustomization params={params} modifyParams={modifyParams}/>
+            <ParameterCustomization1 params={params} modifyParams={modifyParams}/>
           </div>
         <Container className="marginTop">
           <ResponsiveContainer className="justify-content-md-center">
@@ -112,8 +115,8 @@ const App = () => {
               <YAxis />
               <Tooltip />
               <Legend />
-              <Line type="monotone" dataKey="a" stroke={params[0].color} />
-              <Line type="monotone" dataKey="b" stroke={params[1].color} />
+              <Line type={params[0].lineType} dataKey="a" stroke={params[0].color} />
+              <Line type={params[0].lineType} dataKey="b" stroke={params[1].color} />
               </LineChart>
               </Row>
           </ResponsiveContainer>
@@ -236,17 +239,45 @@ const App = () => {
 const ParameterCustomization = ({params,modifyParams}) => {
   return( 
   <>
+ 
   {
     params.map(param => <InputComp key={param.id} modifyParams={modifyParams} param={param}/>)
   }
   </>
   )}
-
+  const ParameterCustomization1 = ({params,modifyParams}) => {
+    return( 
+    <>
+    {
+      <LineSelect key={params[0].id} modifyParams={modifyParams} />
+    }
+    </>
+    )}
 const InputComp = ({modifyParams,param}) => {
+  //<input className="input-style" type="text"  placeholder="enter 1st name" onChange={e => modifyParams(param.id, 'firstLegendName', e.target.value)}/>
   return(
     <>
-    <input className="input-style" type="text"  placeholder="enter 1st name" onChange={e => modifyParams(param.id, 'firstLegendName', e.target.value)}/>
-    <input type="color" name="color"  onChange={e => modifyParams(param.id, 'color', e.target.value)}/>
+      <input type="color" name="color"  onChange={e => modifyParams(param.id, 'color', e.target.value)}/>
+    </>
+  )
+}
+
+const LineSelect = ({modifyParams,params}) => {
+  return(
+    <>
+      <select onChange={e => modifyParams(1, 'lineType', e.target.value)}>
+            <option value="monotone">Monotone</option>
+            <option value="basis">Basis</option>
+            <option value="linear">Linear</option>
+            <option value="natural">Natural</option>
+            <option value="step">Step</option>
+            <option value="basisClosed">Basis closed</option>
+            <option value="basisOpen">Basis open</option>
+            <option value="monotoneX">Monotone X</option>
+            <option value="monotoneY">Monotone Y</option>
+            <option value="stepBefore">Step before</option>
+            <option value="stepAfter">Step after</option>
+        </select>
     </>
   )
 }
