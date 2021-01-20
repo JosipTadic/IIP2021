@@ -29,13 +29,17 @@ const App = () => {
           id: 1,
           color: "#111222",
           firstLegendName: 'a',
-          lineType: "stepBefore"
+          lineType: "monotone",
+          strokeDash: 1,
+          strokeLinecap: "butt",
+          strokeWidth: 1
+          //secondDash: 1
         },
         {
           id: 2,
           color: "#222555",
-          firstLegendName: 'b'
-          //lineType: "stepBefore"
+          firstLegendName: 'b',
+          strokeWidth: 1
         }
     ]
   )
@@ -103,7 +107,7 @@ const App = () => {
         <Route exact path="/line">
           <div>
             <ParameterCustomization params={params} modifyParams={modifyParams}/>
-            <ParameterCustomization1 params={params} modifyParams={modifyParams}/>
+            
           </div>
         <Container className="marginTop">
           <ResponsiveContainer className="justify-content-md-center">
@@ -115,8 +119,10 @@ const App = () => {
               <YAxis />
               <Tooltip />
               <Legend />
-              <Line type={params[0].lineType} dataKey="a" stroke={params[0].color} />
-              <Line type={params[0].lineType} dataKey="b" stroke={params[1].color} />
+              <Line strokeWidth={params[0].strokeWidth} 
+               strokeDasharray={params[0].strokeDash} type={params[0].lineType} dataKey="a" stroke={params[0].color}/>
+              <Line strokeWidth={params[1].strokeWidth} strokeLinecap={params[1].strokeLinecap} 
+              strokeDasharray={params[0].strokeDash} type={params[0].lineType} dataKey="b" stroke={params[1].color} />
               </LineChart>
               </Row>
           </ResponsiveContainer>
@@ -239,20 +245,23 @@ const App = () => {
 const ParameterCustomization = ({params,modifyParams}) => {
   return( 
   <>
- 
   {
     params.map(param => <InputComp key={param.id} modifyParams={modifyParams} param={param}/>)
   }
+  {
+    <LineSelect key={params[0].id} modifyParams={modifyParams}/>
+  }
+  {
+    <DashSelect key={params[0].id} modifyParams={modifyParams}/>
+  }
+  {
+    params.map(param => <WidthSelect key={param.id} modifyParams={modifyParams} param={param}/>)
+  }
+  {
+    <OpacitySelect key={params[0].id} modifyParams={modifyParams}/>
+  }
   </>
   )}
-  const ParameterCustomization1 = ({params,modifyParams}) => {
-    return( 
-    <>
-    {
-      <LineSelect key={params[0].id} modifyParams={modifyParams} />
-    }
-    </>
-    )}
 const InputComp = ({modifyParams,param}) => {
   //<input className="input-style" type="text"  placeholder="enter 1st name" onChange={e => modifyParams(param.id, 'firstLegendName', e.target.value)}/>
   return(
@@ -261,8 +270,28 @@ const InputComp = ({modifyParams,param}) => {
     </>
   )
 }
-
-const LineSelect = ({modifyParams,params}) => {
+const OpacitySelect = ({modifyParams}) => {
+  return(
+  <>
+    <input type="number" placeholder="opacity" name="opacity" onChange={e => modifyParams(1, 'strokeOpacity', e.target.value)}/>
+  </>
+  )
+}
+const WidthSelect = ({modifyParams,param}) => {
+  return(
+  <>
+    <input type="number" placeholder="Width" name="strokeWidth" onChange={e => modifyParams(param.id, 'strokeWidth', e.target.value)}/>
+  </>
+  )
+}
+const DashSelect = ({modifyParams}) => {
+return(
+<>
+  <input type="number" placeholder="Dash" name="strokeDash" onChange={e => modifyParams(1, 'strokeDash', e.target.value)}/>
+</>
+)
+}
+const LineSelect = ({modifyParams}) => {
   return(
     <>
       <select onChange={e => modifyParams(1, 'lineType', e.target.value)}>
@@ -323,3 +352,19 @@ ReactDOM.render(
     <App />,
   document.getElementById('root')
 )
+/*const DashSelect = ({modifyParams, param}) => {
+return(
+<>
+  <input type="number" placeholder="Dash" name="strokeDash" onChange={e => modifyParams(param.id, 'strokeDash', e.target.value)}/>
+  <select onChange={e => modifyParams(param.id, 'strokeLinecap', e.target.value)}>
+            <option value="butt">Butt</option>
+            <option value="round">Round</option>
+            <option value="square">Square</option>
+        </select>
+  <input type="number" placeholder="Opacity" name="stroke_Opacity" onChange={e => modifyParams(param.id, 'stroke_Opacity', e.target.value)}/>
+  <input type="number" placeholder="Width" name="strokeWidth" onChange={e => modifyParams(param.id, 'strokeWidth', e.target.value)}/>
+</>
+<Line strokeWidth={params[0].strokeWidth} stroke-opacity={params[0].stroke_Opacity} strokeLinecap={params[0].strokeLinecap}
+               strokeDasharray={params[0].firstDash} type={params[0].lineType} dataKey="a" stroke={params[0].color} fill={params[0].color}/>
+)
+}*/
