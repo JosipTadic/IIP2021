@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Table from 'react-bootstrap/Table';
+//import Table from 'react-bootstrap/Table';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import Button from 'react-bootstrap/Button';
+//import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import {nanoid} from 'nanoid';
 import './index.css';
@@ -14,8 +14,11 @@ import { ResponsiveContainer, LineChart, Line, Area, AreaChart, CartesianGrid, C
 import { ButtonGroup } from 'react-bootstrap';
 import { useRechartToPng } from "recharts-to-png";
 import FileSaver from "file-saver";
-import { BsFillTrashFill } from "react-icons/bs";
+//import { BsFillTrashFill } from "react-icons/bs";
 import {BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
+import TableComp from './components/TableComp';
+import ParameterCustomization from './components/ParameterCustomization';
+import ButtonComp from './components/ButtonComp';
 
 // npm i -D typescript @types/node @types/react @types/react-dom
 
@@ -242,7 +245,7 @@ const App = () => {
     </>
   );
 }
-const ParameterCustomization = ({params,modifyParams}) => {
+/*const ParameterCustomization = ({params,modifyParams}) => {
   return( 
   <>
   {
@@ -291,7 +294,7 @@ return(
 </>
 )
 }
-const LineSelect = ({modifyParams}) => {
+/*const LineSelect = ({modifyParams}) => {
   return(
     <>
       <select onChange={e => modifyParams(1, 'lineType', e.target.value)}>
@@ -309,13 +312,13 @@ const LineSelect = ({modifyParams}) => {
         </select>
     </>
   )
-}
-const ButtonComp = (props) => {
+}*/
+/*const ButtonComp = (props) => {
   return(
     <Button block {...props}>{props.text}</Button>
   )
-}
-const TableComp = ({rows, deleteRow, modifyRow}) => {
+}*/
+/*const TableComp = ({rows, deleteRow, modifyRow}) => {
   if (rows <= 0){
     return(
       <h3 className="center">Create new row to start visualizing</h3>
@@ -347,7 +350,7 @@ const TableRow = ({deleteRow, modifyRow}) => {
           <td className="table-icons" onClick={deleteRow}><BsFillTrashFill  className="react-icons"/></td>
         </tr>
   )
-}
+}*/
 ReactDOM.render(
     <App />,
   document.getElementById('root')
