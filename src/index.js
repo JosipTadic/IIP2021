@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import Home from './components/Home';
 //import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import {nanoid} from 'nanoid';
@@ -105,6 +106,7 @@ const App = () => {
       <Switch>
         <Route exact path="/">
         <div>
+          <Home/> 
         </div>
         </Route>
         <Route exact path="/line">
