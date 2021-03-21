@@ -7,7 +7,7 @@ const Home = () => {
   
   return (
      <div className="front">   
-       <div className="center">
+       <div className="center2">
         <h1 className="center__text glitch is-glitching" data-text="D-Wiz">D-Wiz</h1> 
         
          

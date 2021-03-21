@@ -17,7 +17,7 @@ footer{
     text-align: center;
 }
 
-.center { 
+.center2 { 
     width: auto;
     min-height: 600px;
     background-color: black;
@@ -25,15 +25,18 @@ footer{
     background-repeat: no-repeat; 
     background-size: cover; 
     position: relative;
-    
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
-  .center__text {
-    margin-right: 40%;
+  .center__text { 
+    
     font-size: 120px;
     letter-spacing: 10px;
     font-weight: bolder;
-    text-transform: uppercase;
+    text-transform: uppercase;  
+    
   }
   .p-tag{
       position: absolute;
