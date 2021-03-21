@@ -4,7 +4,7 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale; 
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -41,4 +41,11 @@ code {
 }
 .input-style {
   width: 100%;
+}
+.navbar {
+   
+  align-items: center;
+  top: 0%;
+  left: 0%;
+  padding: 30px 100px;
 }

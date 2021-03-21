@@ -93,7 +93,7 @@ const App = () => {
   return (
     <>
     <Router>
-        <Navbar variant="light" bg="light" justify className="justify-content-between">
+        <Navbar variant="light" bg="light" justify className="justify-content-between" >
         <Navbar.Brand as={Link}  to="/"><b>D-Wiz</b></Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Nav className="mr-auto">
