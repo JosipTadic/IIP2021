@@ -38,14 +38,18 @@ const App = () => {
           lineType: "monotone",
           strokeDash: 1,
           strokeLinecap: "butt",
-          strokeWidth: 1
-          //secondDash: 1
+          strokeWidth: 1,
+          strokeOpacity: 1,
         },
         {
           id: 2,
           color: "#222555",
           firstLegendName: 'b',
-          strokeWidth: 1
+          lineType: "monotone",
+          strokeDash: 1,
+          strokeLinecap: "butt",
+          strokeWidth: 1,
+          strokeOpacity: 1,
         }
     ]
   )
@@ -160,7 +164,7 @@ const App = () => {
           </Container>
           </Route>
 
-        <Route exact path="/area">
+          <Route exact path="/area">
         <Container className="marginTop">
         <AreaChart width={1400} height={350} ref={ref} data={rows}
               margin={{ top: 10, right: 130, left: 5, bottom: 10 }}>
@@ -178,11 +182,15 @@ const App = () => {
           <YAxis />
           <CartesianGrid strokeDasharray="3 3" />
           <Tooltip />
-          <Area type="monotone" dataKey="a" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
-          <Area type="monotone" dataKey="b" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" />
+          <Area type={params[0].lineType} dataKey="a" stroke={params[0].color} fillOpacity={params[0].strokeOpacity}
+           strokeWidth={params[0].strokeWidth} strokeDasharray={params[0].strokeDash} fill={params[0].color} />
+          <Area type={params[1].lineType} dataKey="b" stroke={params[1].color} fillOpacity={params[1].strokeOpacity}
+           strokeWidth={params[1].strokeWidth} strokeDasharray={params[1].strokeDash} fill={params[1].color} />
         </AreaChart>
         </Container>
-        
+        <div>
+          <ParameterCustomization params={params} modifyParams={modifyParams}/>
+        </div>
         
           <Container className="fixed scroll">
             <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow}/>
@@ -190,7 +198,7 @@ const App = () => {
           <Container>
             <Row>
               <ButtonGroup>
-              <Col md={{ offset: 2 }}><ButtonComp variant={"primary"} onClick={increaseRows} text='Add new row'/></Col>
+              <Col md={{ offset: 2 }}><ButtonComp variant={"primary"} text='Add new row' onClick={increaseRows}/></Col>
               <Col md={{ offset: 0 }}><ButtonComp variant={"primary"} text='Download Chart' onClick={handleDownload}/></Col>
               <Col md={{ offset: 0 }}><ButtonComp variant={"danger"} text='Delete Table'  onClick={deleteAll} /></Col>
               </ButtonGroup>
@@ -211,7 +219,9 @@ const App = () => {
           <Line type="monotone" dataKey="c" stroke="#ff7300" />
         </ComposedChart>
         </Container>
-        
+        <div>
+          <ParameterCustomization params={params} modifyParams={modifyParams}/>
+        </div>
         
           <Container className="fixed scroll">
             <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow}/>
@@ -219,7 +229,7 @@ const App = () => {
           <Container>
             <Row>
               <ButtonGroup>
-              <Col md={{ offset: 2 }}><ButtonComp variant={"primary"} onClick={increaseRows} text='Add new row'/></Col>
+              <Col md={{ offset: 2 }}><ButtonComp variant={"primary"} text='Add new row' onClick={increaseRows}/></Col>
               <Col md={{ offset: 0 }}><ButtonComp variant={"primary"} text='Download Chart' onClick={handleDownload}/></Col>
               <Col md={{ offset: 0 }}><ButtonComp variant={"danger"} text='Delete Table'  onClick={deleteAll} /></Col>
               </ButtonGroup>
@@ -235,19 +245,21 @@ const App = () => {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="a" fill="#8884d8" />
-          <Bar dataKey="b" fill="#82ca9d" />
+          <Bar dataKey="a" fill={params[0].color} />
+          <Bar dataKey="b" fill={params[1].color} />
         </BarChart>
         </Container>
-        
-        
+        <div>
+          <ParameterCustomization params={params} modifyParams={modifyParams}/>
+        </div>
+
           <Container className="fixed scroll">
             <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow}/>
           </Container>
           <Container>
             <Row>
               <ButtonGroup>
-              <Col md={{ offset: 2 }}><ButtonComp variant={"primary"} onClick={increaseRows} text='Add new row'/></Col>
+              <Col md={{ offset: 2 }}><ButtonComp variant={"primary"} text='Add new row' onClick={increaseRows}/></Col>
               <Col md={{ offset: 0 }}><ButtonComp variant={"primary"} text='Download Chart' onClick={handleDownload}/></Col>
               <Col md={{ offset: 0 }}><ButtonComp variant={"danger"} text='Delete Table'  onClick={deleteAll} /></Col>
               </ButtonGroup>
@@ -259,112 +271,7 @@ const App = () => {
     </>
   );
 }
-/*const ParameterCustomization = ({params,modifyParams}) => {
-  return( 
-  <>
-  {
-    params.map(param => <InputComp key={param.id} modifyParams={modifyParams} param={param}/>)
-  }
-  {
-    <LineSelect key={params[0].id} modifyParams={modifyParams}/>
-  }
-  {
-    <DashSelect key={params[0].id} modifyParams={modifyParams}/>
-  }
-  {
-    params.map(param => <WidthSelect key={param.id} modifyParams={modifyParams} param={param}/>)
-  }
-  {
-    <OpacitySelect key={params[0].id} modifyParams={modifyParams}/>
-  }
-  </>
-  )}
-const InputComp = ({modifyParams,param}) => {
-  //<input className="input-style" type="text"  placeholder="enter 1st name" onChange={e => modifyParams(param.id, 'firstLegendName', e.target.value)}/>
-  return(
-    <>
-      <input type="color" name="color"  onChange={e => modifyParams(param.id, 'color', e.target.value)}/>
-    </>
-  )
-}
-const OpacitySelect = ({modifyParams}) => {
-  return(
-  <>
-    <input type="number" placeholder="opacity" name="opacity" onChange={e => modifyParams(1, 'strokeOpacity', e.target.value)}/>
-  </>
-  )
-}
-const WidthSelect = ({modifyParams,param}) => {
-  return(
-  <>
-    <input type="number" placeholder="Width" name="strokeWidth" onChange={e => modifyParams(param.id, 'strokeWidth', e.target.value)}/>
-  </>
-  )
-}
-const DashSelect = ({modifyParams}) => {
-return(
-<>
-  <input type="number" placeholder="Dash" name="strokeDash" onChange={e => modifyParams(1, 'strokeDash', e.target.value)}/>
-</>
-)
-}
-/*const LineSelect = ({modifyParams}) => {
-  return(
-    <>
-      <select onChange={e => modifyParams(1, 'lineType', e.target.value)}>
-            <option value="monotone">Monotone</option>
-            <option value="basis">Basis</option>
-            <option value="linear">Linear</option>
-            <option value="natural">Natural</option>
-            <option value="step">Step</option>
-            <option value="basisClosed">Basis closed</option>
-            <option value="basisOpen">Basis open</option>
-            <option value="monotoneX">Monotone X</option>
-            <option value="monotoneY">Monotone Y</option>
-            <option value="stepBefore">Step before</option>
-            <option value="stepAfter">Step after</option>
-        </select>
-    </>
-  )
-}*/
-/*const ButtonComp = (props) => {
-  return(
-    <Button block {...props}>{props.text}</Button>
-  )
-}*/
-/*const TableComp = ({rows, deleteRow, modifyRow}) => {
-  if (rows <= 0){
-    return(
-      <h3 className="center">Create new row to start visualizing</h3>
-    )
-  }
-  else{
-    return(
-      <Table striped bordered hover size="sm">
-        <tbody>
-          <tr>
-            <th>1st Value</th>
-            <th>2nd Value</th>
-            <th>Name</th>
-            <th className="table-icons"></th>
-          </tr>{
-            rows.map(row => <TableRow key={row.id} deleteRow={() => deleteRow(row.id)} modifyRow={(axis, newValue) => modifyRow(row.id, axis, newValue)}/>)
-          }
-        </tbody>
-      </Table>
-    )
-  }
-}
-const TableRow = ({deleteRow, modifyRow}) => {
-  return(
-        <tr>
-          <td><input className="input-style" type="number" placeholder="enter 1st value" onChange={(e) => modifyRow('a', e.target.value)}/></td>
-          <td><input className="input-style" type="number" placeholder="enter 2nd value" onChange={(e) => modifyRow('b', e.target.value)}/></td>
-          <td><input className="input-style" type="text" placeholder="enter name" onChange={(e) => modifyRow('c', e.target.value)}/></td>
-          <td className="table-icons" onClick={deleteRow}><BsFillTrashFill  className="react-icons"/></td>
-        </tr>
-  )
-}*/
+
 ReactDOM.render(
     <App />,
   document.getElementById('root')

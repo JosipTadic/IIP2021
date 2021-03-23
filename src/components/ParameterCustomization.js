@@ -12,18 +12,22 @@ const ParameterCustomization = ({params,modifyParams}) => {
           params.map(param => <InputComp key={param.id} modifyParams={modifyParams} param={param}/>)
         }
         {
-          <LineSelect key={params[0].id} modifyParams={modifyParams}/>
+          params.map(param => <LineSelect key={param.id} modifyParams={modifyParams} param={param}/>)
         }
         {
-          <DashSelect key={params[0].id} modifyParams={modifyParams}/>
+          params.map(param => <DashSelect key={param.id} modifyParams={modifyParams} param={param}/>)
         }
         {
           params.map(param => <WidthSelect key={param.id} modifyParams={modifyParams} param={param}/>)
         }
         {
-          <OpacitySelect key={params[0].id} modifyParams={modifyParams}/>
+          params.map(param => <OpacitySelect key={param.id} modifyParams={modifyParams} param={param}/>)
         } 
     </>
     )}
 
 export default ParameterCustomization;
+
+/*      {
+          <DashSelect key={params[0].id} modifyParams={modifyParams}/>
+        } */

@@ -1,9 +1,9 @@
 import React from 'react';
 
-const LineSelect = ({modifyParams}) => {
+const LineSelect = ({modifyParams, param}) => {
     return(
       <>
-        <select onChange={e => modifyParams(1, 'lineType', e.target.value)}>
+        <select onChange={e => modifyParams(param.id, 'lineType', e.target.value)}>
               <option value="monotone">Monotone</option>
               <option value="basis">Basis</option>
               <option value="linear">Linear</option>

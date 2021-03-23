@@ -1,6 +1,6 @@
 import React from 'react'
 
-const InputComp = ({modifyParams,param}) => {
+const InputComp = ({modifyParams, param}) => {
     //<input className="input-style" type="text"  placeholder="enter 1st name" onChange={e => modifyParams(param.id, 'firstLegendName', e.target.value)}/>
     return(
       <>
