@@ -126,10 +126,6 @@ const App = () => {
           </div>
         </Route>
         <Route exact path="/line">
-          <div>
-            <ParameterCustomization params={params} modifyParams={modifyParams}/>
-            
-          </div>
         <Container className="marginTop">
           <ResponsiveContainer className="justify-content-md-center">
             <Row>
@@ -143,11 +139,14 @@ const App = () => {
               <Line strokeWidth={params[0].strokeWidth} 
                strokeDasharray={params[0].strokeDash} type={params[0].lineType} dataKey="a" stroke={params[0].color}/>
               <Line strokeWidth={params[1].strokeWidth} strokeLinecap={params[1].strokeLinecap} 
-              strokeDasharray={params[0].strokeDash} type={params[0].lineType} dataKey="b" stroke={params[1].color} />
+              strokeDasharray={params[1].strokeDash} type={params[1].lineType} dataKey="b" stroke={params[1].color} />
               </LineChart>
               </Row>
           </ResponsiveContainer>
         </Container>
+        <div>
+          <ParameterCustomization params={params} modifyParams={modifyParams}/>
+        </div>
         
         
           <Container className="fixed scroll">
@@ -156,7 +155,7 @@ const App = () => {
           <Container>
             <Row>
               <ButtonGroup>
-              <Col md={{ offset: 2 }}><ButtonComp variant={"primary"} onClick={increaseRows} text='Add new row'/></Col>
+              <Col md={{ offset: 2 }}><ButtonComp variant={"primary"} text='Add new row' onClick={increaseRows}/></Col>
               <Col md={{ offset: 0 }}><ButtonComp variant={"primary"} text='Download Chart' onClick={handleDownload}/></Col>
               <Col md={{ offset: 0 }}><ButtonComp variant={"danger"} text='Delete Table'  onClick={deleteAll} /></Col>
               </ButtonGroup>
