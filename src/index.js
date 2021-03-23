@@ -6,6 +6,9 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import Home from './components/Home';
+import About from './components/About';
+import Blog from './components/Blog';
 //import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import {nanoid} from 'nanoid';
@@ -92,7 +95,7 @@ const App = () => {
   return (
     <>
     <Router>
-        <Navbar variant="light" bg="light" justify className="justify-content-between">
+        <Navbar variant="light" bg="light" justify className="justify-content-between" >
         <Navbar.Brand as={Link}  to="/"><b>D-Wiz</b></Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Nav className="mr-auto">
@@ -105,7 +108,18 @@ const App = () => {
       <Switch>
         <Route exact path="/">
         <div>
+          <Home/> 
         </div>
+        </Route>
+        <Route exact path="/about">
+          <div>
+              <About/>
+          </div>
+        </Route>
+        <Route exact path="/blog">
+          <div>
+              <Blog/>
+          </div>
         </Route>
         <Route exact path="/line">
           <div>
