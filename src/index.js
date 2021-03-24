@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-//import Table from 'react-bootstrap/Table';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Nav from 'react-bootstrap/Nav';
@@ -9,7 +8,6 @@ import Navbar from 'react-bootstrap/Navbar';
 import Home from './components/Home';
 import About from './components/About';
 import Blog from './components/Blog';
-//import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import {nanoid} from 'nanoid';
 import './index.css';
@@ -17,7 +15,6 @@ import { ResponsiveContainer, LineChart, Line, Area, AreaChart, CartesianGrid, C
 import { ButtonGroup } from 'react-bootstrap';
 import { useRechartToPng } from "recharts-to-png";
 import FileSaver from "file-saver";
-//import { BsFillTrashFill } from "react-icons/bs";
 import {BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
 import TableComp from './components/TableComp';
 import ParameterCustomization from './components/ParameterCustomization';
@@ -27,7 +24,14 @@ import ButtonComp from './components/ButtonComp';
 
 const App = () => {
 
-  const [rows, setRows] = useState([]);
+  const [rows, setRows] = useState([{
+      id: nanoid(),
+      a: '',
+      b: '',
+      c: '',
+      d: '',
+      labelName: '',
+  }]);
 
   const [params, setParams] = useState(
     [
@@ -53,6 +57,9 @@ const App = () => {
         }
     ]
   )
+  
+  const [hasThreeVariables, setThree] = useState(false)
+
   const modifyParams = (id, selectedParam, newValue) => {
     setParams(params.map(param => {
       if (param.id === id) {
@@ -68,7 +75,7 @@ const App = () => {
       b: '',
       c: '',
       d: '',
-      size: '3'
+      labelName: '',
     }
     setRows(rows.concat(newRow));
   }
@@ -80,7 +87,6 @@ const App = () => {
       return row;
     }));
   }
-  
   const deleteRow = (id) => {
     setRows(rows.filter((row) => {
       return row.id !== id;
@@ -96,6 +102,16 @@ const App = () => {
     FileSaver.saveAs(png, "myChart.png");
   }, [png]); 
 
+  const threeFalse = () =>
+  {
+    console.log({hasThreeVariables})
+    setThree({hasThreeVariables: false});
+  }
+  const threeTrue = () =>
+  {
+    setThree({hasThreeVariables: true});
+  }
+
   return (
     <>
     <Router>
@@ -103,10 +119,10 @@ const App = () => {
         <Navbar.Brand as={Link}  to="/"><b>D-Wiz</b></Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Nav className="mr-auto">
-            <Nav.Link as={Link}  to="/area"><b>Area Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/line"><b>Line Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/bar"><b>Bar Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/composed"><b>Composed Chart</b></Nav.Link>
+            <Nav.Link as={Link}  to="/area" onClick={threeFalse}><b>Area Chart</b></Nav.Link>
+            <Nav.Link as={Link}  to="/line" onClick={threeFalse}><b>Line Chart</b></Nav.Link>
+            <Nav.Link as={Link}  to="/bar" onClick={threeFalse}><b>Bar Chart</b></Nav.Link>
+            <Nav.Link as={Link}  to="/composed" onClick={threeTrue}><b>Composed Chart</b></Nav.Link>
             </Nav>
         </Navbar>
       <Switch>
@@ -132,7 +148,7 @@ const App = () => {
               <LineChart width={1400} height={350} ref={ref} data={rows}
               margin={{ top: 10, right: 130, left: 5, bottom: 10 }}>
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="c"/>
+              <XAxis dataKey="labelName"/>
               <YAxis />
               <Tooltip />
               <Legend />
@@ -177,7 +193,7 @@ const App = () => {
               <stop offset="95%" stopColor="#82ca9d" stopOpacity={0}/>
             </linearGradient>
           </defs>
-          <XAxis dataKey="c" />
+          <XAxis dataKey="labelName" />
           <YAxis />
           <CartesianGrid strokeDasharray="3 3" />
           <Tooltip />
@@ -208,7 +224,7 @@ const App = () => {
         <Container className="marginTop">
         <ComposedChart width={1400} height={350} ref={ref} data={rows}
               margin={{ top: 10, right: 130, left: 5, bottom: 10 }}>
-          <XAxis dataKey="c" />
+          <XAxis dataKey="labelName" />
           <YAxis />
           <Tooltip />
           <Legend />
@@ -223,7 +239,7 @@ const App = () => {
         </div>
         
           <Container className="fixed scroll">
-            <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow}/>
+            <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} hasThreeVariables={hasThreeVariables}/>
           </Container>
           <Container>
             <Row>
@@ -240,7 +256,7 @@ const App = () => {
         <BarChart width={1400} height={350} ref={ref} data={rows}
               margin={{ top: 10, right: 130, left: 5, bottom: 10 }}>
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="c" />
+          <XAxis dataKey="labelName" />
           <YAxis />
           <Tooltip />
           <Legend />
