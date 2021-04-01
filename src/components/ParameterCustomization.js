@@ -5,23 +5,28 @@ import DashSelect from './DashSelect';
 import WidthSelect from './WidthSelect';
 import OpacitySelect from './OpacitySelect';
 
-const ParameterCustomization = ({params,modifyParams}) => {
+const ParameterCustomization = ({params, modifyParams, chartState}) => {
     return( 
     <>
         {
-          params.map(param => <InputComp key={param.id} modifyParams={modifyParams} param={param}/>)
+          params.filter(param => param.id <= chartState.numberOfVariables).map(param => <InputComp key={param.id} 
+            modifyParams={modifyParams} param={param}/>)
         }
         {
-          params.map(param => <LineSelect key={param.id} modifyParams={modifyParams} param={param}/>)
+          params.filter(param => param.id <= chartState.numberOfVariables).map(param => <LineSelect key={param.id} 
+            modifyParams={modifyParams} param={param} chartState={chartState}/>)
         }
         {
-          params.map(param => <DashSelect key={param.id} modifyParams={modifyParams} param={param}/>)
+          params.filter(param => param.id <= chartState.numberOfVariables).map(param => <DashSelect key={param.id} 
+            modifyParams={modifyParams} param={param} chartState={chartState}/>)
         }
         {
-          params.map(param => <WidthSelect key={param.id} modifyParams={modifyParams} param={param}/>)
+          params.filter(param => param.id <= chartState.numberOfVariables).map(param => <WidthSelect key={param.id} 
+            modifyParams={modifyParams} param={param} chartState={chartState}/>)
         }
         {
-          params.map(param => <OpacitySelect key={param.id} modifyParams={modifyParams} param={param}/>)
+          params.filter(param => param.id <= chartState.numberOfVariables).map(param => <OpacitySelect key={param.id} 
+            modifyParams={modifyParams} param={param} chartState={chartState}/>)
         } 
     </>
     )}

@@ -2,8 +2,24 @@ import React from 'react';
 import TableRow from './TableRow';
 import Table from 'react-bootstrap/Table';
 
-const TableComp = ({rows, deleteRow, modifyRow, hasThreeVariables}) => {
-    if (hasThreeVariables){
+const TableComp = ({rows, deleteRow, modifyRow, chartState}) => {
+    if (chartState.numberOfVariables === 1){
+      return(
+        <Table striped bordered hover size="sm">
+          <tbody>
+            <tr>
+              <th>1st Value</th>
+              <th>Name</th>
+              <th className="table-icons"></th>
+            </tr>{
+              rows.map(row => <TableRow key={row.id} deleteRow={() => deleteRow(row.id)} chartState={chartState}
+              modifyRow={(axis, newValue) => modifyRow(row.id, axis, newValue)}/>)
+            }
+          </tbody>
+        </Table>
+      )
+    }
+    if (chartState.numberOfVariables === 3){
       return(
         <Table striped bordered hover size="sm">
           <tbody>
@@ -14,14 +30,14 @@ const TableComp = ({rows, deleteRow, modifyRow, hasThreeVariables}) => {
               <th>Name</th>
               <th className="table-icons"></th>
             </tr>{
-              rows.map(row => <TableRow key={row.id} deleteRow={() => deleteRow(row.id)} hasThreeVariables={hasThreeVariables}
+              rows.map(row => <TableRow key={row.id} deleteRow={() => deleteRow(row.id)} chartState={chartState}
               modifyRow={(axis, newValue) => modifyRow(row.id, axis, newValue)}/>)
             }
           </tbody>
         </Table>
       )
     }
-    else{
+
       return(
         <Table striped bordered hover size="sm">
           <tbody>
@@ -31,13 +47,12 @@ const TableComp = ({rows, deleteRow, modifyRow, hasThreeVariables}) => {
               <th>Name</th>
               <th className="table-icons"></th>
             </tr>{
-              rows.map(row => <TableRow key={row.id} deleteRow={() => deleteRow(row.id)} hasThreeVariables={hasThreeVariables}
+              rows.map(row => <TableRow key={row.id} deleteRow={() => deleteRow(row.id)} chartState={chartState}
                modifyRow={(axis, newValue) => modifyRow(row.id, axis, newValue)}/>)
             }
           </tbody>
         </Table>
       )
-    }
 }
 
 export default TableComp;
