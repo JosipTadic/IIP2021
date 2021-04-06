@@ -4,12 +4,17 @@ import LineSelect from './LineSelect';
 import DashSelect from './DashSelect';
 import WidthSelect from './WidthSelect';
 import OpacitySelect from './OpacitySelect';
+import LegendName from './LegendName';
 
 const ParameterCustomization = ({params, modifyParams, chartState}) => {
     return( 
     <>
         {
           params.filter(param => param.id <= chartState.numberOfVariables).map(param => <InputComp key={param.id} 
+            modifyParams={modifyParams} param={param}/>)
+        }
+        {
+          params.filter(param => param.id <= chartState.numberOfVariables).map(param => <LegendName key={param.id} 
             modifyParams={modifyParams} param={param}/>)
         }
         {

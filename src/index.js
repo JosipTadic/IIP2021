@@ -11,8 +11,8 @@ import Blog from './components/Blog';
 import Container from 'react-bootstrap/Container';
 import {nanoid} from 'nanoid';
 import './index.css';
-import { ResponsiveContainer, LineChart, Line, Area, AreaChart, CartesianGrid, Pie, PieChart, RadarChart, PolarGrid, 
-  PolarAngleAxis, PolarRadiusAxis, Radar, ScatterChart, Scatter, ComposedChart, BarChart, XAxis, YAxis, Tooltip, Legend, Bar } from 'recharts';
+import { ResponsiveContainer, LineChart, Line, Area, AreaChart, CartesianGrid, 
+   ScatterChart, Scatter, ComposedChart, BarChart, XAxis, YAxis, Tooltip, Legend, Bar } from 'recharts';
 import { ButtonGroup } from 'react-bootstrap';
 import { useRechartToPng } from "recharts-to-png";
 import FileSaver from "file-saver";
@@ -38,34 +38,28 @@ const App = () => {
     [
         {
           id: 1,
-          nameOnChart: "default",
           color: "#111222",
-          firstLegendName: 'a',
+          legendName: 'a',
           lineType: "monotone",
           strokeDash: 0,
-          strokeLinecap: "butt",
           strokeWidth: 1,
           strokeOpacity: 1,
         },
         {
           id: 2,
-          nameOnChart: "default",
           color: "#222555",
-          firstLegendName: 'b',
+          legendName: 'b',
           lineType: "monotone",
           strokeDash: 0,
-          strokeLinecap: "butt",
           strokeWidth: 1,
           strokeOpacity: 1,
         },
         {
           id: 3,
-          nameOnChart: "default",
           color: "#333666",
-          firstLegendName: 'c',
+          legendName: 'c',
           lineType: "monotone",
           strokeDash: 0,
-          strokeLinecap: "butt",
           strokeWidth: 1,
           strokeOpacity: 1,
         }
@@ -123,7 +117,7 @@ const App = () => {
     FileSaver.saveAs(png, "myChart.png");
   }, [png]); 
 
-  const pieChartSetter = () =>
+  /*const pieChartSetter = () =>
   setChartState({ 
     numberOfVariables: 1,
     dash: false,
@@ -131,7 +125,7 @@ const App = () => {
     width: false,
     opacity: false,
     colorChoice: true
-  })
+  })*/
   const onelineChartSetter = () =>
   setChartState({ 
     numberOfVariables: 1,
@@ -219,7 +213,7 @@ const App = () => {
     dash: false,
     type: false,
     width: false,
-    opacity: true,
+    opacity: false,
     colorChoice: true
   })
   const composedChartSetter = () =>
@@ -231,7 +225,7 @@ const App = () => {
     opacity: true,
     colorChoice: true
   })
-  const radarChartSetter = () =>
+  /*const radarChartSetter = () =>
   setChartState({ 
     numberOfVariables: 3,
     dash: true,
@@ -239,7 +233,7 @@ const App = () => {
     width: true,
     opacity: true,
     colorChoice: true
-  })
+  })*/
 
   return (
     <>
@@ -248,19 +242,17 @@ const App = () => {
         <Navbar.Brand as={Link}  to="/"><b>D-Wiz</b></Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Nav className="mr-auto">
-            <Nav.Link as={Link}  to="/pie" onClick={pieChartSetter}><b>Pie Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/oneline" onClick={onelineChartSetter}><b>Line Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/line" onClick={lineChartSetter}><b>Line Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/threeline" onClick={threelineChartSetter}><b>Line Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/onearea" onClick={oneareaChartSetter}><b>Area Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/area" onClick={areaChartSetter}><b>Area Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/threearea" onClick={threeareaChartSetter}><b>Area Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/onebar" onClick={onebarChartSetter}><b>Bar Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/bar" onClick={barChartSetter}><b>Bar Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/threebar" onClick={threebarChartSetter}><b>Bar Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/scatter" onClick={scatterChartSetter}><b>Scatter Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/composed" onClick={composedChartSetter}><b>Composed Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/radar" onClick={radarChartSetter}><b>Radar Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/oneline" onClick={onelineChartSetter}><b>Line Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/line" onClick={lineChartSetter}><b>Line Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/threeline" onClick={threelineChartSetter}><b>Line Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/onearea" onClick={oneareaChartSetter}><b>Area Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/area" onClick={areaChartSetter}><b>Area Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/threearea" onClick={threeareaChartSetter}><b>Area Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/onebar" onClick={onebarChartSetter}><b>Bar Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/bar" onClick={barChartSetter}><b>Bar Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/threebar" onClick={threebarChartSetter}><b>Bar Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/scatter" onClick={scatterChartSetter}><b>Scatter Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/composed" onClick={composedChartSetter}><b>Composed Chart</b></Nav.Link>
             </Nav>
         </Navbar>
       <Switch>
@@ -279,34 +271,6 @@ const App = () => {
               <Blog/>
           </div>
         </Route>
-        <Route exact path="/pie">
-        <Container className="marginTop">
-          <ResponsiveContainer className="justify-content-md-center">
-            <Row>
-            <PieChart width={730} height={250}>
-              <Pie data={rows} dataKey="a" nameKey="labelName" cx="50%" cy="50%" outerRadius={50} fill={params[0].color} />
-            </PieChart>
-            </Row>
-          </ResponsiveContainer>
-        </Container>
-        <div>
-          <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>
-        </div>
-        
-        
-          <Container className="fixed scroll">
-            <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
-          </Container>
-          <Container>
-            <Row>
-              <ButtonGroup>
-              <Col md={{ offset: 2 }}><ButtonComp variant={"primary"} text='Add new row' onClick={increaseRows}/></Col>
-              <Col md={{ offset: 0 }}><ButtonComp variant={"primary"} text='Download Chart' onClick={handleDownload}/></Col>
-              <Col md={{ offset: 0 }}><ButtonComp variant={"danger"} text='Delete Table'  onClick={deleteAll} /></Col>
-              </ButtonGroup>
-            </Row>
-          </Container>
-        </Route>
         
           <Route exact path="/oneline">
         <Container className="marginTop">
@@ -319,7 +283,7 @@ const App = () => {
               <YAxis />
               <Tooltip />
               <Legend />
-              <Line strokeWidth={params[0].strokeWidth} 
+              <Line strokeWidth={params[0].strokeWidth} name={params[0].legendName}
                strokeDasharray={params[0].strokeDash} type={params[0].lineType} dataKey="a" stroke={params[0].color}/>
               </LineChart>
               </Row>
@@ -354,9 +318,9 @@ const App = () => {
               <YAxis />
               <Tooltip />
               <Legend />
-              <Line strokeWidth={params[0].strokeWidth} 
+              <Line strokeWidth={params[0].strokeWidth} name={params[0].legendName}
                strokeDasharray={params[0].strokeDash} type={params[0].lineType} dataKey="a" stroke={params[0].color}/>
-              <Line strokeWidth={params[1].strokeWidth} strokeLinecap={params[1].strokeLinecap} 
+              <Line strokeWidth={params[1].strokeWidth} strokeLinecap={params[1].strokeLinecap} name={params[1].legendName}
               strokeDasharray={params[1].strokeDash} type={params[1].lineType} dataKey="b" stroke={params[1].color} />
               </LineChart>
               </Row>
@@ -391,11 +355,11 @@ const App = () => {
               <YAxis />
               <Tooltip />
               <Legend />
-              <Line strokeWidth={params[0].strokeWidth} 
+              <Line strokeWidth={params[0].strokeWidth} name={params[0].legendName}
                strokeDasharray={params[0].strokeDash} type={params[0].lineType} dataKey="a" stroke={params[0].color}/>
-              <Line strokeWidth={params[1].strokeWidth} strokeLinecap={params[1].strokeLinecap} 
+              <Line strokeWidth={params[1].strokeWidth} strokeLinecap={params[1].strokeLinecap} name={params[1].legendName}
               strokeDasharray={params[1].strokeDash} type={params[1].lineType} dataKey="b" stroke={params[1].color} />
-              <Line strokeWidth={params[2].strokeWidth} strokeLinecap={params[2].strokeLinecap} 
+              <Line strokeWidth={params[2].strokeWidth} strokeLinecap={params[2].strokeLinecap} name={params[2].legendName}
               strokeDasharray={params[2].strokeDash} type={params[2].lineType} dataKey="c" stroke={params[2].color} />
               </LineChart>
               </Row>
@@ -435,7 +399,7 @@ const App = () => {
           <Tooltip />
           <Legend />
           <Area type={params[0].lineType} dataKey="a" stroke={params[0].color} fillOpacity={params[0].strokeOpacity}
-           strokeWidth={params[0].strokeWidth} strokeDasharray={params[0].strokeDash} fill={params[0].color} />
+           strokeWidth={params[0].strokeWidth} strokeDasharray={params[0].strokeDash} fill={params[0].color} name={params[0].legendName}/>
         </AreaChart>
         </Container>
         <div>
@@ -475,9 +439,9 @@ const App = () => {
           <Tooltip />
           <Legend />
           <Area type={params[0].lineType} dataKey="a" stroke={params[0].color} fillOpacity={params[0].strokeOpacity}
-           strokeWidth={params[0].strokeWidth} strokeDasharray={params[0].strokeDash} fill={params[0].color} />
+           strokeWidth={params[0].strokeWidth} strokeDasharray={params[0].strokeDash} fill={params[0].color} name={params[0].legendName}/>
           <Area type={params[1].lineType} dataKey="b" stroke={params[1].color} fillOpacity={params[1].strokeOpacity}
-           strokeWidth={params[1].strokeWidth} strokeDasharray={params[1].strokeDash} fill={params[1].color} />
+           strokeWidth={params[1].strokeWidth} strokeDasharray={params[1].strokeDash} fill={params[1].color} name={params[1].legendName}/>
         </AreaChart>
         </Container>
         <div>
@@ -521,11 +485,11 @@ const App = () => {
           <Tooltip />
           <Legend />
           <Area type={params[0].lineType} dataKey="a" stroke={params[0].color} fillOpacity={params[0].strokeOpacity}
-           strokeWidth={params[0].strokeWidth} strokeDasharray={params[0].strokeDash} fill={params[0].color} />
+           strokeWidth={params[0].strokeWidth} strokeDasharray={params[0].strokeDash} fill={params[0].color} name={params[0].legendName}/>
           <Area type={params[1].lineType} dataKey="b" stroke={params[1].color} fillOpacity={params[1].strokeOpacity}
-           strokeWidth={params[1].strokeWidth} strokeDasharray={params[1].strokeDash} fill={params[1].color} />
+           strokeWidth={params[1].strokeWidth} strokeDasharray={params[1].strokeDash} fill={params[1].color} name={params[1].legendName}/>
            <Area type={params[2].lineType} dataKey="c" stroke={params[2].color} fillOpacity={params[2].strokeOpacity}
-           strokeWidth={params[2].strokeWidth} strokeDasharray={params[2].strokeDash} fill={params[2].color} />
+           strokeWidth={params[2].strokeWidth} strokeDasharray={params[2].strokeDash} fill={params[2].color} name={params[2].legendName}/>
         </AreaChart>
         </Container>
         <div>
@@ -554,7 +518,7 @@ const App = () => {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="a" fill={params[0].color} fillOpacity={params[0].strokeOpacity} maxBarSize={150}/>
+          <Bar dataKey="a" fill={params[0].color} fillOpacity={params[0].strokeOpacity} maxBarSize={150} name={params[0].legendName}/>
         </BarChart>
         </Container>
         <div>
@@ -583,8 +547,8 @@ const App = () => {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="a" fill={params[0].color} fillOpacity={params[0].strokeOpacity} maxBarSize={150}/>
-          <Bar dataKey="b" fill={params[1].color} fillOpacity={params[1].strokeOpacity} maxBarSize={150}/>
+          <Bar dataKey="a" fill={params[0].color} fillOpacity={params[0].strokeOpacity} maxBarSize={150} name={params[0].legendName}/>
+          <Bar dataKey="b" fill={params[1].color} fillOpacity={params[1].strokeOpacity} maxBarSize={150} name={params[1].legendName}/>
         </BarChart>
         </Container>
         <div>
@@ -613,9 +577,9 @@ const App = () => {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="a" fill={params[0].color} fillOpacity={params[0].strokeOpacity} maxBarSize={150}/>
-          <Bar dataKey="b" fill={params[1].color} fillOpacity={params[1].strokeOpacity} maxBarSize={150}/>
-          <Bar dataKey="c" fill={params[2].color} fillOpacity={params[2].strokeOpacity} maxBarSize={150}/>
+          <Bar dataKey="a" fill={params[0].color} fillOpacity={params[0].strokeOpacity} maxBarSize={150} name={params[0].legendName}/>
+          <Bar dataKey="b" fill={params[1].color} fillOpacity={params[1].strokeOpacity} maxBarSize={150} name={params[1].legendName}/>
+          <Bar dataKey="c" fill={params[2].color} fillOpacity={params[2].strokeOpacity} maxBarSize={150} name={params[2].legendName}/>
         </BarChart>
         </Container>
         <div>
@@ -645,10 +609,10 @@ const App = () => {
           <Legend />
           <CartesianGrid stroke="#f5f5f5" />
           <Area type={params[0].lineType} dataKey="a" stroke={params[0].color} fillOpacity={params[0].strokeOpacity}
-           strokeWidth={params[0].strokeWidth} strokeDasharray={params[0].strokeDash} fill={params[0].color} />
-          <Bar dataKey="b" fill={params[1].color} fillOpacity={params[1].strokeOpacity} strokeWidth={params[1].strokeWidth} 
-           maxBarSize={150} />
-          <Line strokeWidth={params[2].strokeWidth} strokeLinecap={params[2].strokeLinecap} 
+           strokeWidth={params[0].strokeWidth} strokeDasharray={params[0].strokeDash} fill={params[0].color} name={params[0].legendName}/>
+          <Bar dataKey="b" fill={params[1].color} fillOpacity={params[1].strokeOpacity} 
+           maxBarSize={150} name={params[1].legendName}/>
+          <Line strokeWidth={params[2].strokeWidth} strokeLinecap={params[2].strokeLinecap} name={params[2].legendName}
               strokeDasharray={params[2].strokeDash} type={params[2].lineType} dataKey="c" stroke={params[2].color} />
         </ComposedChart>
         </Container>
@@ -669,34 +633,7 @@ const App = () => {
             </Row>
           </Container>
           </Route>
-          <Route exact path="/radar">
-        <Container className="marginTop">
-        <RadarChart outerRadius={90} width={730} height={250} data={rows}>
-          <PolarGrid />
-          <PolarAngleAxis dataKey="labelName" />
-          <PolarRadiusAxis angle={30} domain={[0, 150]} />
-          <Radar name="Mike" dataKey="a" stroke="#8884d8" fill={params[0].color} fillOpacity={params[0].strokeOpacity} />
-          <Radar name="Lily" dataKey="b" stroke="#82ca9d" fill={params[1].color} fillOpacity={params[1].strokeOpacity} />
-          <Legend />
-        </RadarChart>
-        </Container>
-        <div>
-          <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>
-        </div>
-        
-          <Container className="fixed scroll">
-            <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
-          </Container>
-          <Container>
-            <Row>
-              <ButtonGroup>
-              <Col md={{ offset: 2 }}><ButtonComp variant={"primary"} text='Add new row' onClick={increaseRows}/></Col>
-              <Col md={{ offset: 0 }}><ButtonComp variant={"primary"} text='Download Chart' onClick={handleDownload}/></Col>
-              <Col md={{ offset: 0 }}><ButtonComp variant={"danger"} text='Delete Table'  onClick={deleteAll} /></Col>
-              </ButtonGroup>
-            </Row>
-          </Container>
-          </Route>
+          
           <Route exact path="/scatter">
         <Container className="marginTop">
         <ScatterChart width={730} height={250}
@@ -753,3 +690,64 @@ return(
                strokeDasharray={params[0].firstDash} type={params[0].lineType} dataKey="a" stroke={params[0].color} fill={params[0].color}/>
 )
 }*/
+/* Pie, PieChart, RadarChart, PolarGrid, 
+  PolarAngleAxis, PolarRadiusAxis, Radar,
+<Nav.Link as={Link}  to="/pie" onClick={pieChartSetter}><b>Pie Chart</b></Nav.Link>
+<Nav.Link as={Link}  to="/radar" onClick={radarChartSetter}><b>Radar Chart</b></Nav.Link>
+<Route exact path="/radar">
+        <Container className="marginTop">
+        <RadarChart outerRadius={90} width={730} height={250} data={rows}>
+          <PolarGrid />
+          <PolarAngleAxis dataKey="labelName" />
+          <PolarRadiusAxis angle={30} domain={[0, 150]} />
+          <Radar name="Mike" dataKey="a" stroke="#8884d8" fill={params[0].color} fillOpacity={params[0].strokeOpacity} />
+          <Radar name="Lily" dataKey="b" stroke="#82ca9d" fill={params[1].color} fillOpacity={params[1].strokeOpacity} />
+          <Legend />
+        </RadarChart>
+        </Container>
+        <div>
+          <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>
+        </div>
+        
+          <Container className="fixed scroll">
+            <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
+          </Container>
+          <Container>
+            <Row>
+              <ButtonGroup>
+              <Col md={{ offset: 2 }}><ButtonComp variant={"primary"} text='Add new row' onClick={increaseRows}/></Col>
+              <Col md={{ offset: 0 }}><ButtonComp variant={"primary"} text='Download Chart' onClick={handleDownload}/></Col>
+              <Col md={{ offset: 0 }}><ButtonComp variant={"danger"} text='Delete Table'  onClick={deleteAll} /></Col>
+              </ButtonGroup>
+            </Row>
+          </Container>
+          </Route>
+<Route exact path="/pie">
+        <Container className="marginTop">
+          <ResponsiveContainer className="justify-content-md-center">
+            <Row>
+            <PieChart width={730} height={250}>
+              <Pie data={rows} dataKey="a" nameKey="labelName" cx="50%" cy="50%" outerRadius={50} fill={params[0].color} />
+            </PieChart>
+            </Row>
+          </ResponsiveContainer>
+        </Container>
+        <div>
+          <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>
+        </div>
+        
+        
+          <Container className="fixed scroll">
+            <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
+          </Container>
+          <Container>
+            <Row>
+              <ButtonGroup>
+              <Col md={{ offset: 2 }}><ButtonComp variant={"primary"} text='Add new row' onClick={increaseRows}/></Col>
+              <Col md={{ offset: 0 }}><ButtonComp variant={"primary"} text='Download Chart' onClick={handleDownload}/></Col>
+              <Col md={{ offset: 0 }}><ButtonComp variant={"danger"} text='Delete Table'  onClick={deleteAll} /></Col>
+              </ButtonGroup>
+            </Row>
+          </Container>
+        </Route>
+*/
