@@ -8,6 +8,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Home from './components/Home';
 import About from './components/About';
 import Blog from './components/Blog';
+import CreateNewPost from './blog/CreateNewPost';
 import Container from 'react-bootstrap/Container';
 import {nanoid} from 'nanoid';
 import './index.css';
@@ -271,7 +272,11 @@ const App = () => {
               <Blog/>
           </div>
         </Route>
-        
+        <Route exact path="/create">
+          <div>
+              <CreateNewPost/>
+          </div>
+        </Route>
           <Route exact path="/oneline">
         <Container className="marginTop">
           <ResponsiveContainer className="justify-content-md-center">

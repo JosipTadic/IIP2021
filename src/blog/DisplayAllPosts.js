@@ -3,7 +3,24 @@ import CreateNewPost from "./CreateNewPost";
 import Post from "./Post";
 import ModifyPost from "./ModifyPost" 
 const DisplayAllPosts = () => {
-  const [title, setTitle] = useState("");
+  const[blogs, setBlogs] = useState([
+    {title: "myymy", body: "dsf", author: "sfsd", id: 1}
+  ])
+    return(
+      <div className="home">
+          {blogs.map((blog) => 
+            <div className="blog-preview" key={blog.id}>
+              <h2>{blog.title}</h2>
+              <p>{blog.author}</p>
+            </div>
+          )}
+      </div>
+    )
+
+}
+export default DisplayAllPosts;
+
+  /*const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [allPosts, setAllPosts] = useState([]);
   const [isCreateNewPost, setIsCreateNewPost] = useState(false);
@@ -125,4 +142,4 @@ const DisplayAllPosts = () => {
     </>
   );
 };
-export default DisplayAllPosts;
+*/
