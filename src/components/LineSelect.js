@@ -1,6 +1,7 @@
 import React from 'react';
 
-const LineSelect = ({modifyParams, param}) => {
+const LineSelect = ({modifyParams, param, chartState}) => {
+  if(!chartState.type) {return(null)}
     return(
       <>
         <select onChange={e => modifyParams(param.id, 'lineType', e.target.value)}>
