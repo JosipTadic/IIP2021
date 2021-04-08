@@ -100,10 +100,12 @@ footer{
  
 /* Float four columns side by side */
 .column {
-    padding-top: 20px; 
     float: left;
     width: 25%;
     padding: 0 10px;
+    display: flex;
+  align-items: center;
+  justify-content: center;
   }
   
   /* Remove extra left and right margins, due to padding */
@@ -161,8 +163,8 @@ footer{
   .button {
     background-color: #f4a261; 
     color: white;
-    padding: 16px 32px;
-    font-size: 20px;
+    padding: 14px 30px;
+    font-size: 18px;
     margin: 4px 8px;
     transition: 0.3s;
     cursor: pointer;  
@@ -193,9 +195,16 @@ footer{
   }
 
   .card-img-top{ 
-      opacity: 0.2;
+      opacity: 0.1;
   }
 
+  .percent-50 {
+    width: 50%;
+  }
+  .card .percent-50 {
+    height: 100%;
+    padding: 5px;
+  }
   .blogPhoto{
     width: auto;
     min-height: 11em;
@@ -222,12 +231,10 @@ footer{
     overflow: hidden;
     z-index: 0;
 }
-.blog-card a {
+.blog-card {
     color: inherit;
 }
-.blog-card a:hover {
-    color: #5ad67d;
-}
+ 
 .blog-card:hover .photo {
     transform: scale(1.3) rotate(3deg);
 }
@@ -272,17 +279,14 @@ footer{
 }
 .blog-card .details .author:before {
     font-family: FontAwesome;
-    margin-right: 10px;
-    content: "\f007";
+    margin-right: 10px; 
 }
 .blog-card .details .date:before {
     font-family: FontAwesome;
-    margin-right: 10px;
-    content: "\f133";
+    margin-right: 10px; 
 }
 .blog-card .details .tags ul:before {
-    font-family: FontAwesome;
-    content: "\f02b";
+    font-family: FontAwesome; 
     margin-right: 10px;
 }
 .blog-card .details .tags li {
@@ -312,23 +316,18 @@ footer{
     color: #a2a2a2;
     margin-top: 5px;
 }
+ 
 .blog-card .description .read-more {
-    text-align: right;
+    color: #5ad67d !important;
+    display: inline-block !important;
+    position: relative !important;
+    font-size: 16px;
+    text-transform: uppercase;
+    border:none;
+    background-color: transparent;
 }
-.blog-card .description .read-more a {
-    color: #5ad67d;
-    display: inline-block;
-    position: relative;
-}
-.blog-card .description .read-more a:after {
-     
-    font-family: FontAwesome;
-    margin-left: -10px;
-    opacity: 0;
-    vertical-align: middle;
-    transition: margin 0.3s, opacity 0.3s;
-}
-.blog-card .description .read-more a:hover:after {
+
+.blog-card .description .read-more:hover:after {
     margin-left: 5px;
     opacity: 1;
 }
@@ -386,3 +385,79 @@ footer{
         padding-left: 25px;
    }
 }
+
+.card-action{
+    box-shadow: 0 4px 8px 0 rgba(185, 184, 184, 0.2);
+    padding: 20px; 
+    text-align: center;
+    background-color: #fafbfc;
+}
+.edit{
+    background-color: #e9ec2b !important;
+    display: inline-block !important;
+    position: relative !important;
+    font-size: 2em;
+    text-transform: uppercase;
+    border:none;
+    background-color: transparent;
+}
+.delete{
+    background-color: #f35e54 !important;
+    display: inline-block !important;
+    position: relative !important;
+    font-size: 2em;
+    text-transform: uppercase;
+    border:none;
+    background-color: transparent;
+}
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {   
+    float: left;
+    width: 75%;
+  }
+  
+  /* Right column */
+  .rightcolumn {
+    float: left;
+    width: 25%;
+    padding-left: 20px;
+  }
+  
+  /* Fake image */
+  .fakeimg {
+    background-color: #aaa;
+    width: 100%;
+    padding: 20px;
+  }
+  
+  /* Add a card effect for articles */
+  .card-post {
+     background-color: white;
+     padding: 20px;
+     margin-top: 20px;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Footer */
+  .footer {
+    padding: 20px;
+    text-align: center;
+    background: #ddd;
+    margin-top: 20px;
+  }
+  
+  /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 800px) {
+    .leftcolumn, .rightcolumn {   
+      width: 100%;
+      padding: 0;
+    }
+  }

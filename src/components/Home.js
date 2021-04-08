@@ -41,19 +41,21 @@ const Home = () => {
         <div className="third">
           <h1 className="third-title">Our tools</h1>
          
-          <div class="row">
-            <div class="column">
-              <div class="card img-fluid">
-              <img src={area} alt="area" className="card-img-top" /> 
-                <div className="card-img-overlay"> 
-                <h3>Area Chart</h3> 
-                <p>Some text</p>
-                <p>Some text</p>
+          <div className="row">
+            <div className="column">
+              <div className="card">
+              <h3>Area Chart</h3> 
+              <div className="percent-50 icon">
+                      <img src={area} alt="area" />
+              </div>
+              <div className="percent-50">
+                <p>Area charts are used to represent cumulated totals using numbers or percentages (stacked area charts in this case) over time.
+                  Use the area chart for showing trends over time among related attributes.</p>  
+                  </div> 
                 <Link to="/area">
                   <button className="button">Go to the tool</button> 
-                </Link>                
-                </div> 
-              </div>
+                </Link> 
+                </div>
             </div> 
  
           <div class="column">
@@ -61,8 +63,9 @@ const Home = () => {
             <img src={line} alt="line" className="card-img-top" /> 
               <div className="card-img-overlay"> 
               <h3>Line Chart</h3> 
-              <p>Some text</p>
-              <p>Some text</p>
+              <p className="card-img-text"> A line chart is often used to visualize a trend in data over 
+                intervals of time – a time series – thus the line is often drawn chronologically. </p>
+              
               <Link to="/line">
                 <button className="button">Go to the tool</button> 
               </Link>  
@@ -75,8 +78,8 @@ const Home = () => {
             <img src={bar} alt="bar" className="card-img-top" /> 
               <div className="card-img-overlay"> 
               <h3>Bar Chart</h3> 
-              <p>Some text</p>
-              <p>Some text</p>
+              <p className="card-img-text">A bar chart is a chart that presents categorical data with rectangular bars with heights or lengths proportional to the
+                 values that they represent. The bars can be plotted vertically or horizontally. </p> 
               <Link to="/bar">
                 <button className="button">Go to the tool</button> 
               </Link>  
@@ -89,8 +92,7 @@ const Home = () => {
             <img src={composed} alt="composed" className="card-img-top" /> 
               <div className="card-img-overlay"> 
               <h3>Composed Chart</h3> 
-              <p>Some text</p>
-              <p>Some text</p>
+              <p className="card-img-text"> Used to combine multiple chart types like bar and line</p> 
               <Link to="/composed">
                 <button className="button">Go to the tool</button> 
               </Link>  
