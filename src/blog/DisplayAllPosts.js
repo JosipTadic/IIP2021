@@ -1,14 +1,14 @@
 import React, { useState, useRef } from "react";
 import CreateNewPost from "./CreateNewPost";
 import Post from "./Post";
-import ModifyPost from "./ModifyPost"
+import ModifyPost from "./ModifyPost" 
 const DisplayAllPosts = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [allPosts, setAllPosts] = useState([]);
   const [isCreateNewPost, setIsCreateNewPost] = useState(false);
   const [isModifyPost, setIsModifyPost] = useState(false);
-  const [editPostId, setEditPostId] = useState(""); 
+  const [editPostId, setEditPostId] = useState("");  
 
   // Initialize useRef
   const getTitle = useRef();
@@ -25,12 +25,14 @@ const DisplayAllPosts = () => {
   };
   const toggleModifyPostComponent = () => {
     setIsModifyPost(!isModifyPost)
-  }
+  } 
+
   const editPost = id => {
     setEditPostId(id);
     console.log(id)
     toggleModifyPostComponent();
   };
+
   const updatePost = (event) => {
     event.preventDefault();
     const updatedPost = allPosts.map(eachPost => {
@@ -93,7 +95,7 @@ const DisplayAllPosts = () => {
         savePostContentToState={savePostContentToState}
       />
     );
-  }
+  } 
   return (
     <>
       <h2>All Posts</h2>
@@ -103,6 +105,7 @@ const DisplayAllPosts = () => {
         </div>
       ) : (
         allPosts.map(eachPost => {
+            {console.log(eachPost)}
           return (
             <Post
               id={eachPost.id}
@@ -110,15 +113,15 @@ const DisplayAllPosts = () => {
               title={eachPost.title}
               content={eachPost.content}
               editPost={editPost}
-              deletePost={deletePost}
-
+              deletePost={deletePost} 
+               
             />
           );
         })
       )}
       <br />
       <br />
-      <button onClick={toggleCreateNewPost}>Create New</button>
+      <button onClick={toggleCreateNewPost} className="button">Create New</button>
     </>
   );
 };

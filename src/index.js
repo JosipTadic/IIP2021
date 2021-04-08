@@ -9,6 +9,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Home from './components/Home';
 import About from './components/About';
 import Blog from './components/Blog';
+import PostDetails from './blog/PostDetails';
 //import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import {nanoid} from 'nanoid';
@@ -107,6 +108,7 @@ const App = () => {
             <Nav.Link as={Link}  to="/line"><b>Line Chart</b></Nav.Link>
             <Nav.Link as={Link}  to="/bar"><b>Bar Chart</b></Nav.Link>
             <Nav.Link as={Link}  to="/composed"><b>Composed Chart</b></Nav.Link>
+            <Nav.Link as={Link}  to="/code/:id" ></Nav.Link> 
             </Nav>
         </Navbar>
       <Switch>
@@ -125,6 +127,12 @@ const App = () => {
               <Blog/>
           </div>
         </Route>
+        <Route exact path="/code/:id">
+          <div>
+              <PostDetails/>
+          </div>
+        </Route> 
+        
         <Route exact path="/line">
         <Container className="marginTop">
           <ResponsiveContainer className="justify-content-md-center">
