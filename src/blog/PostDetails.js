@@ -1,9 +1,33 @@
 import React from 'react';
-import {useLocation, Link} from "react-router-dom"; 
+import {useParams} from "react-router-dom"; 
+import Post from './Post';
+import useFetch from "./useFetch";
+
 const PostDetails = () => {  
+    const { id } = useParams();
+    const { data: blog, error, isPending } = useFetch('http://localhost:8000/blogs/' + id);
   return (
-    
-    <div className="row">
+      <div className="container">
+          <Post />
+        <div className="blog-details">
+                { isPending && <div>Loading...</div> }
+                { error && <div>{ error }</div> }
+                { blog && (
+                    <article>
+                    <h2>{ blog.title }</h2>
+                    <p>Written by { blog.author }</p>
+                    <div>{ blog.body }</div>
+                    </article>
+                )}
+        </div>
+    </div>
+    )
+}
+export default PostDetails;
+
+/* 
+  
+<div className="row">
         <div className="leftcolumn">
             <div className="card-post">
                 <h2>titile</h2>
@@ -36,12 +60,6 @@ const PostDetails = () => {
     
   );
 };
-
-export default PostDetails;
-
-/* 
-  
-
 
 <div className="row">
     <div className="col s12 m6"> 

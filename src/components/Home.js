@@ -33,29 +33,23 @@ const Home = () => {
               
             </div>
           </div> 
-
-
-        
-            
-       
-          
-        <div className="container">
-      <div className="row">
-            <div className="column-33">
-              <img src={charts} alt="charts" /> 
-             </div> 
-             <div className="column-66">
-              <h2> <b> Learn about data visualization</b></h2> 
-              <p><span >tu nešto napisati čemu služi alat/website </span></p>
-              <Link to="blog">
-                <button className="button">Read More</button> 
-              </Link>
-              
-            </div>
           </div>
-        </div>
-      
-      </div>
+
+          <div className="container">
+          <div className="row">
+                <div className="column-33">
+                <img src={charts} alt="charts" />  
+                </div> 
+                <div className="column-66">
+                  <h1 className="xlarge-font"><b> Learn about data visualization </b></h1> 
+                  <p><span >tu nešto napisati čemu služi alat/website </span></p>
+                  <Link to="blog">
+                    <button className="button">Read More</button> 
+                  </Link>
+                  
+                </div>
+          </div> 
+      </div> 
        <footer>
          <p> Author: D-wiz magovi</p>
        </footer>

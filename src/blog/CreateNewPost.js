@@ -1,7 +1,9 @@
 import React from "react";
+import Post from './Post'
 const CreateNewPost = props => {
   return (
-    <>
+     <div> 
+       <Post />
       <form onSubmit={props.savePost}>
         <h1>Create New Post</h1>
         <input
@@ -26,7 +28,7 @@ const CreateNewPost = props => {
         <br />
         <button>Save Post</button>
       </form>
-    </>
+      </div>
   );
 };
 export default CreateNewPost;

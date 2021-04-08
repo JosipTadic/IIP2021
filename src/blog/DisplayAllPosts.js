@@ -1,20 +1,20 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import CreateNewPost from "./CreateNewPost";
 import Post from "./Post";
 import ModifyPost from "./ModifyPost" 
+import PostList from "./PostList"
+import useFetch from './useFetch'
 const DisplayAllPosts = () => {
-  const[blogs, setBlogs] = useState([
-    {title: "myymy", body: "dsf", author: "sfsd", id: 1}
-  ])
+
+  const { error, isPending, data: blogs } = useFetch('http://localhost:8000/blogs')
+  
+  
     return(
       <div className="home">
-          {blogs.map((blog) => 
-            <div className="blog-preview" key={blog.id}>
-              <h2>{blog.title}</h2>
-              <p>{blog.author}</p>
-            </div>
-          )}
-      </div>
+              { error && <div>{ error }</div> }
+              { isPending && <div>Loading...</div> }
+              {blogs && <PostList blogs={blogs} />}
+    </div>
     )
 
 }
