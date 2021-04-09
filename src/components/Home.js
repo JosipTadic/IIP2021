@@ -26,9 +26,9 @@ const Home = () => {
              </div> 
              <div className="column-66">
               <h1 className="xlarge-font"><b> About D-Wiz</b></h1> 
-              <p><span >tu nešto napisati čemu služi alat/website </span></p>
+              <p><span >D-Wiz helps people see and understand data. </span></p>
               <Link to="about">
-                <button className="button">Read More</button> 
+                <button className="button-read">Read More</button> 
               </Link>
               
             </div>
@@ -42,9 +42,9 @@ const Home = () => {
                 </div> 
                 <div className="column-66">
                   <h1 className="xlarge-font"><b> Learn about data visualization </b></h1> 
-                  <p><span >tu nešto napisati čemu služi alat/website </span></p>
+                  <p><span > Interested in data visualization? Learn more by reading our blogs </span></p>
                   <Link to="blog">
-                    <button className="button">Read More</button> 
+                    <button className="button-read">Read More</button> 
                   </Link>
                   
                 </div>

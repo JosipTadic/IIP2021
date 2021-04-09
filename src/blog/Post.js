@@ -9,7 +9,7 @@ const Post = () => {
     <div className="navbar-blog"> 
     <div className="links"> 
         <Link to="/blog">
-              <button><h1>All posts</h1></button> 
+              <button>All posts</button> 
         </Link>
         <Link to="/create">
               <button>Create New Post</button> 

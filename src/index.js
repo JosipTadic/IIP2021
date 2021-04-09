@@ -23,7 +23,6 @@ import ParameterCustomization from './components/ParameterCustomization';
 import ButtonComp from './components/ButtonComp';
 import NavComp from './components/NavComp';
 import PostDetails from './blog/PostDetails';
-import OurTools from './components/OurTools';
 
 // npm i -D typescript @types/node @types/react @types/react-dom
 
@@ -264,9 +263,23 @@ const App = () => {
         <Navbar variant="light" bg="light" justify className="justify-content-between" >
         <Navbar.Brand as={Link}  to="/"><b>D-Wiz</b></Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-             <Nav className="mr-auto">
-                  <Nav.Link as={Link}  to="ourTools"><b>Our Tools</b></Nav.Link>
-             </Nav>
+            <Nav className="mr-auto">
+              <Nav.Link as={Link}  to="/one/oneline" onClick={onelineChartSetter}><b>Line Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/two/line" onClick={lineChartSetter}><b>Line Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/threeline" onClick={threelineChartSetter}><b>Line Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/one/onearea" onClick={oneareaChartSetter}><b>Area Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/two/area" onClick={areaChartSetter}><b>Area Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/threearea" onClick={threeareaChartSetter}><b>Area Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/one/onebar" onClick={onebarChartSetter}><b>Bar Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/two/bar" onClick={barChartSetter}><b>Bar Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/threebar" onClick={threebarChartSetter}><b>Bar Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/one/onescatter" onClick={onescatterChartSetter}><b>Scatter Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/two/scatter" onClick={scatterChartSetter}><b>Scatter Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/threescatter" onClick={threescatterChartSetter}><b>Scatter Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/composed" onClick={composedChartSetter}><b>Composed Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/composed2" onClick={composedChartSetter}><b>Composed 2 Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/composed3" onClick={composedChartSetter}><b>Composed 3 Chart</b></Nav.Link>
+            </Nav>
         </Navbar>
       <Switch>
         <Route exact path="/">
@@ -294,12 +307,7 @@ const App = () => {
               <PostDetails/>
           </div>
         </Route>
-        <Route exact path="/ourTools">
-          <div>
-              <OurTools/>
-          </div>
-        </Route>
-          <Route exact path="/one-oneline">
+          <Route exact path="/one/oneline">
         <Container className="marginTop">
           <ResponsiveContainer className="justify-content-md-center">
             <Row>

@@ -34,8 +34,29 @@ footer{
     text-transform: uppercase;  
     
   }
+  .center-about { 
+    width: auto;
+    min-height: 400px;
+    background-color: black;
+    background-image: url(https://images.unsplash.com/photo-1542744173-05336fcc7ad4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=991&q=80);
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   
-  
+  .center-about-text { 
+    
+    font-size: 120px;
+    letter-spacing: 10px;
+    font-weight: bolder; 
+    color: #f4a261;
+    text-transform: uppercase;  
+    
+  }
+
   .glitch {
     position: relative;
     color: white;
@@ -157,30 +178,49 @@ footer{
   }
   
   .xlarge-font {
-    font-size: 64px
+    font-size: 32px
   }
   
   .button {
-    background-color: #f4a261; 
-    color: white;
-    padding: 14px 30px;
-    font-size: 18px;
-    margin: 4px 8px;
-    transition: 0.3s;
-    cursor: pointer;  
+    margin-left: 16px;
+    text-decoration: none;
+    padding: 6px;
     border: none;
-    border-radius: 5px;
+    background-color: transparent;
+    font-size: 20px;
   }
   .button:hover{
-      background-color: #2a9d8f ;
-      color: white;
-      border: none;
-      border-radius: 5px;
+    color: #f4a261;
+  }
+  .button-read { 
+    text-decoration: none;
+    padding: 7px;
+    border: solid 1px #f4a261;
+    border-radius: 6px;
+    background-color: transparent;
+    font-size: 20px;
+  }
+  .button-read:hover{
+    color: #f4a261;
   }
   
+  .drop-orange{
+    background-color:#f4a261 ;
+    text-decoration: none;
+    padding: 6px;
+    border: none;
+    font-size: 18px;
+  }
+  .drop-orange:hover{
+    color: #e7cab3;
+  }
   img { 
     width: 300px;
     height: 200px;
+  }
+  p{
+    text-decoration: none;
+    color: black;
   }
   
   @media screen and (max-width: 1000px) {
@@ -471,7 +511,7 @@ footer{
     border-bottom: 1px solid #f2f2f2;
   }
   .navbar-blog h1 {
-    color: #f1356d;
+    color: #f4a261;
   }
    
   .navbar-blog button {
@@ -483,7 +523,7 @@ footer{
     font-size: 20px;
   }
   .navbar-blog button:hover {
-    color: #f1356d;
+    color: #f4a261;
   }
 
   .blog-preview {
@@ -496,7 +536,7 @@ footer{
   }
   .blog-preview h2 {
     font-size: 20px;
-    color: #f1356d;
+    color: #f4a261;
     margin-bottom: 8px;
   }
   .blog-preview a{
@@ -506,17 +546,22 @@ footer{
   /* blog details page */
 .blog-details h2 {
   font-size: 20px;
-  color: #f1356d;
+  color: #f4a261;
   margin-bottom: 10px;
 }
 .blog-details div {
   margin: 20px 0;
 }
 .blog-details button {
-  background: #f1356d;
+  background: #f4a261;
   color: #fff;
   border: 0;
   padding: 8px;
   border-radius: 8px;
   cursor: pointer;
 }
+
+
+
+
+
