@@ -20,7 +20,6 @@ import {BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
 import TableComp from './components/TableComp';
 import ParameterCustomization from './components/ParameterCustomization';
 import ButtonComp from './components/ButtonComp';
-import NavComp from './components/NavComp';
 
 // npm i -D typescript @types/node @types/react @types/react-dom
 
@@ -245,6 +244,15 @@ const App = () => {
     opacity: true,
     colorChoice: true
   })
+  const twocomposedChartSetter = () =>
+  setChartState({ 
+    numberOfVariables: 2,
+    dash: true,
+    type: true,
+    width: true,
+    opacity: true,
+    colorChoice: true
+  })
   /*const radarChartSetter = () =>
   setChartState({ 
     numberOfVariables: 3,
@@ -262,21 +270,9 @@ const App = () => {
         <Navbar.Brand as={Link}  to="/"><b>D-Wiz</b></Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Nav className="mr-auto">
-              <Nav.Link as={Link}  to="/one/oneline" onClick={onelineChartSetter}><b>Line Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/two/line" onClick={lineChartSetter}><b>Line Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/three/threeline" onClick={threelineChartSetter}><b>Line Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/one/onearea" onClick={oneareaChartSetter}><b>Area Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/two/area" onClick={areaChartSetter}><b>Area Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/three/threearea" onClick={threeareaChartSetter}><b>Area Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/one/onebar" onClick={onebarChartSetter}><b>Bar Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/two/bar" onClick={barChartSetter}><b>Bar Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/three/threebar" onClick={threebarChartSetter}><b>Bar Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/one/onescatter" onClick={onescatterChartSetter}><b>Scatter Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/two/scatter" onClick={scatterChartSetter}><b>Scatter Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/three/threescatter" onClick={threescatterChartSetter}><b>Scatter Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/three/composed" onClick={composedChartSetter}><b>Composed Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/three/composed2" onClick={composedChartSetter}><b>Composed 2 Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/three/composed3" onClick={composedChartSetter}><b>Composed 3 Chart</b></Nav.Link>
+            <Nav.Link as={Link}  to="/one"><b>One Value</b></Nav.Link>
+            <Nav.Link as={Link}  to="/two"><b>Two Values</b></Nav.Link>
+            <Nav.Link as={Link}  to="/three"><b>Three Values</b></Nav.Link>
             </Nav>
         </Navbar>
       <Switch>
@@ -295,12 +291,52 @@ const App = () => {
               <Blog/>
           </div>
         </Route>
+        <Route exact path="/one">
+          <div>
+            <Navbar variant="light" bg="light" justify className="justify-content-between" >
+              <Nav.Link as={Link}  to="/one/oneline" onClick={onelineChartSetter}><b>Line Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/one/onearea" onClick={oneareaChartSetter}><b>Area Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/one/onebar" onClick={onebarChartSetter}><b>Bar Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/one/onescatter" onClick={onescatterChartSetter}><b>Scatter Chart</b></Nav.Link>
+            </Navbar>
+          </div>
+        </Route>
+        <Route exact path="/two">
+          <div>
+            <Navbar variant="light" bg="light" justify className="justify-content-between" >
+              <Nav.Link as={Link}  to="/two/line" onClick={lineChartSetter}><b>Line Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/two/area" onClick={areaChartSetter}><b>Area Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/two/bar" onClick={barChartSetter}><b>Bar Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/two/scatter" onClick={scatterChartSetter}><b>Scatter Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/two/composed" onClick={twocomposedChartSetter}><b>Composed Chart</b></Nav.Link>
+            </Navbar>
+          </div>
+        </Route>
+        <Route exact path="/three">
+          <div>
+            <Navbar variant="light" bg="light" justify className="justify-content-between" >
+              <Nav.Link as={Link}  to="/three/threeline" onClick={threelineChartSetter}><b>Line Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/threearea" onClick={threeareaChartSetter}><b>Area Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/threebar" onClick={threebarChartSetter}><b>Bar Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/threescatter" onClick={threescatterChartSetter}><b>Scatter Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/composed" onClick={composedChartSetter}><b>Composed Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/composed2" onClick={composedChartSetter}><b>Composed Chart 2</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/composed3" onClick={composedChartSetter}><b>Composed Chart 3</b></Nav.Link>
+            </Navbar>
+          </div>
+        </Route>
           <Route exact path="/one/oneline">
+            <Navbar variant="light" bg="light" justify className="justify-content-between" >
+              <Nav.Link as={Link}  to="/one/oneline" onClick={onelineChartSetter}><b>Line Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/one/onearea" onClick={oneareaChartSetter}><b>Area Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/one/onebar" onClick={onebarChartSetter}><b>Bar Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/one/onescatter" onClick={onescatterChartSetter}><b>Scatter Chart</b></Nav.Link>
+            </Navbar>
         <Container className="marginTop">
           <ResponsiveContainer className="justify-content-md-center">
             <Row>
               <LineChart width={1400} height={350} ref={ref} data={rows}
-              margin={{ top: 10, right: 130, left: 5, bottom: 10 }}>
+              margin={{ top: 5, right: 100, left: 5, bottom: 5 }}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="labelName"/>
               <YAxis />
@@ -322,7 +358,7 @@ const App = () => {
           </Container>
           <Container>
             <Row>
-              <ButtonGroup>
+              <ButtonGroup className="buttonContainer">
               <Col md={{ offset: 2 }}><ButtonComp variant={"primary"} text='Add new row' onClick={increaseRows}/></Col>
               <Col md={{ offset: 0 }}><ButtonComp variant={"primary"} text='Download Chart' onClick={handleDownload}/></Col>
               <Col md={{ offset: 0 }}><ButtonComp variant={"danger"} text='Delete Table'  onClick={deleteAll} /></Col>
@@ -331,11 +367,18 @@ const App = () => {
           </Container>
           </Route>
           <Route exact path="/two/line">
+            <Navbar variant="light" bg="light" justify className="justify-content-between" >
+              <Nav.Link as={Link}  to="/two/line" onClick={lineChartSetter}><b>Line Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/two/area" onClick={areaChartSetter}><b>Area Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/two/bar" onClick={barChartSetter}><b>Bar Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/two/scatter" onClick={scatterChartSetter}><b>Scatter Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/two/composed" onClick={twocomposedChartSetter}><b>Composed Chart</b></Nav.Link>
+            </Navbar>
         <Container className="marginTop">
           <ResponsiveContainer className="justify-content-md-center">
             <Row>
               <LineChart width={1400} height={350} ref={ref} data={rows}
-              margin={{ top: 10, right: 130, left: 5, bottom: 10 }}>
+              margin={{ top: 5, right: 100, left: 5, bottom: 5 }}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="labelName"/>
               <YAxis />
@@ -359,7 +402,7 @@ const App = () => {
           </Container>
           <Container>
             <Row>
-              <ButtonGroup>
+              <ButtonGroup className="buttonContainer">
               <Col md={{ offset: 2 }}><ButtonComp variant={"primary"} text='Add new row' onClick={increaseRows}/></Col>
               <Col md={{ offset: 0 }}><ButtonComp variant={"primary"} text='Download Chart' onClick={handleDownload}/></Col>
               <Col md={{ offset: 0 }}><ButtonComp variant={"danger"} text='Delete Table'  onClick={deleteAll} /></Col>
@@ -368,11 +411,20 @@ const App = () => {
           </Container>
           </Route>
           <Route exact path="/three/threeline">
+            <Navbar variant="light" bg="light" justify className="justify-content-between" >
+              <Nav.Link as={Link}  to="/three/threeline" onClick={threelineChartSetter}><b>Line Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/threearea" onClick={threeareaChartSetter}><b>Area Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/threebar" onClick={threebarChartSetter}><b>Bar Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/threescatter" onClick={threescatterChartSetter}><b>Scatter Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/composed" onClick={composedChartSetter}><b>Composed Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/composed2" onClick={composedChartSetter}><b>Composed Chart 2</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/composed3" onClick={composedChartSetter}><b>Composed Chart 3</b></Nav.Link>
+            </Navbar>
         <Container className="marginTop">
           <ResponsiveContainer className="justify-content-md-center">
             <Row>
               <LineChart width={1400} height={350} ref={ref} data={rows}
-              margin={{ top: 10, right: 130, left: 5, bottom: 10 }}>
+              margin={{ top: 5, right: 100, left: 5, bottom: 5 }}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="labelName"/>
               <YAxis />
@@ -398,7 +450,7 @@ const App = () => {
           </Container>
           <Container>
             <Row>
-              <ButtonGroup>
+              <ButtonGroup className="buttonContainer">
               <Col md={{ offset: 2 }}><ButtonComp variant={"primary"} text='Add new row' onClick={increaseRows}/></Col>
               <Col md={{ offset: 0 }}><ButtonComp variant={"primary"} text='Download Chart' onClick={handleDownload}/></Col>
               <Col md={{ offset: 0 }}><ButtonComp variant={"danger"} text='Delete Table'  onClick={deleteAll} /></Col>
@@ -407,9 +459,15 @@ const App = () => {
           </Container>
           </Route>
           <Route exact path="/one/onearea">
+            <Navbar variant="light" bg="light" justify className="justify-content-between" >
+              <Nav.Link as={Link}  to="/one/oneline" onClick={onelineChartSetter}><b>Line Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/one/onearea" onClick={oneareaChartSetter}><b>Area Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/one/onebar" onClick={onebarChartSetter}><b>Bar Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/one/onescatter" onClick={onescatterChartSetter}><b>Scatter Chart</b></Nav.Link>
+            </Navbar>
         <Container className="marginTop">
         <AreaChart width={1400} height={350} ref={ref} data={rows}
-              margin={{ top: 10, right: 130, left: 5, bottom: 10 }}>
+              margin={{ top: 5, right: 100, left: 5, bottom: 5 }}>
           <defs>
             <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
               <stop offset="10%" stopColor={params[0].color} stopOpacity={0.9}/>
@@ -434,7 +492,7 @@ const App = () => {
           </Container>
           <Container>
             <Row>
-              <ButtonGroup>
+              <ButtonGroup className="buttonContainer">
               <Col md={{ offset: 2 }}><ButtonComp variant={"primary"} text='Add new row' onClick={increaseRows}/></Col>
               <Col md={{ offset: 0 }}><ButtonComp variant={"primary"} text='Download Chart' onClick={handleDownload}/></Col>
               <Col md={{ offset: 0 }}><ButtonComp variant={"danger"} text='Delete Table'  onClick={deleteAll} /></Col>
@@ -443,9 +501,16 @@ const App = () => {
           </Container>
           </Route>
           <Route exact path="/two/area">
+            <Navbar variant="light" bg="light" justify className="justify-content-between" >
+              <Nav.Link as={Link}  to="/two/line" onClick={lineChartSetter}><b>Line Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/two/area" onClick={areaChartSetter}><b>Area Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/two/bar" onClick={barChartSetter}><b>Bar Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/two/scatter" onClick={scatterChartSetter}><b>Scatter Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/two/composed" onClick={twocomposedChartSetter}><b>Composed Chart</b></Nav.Link>
+            </Navbar>
         <Container className="marginTop">
         <AreaChart width={1400} height={350} ref={ref} data={rows}
-              margin={{ top: 10, right: 130, left: 5, bottom: 10 }}>
+              margin={{ top: 5, right: 100, left: 5, bottom: 5 }}>
           <defs>
             <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
               <stop offset="10%" stopColor={params[0].color} stopOpacity={0.9}/>
@@ -476,7 +541,7 @@ const App = () => {
           </Container>
           <Container>
             <Row>
-              <ButtonGroup>
+              <ButtonGroup className="buttonContainer">
               <Col md={{ offset: 2 }}><ButtonComp variant={"primary"} text='Add new row' onClick={increaseRows}/></Col>
               <Col md={{ offset: 0 }}><ButtonComp variant={"primary"} text='Download Chart' onClick={handleDownload}/></Col>
               <Col md={{ offset: 0 }}><ButtonComp variant={"danger"} text='Delete Table'  onClick={deleteAll} /></Col>
@@ -485,9 +550,18 @@ const App = () => {
           </Container>
           </Route>
           <Route exact path="/three/threearea">
+            <Navbar variant="light" bg="light" justify className="justify-content-between" >
+              <Nav.Link as={Link}  to="/three/threeline" onClick={threelineChartSetter}><b>Line Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/threearea" onClick={threeareaChartSetter}><b>Area Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/threebar" onClick={threebarChartSetter}><b>Bar Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/threescatter" onClick={threescatterChartSetter}><b>Scatter Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/composed" onClick={composedChartSetter}><b>Composed Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/composed2" onClick={composedChartSetter}><b>Composed Chart 2</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/composed3" onClick={composedChartSetter}><b>Composed Chart 3</b></Nav.Link>
+            </Navbar>
         <Container className="marginTop">
         <AreaChart width={1400} height={350} ref={ref} data={rows}
-              margin={{ top: 10, right: 130, left: 5, bottom: 10 }}>
+              margin={{ top: 5, right: 100, left: 5, bottom: 5 }}>
           <defs>
             <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
               <stop offset="10%" stopColor={params[0].color} stopOpacity={0.9}/>
@@ -524,7 +598,7 @@ const App = () => {
           </Container>
           <Container>
             <Row>
-              <ButtonGroup>
+              <ButtonGroup className="buttonContainer">
               <Col md={{ offset: 2 }}><ButtonComp variant={"primary"} text='Add new row' onClick={increaseRows}/></Col>
               <Col md={{ offset: 0 }}><ButtonComp variant={"primary"} text='Download Chart' onClick={handleDownload}/></Col>
               <Col md={{ offset: 0 }}><ButtonComp variant={"danger"} text='Delete Table'  onClick={deleteAll} /></Col>
@@ -533,9 +607,15 @@ const App = () => {
           </Container>
           </Route>
           <Route exact path="/one/onebar">
+            <Navbar variant="light" bg="light" justify className="justify-content-between" >
+              <Nav.Link as={Link}  to="/one/oneline" onClick={onelineChartSetter}><b>Line Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/one/onearea" onClick={oneareaChartSetter}><b>Area Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/one/onebar" onClick={onebarChartSetter}><b>Bar Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/one/onescatter" onClick={onescatterChartSetter}><b>Scatter Chart</b></Nav.Link>
+            </Navbar>
         <Container className="marginTop">
         <BarChart width={1400} height={350} ref={ref} data={rows}
-              margin={{ top: 10, right: 130, left: 5, bottom: 10 }} layout="horizontal">
+              margin={{ top: 5, right: 100, left: 5, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="labelName" />
           <YAxis />
@@ -555,7 +635,7 @@ const App = () => {
           </Container>
           <Container>
             <Row>
-              <ButtonGroup>
+              <ButtonGroup className="buttonContainer">
               <Col md={{ offset: 2 }}><ButtonComp variant={"primary"} text='Add new row' onClick={increaseRows}/></Col>
               <Col md={{ offset: 0 }}><ButtonComp variant={"primary"} text='Download Chart' onClick={handleDownload}/></Col>
               <Col md={{ offset: 0 }}><ButtonComp variant={"danger"} text='Delete Table'  onClick={deleteAll} /></Col>
@@ -564,9 +644,16 @@ const App = () => {
           </Container>
           </Route>
           <Route exact path="/two/bar">
+            <Navbar variant="light" bg="light" justify className="justify-content-between" >
+              <Nav.Link as={Link}  to="/two/line" onClick={lineChartSetter}><b>Line Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/two/area" onClick={areaChartSetter}><b>Area Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/two/bar" onClick={barChartSetter}><b>Bar Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/two/scatter" onClick={scatterChartSetter}><b>Scatter Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/two/composed" onClick={twocomposedChartSetter}><b>Composed Chart</b></Nav.Link>
+            </Navbar>
         <Container className="marginTop">
         <BarChart width={1400} height={350} ref={ref} data={rows}
-              margin={{ top: 10, right: 130, left: 5, bottom: 10 }}>
+              margin={{ top: 5, right: 100, left: 5, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="labelName" />
           <YAxis />
@@ -587,7 +674,7 @@ const App = () => {
           </Container>
           <Container>
             <Row>
-              <ButtonGroup>
+              <ButtonGroup className="buttonContainer">
               <Col md={{ offset: 2 }}><ButtonComp variant={"primary"} text='Add new row' onClick={increaseRows}/></Col>
               <Col md={{ offset: 0 }}><ButtonComp variant={"primary"} text='Download Chart' onClick={handleDownload}/></Col>
               <Col md={{ offset: 0 }}><ButtonComp variant={"danger"} text='Delete Table'  onClick={deleteAll} /></Col>
@@ -596,9 +683,18 @@ const App = () => {
           </Container>
           </Route>
           <Route exact path="/three/threebar">
+            <Navbar variant="light" bg="light" justify className="justify-content-between" >
+              <Nav.Link as={Link}  to="/three/threeline" onClick={threelineChartSetter}><b>Line Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/threearea" onClick={threeareaChartSetter}><b>Area Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/threebar" onClick={threebarChartSetter}><b>Bar Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/threescatter" onClick={threescatterChartSetter}><b>Scatter Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/composed" onClick={composedChartSetter}><b>Composed Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/composed2" onClick={composedChartSetter}><b>Composed Chart 2</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/composed3" onClick={composedChartSetter}><b>Composed Chart 3</b></Nav.Link>
+            </Navbar>
         <Container className="marginTop">
         <BarChart width={1400} height={350} ref={ref} data={rows}
-              margin={{ top: 10, right: 130, left: 5, bottom: 10 }}>
+              margin={{ top: 5, right: 100, left: 5, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="labelName" />
           <YAxis />
@@ -621,7 +717,52 @@ const App = () => {
           </Container>
           <Container>
             <Row>
-              <ButtonGroup>
+              <ButtonGroup className="buttonContainer">
+              <Col md={{ offset: 2 }}><ButtonComp variant={"primary"} text='Add new row' onClick={increaseRows}/></Col>
+              <Col md={{ offset: 0 }}><ButtonComp variant={"primary"} text='Download Chart' onClick={handleDownload}/></Col>
+              <Col md={{ offset: 0 }}><ButtonComp variant={"danger"} text='Delete Table'  onClick={deleteAll} /></Col>
+              </ButtonGroup>
+            </Row>
+          </Container>
+          </Route>
+          <Route exact path="/two/composed">
+          <Navbar variant="light" bg="light" justify className="justify-content-between" >
+              <Nav.Link as={Link}  to="/two/line" onClick={lineChartSetter}><b>Line Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/two/area" onClick={areaChartSetter}><b>Area Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/two/bar" onClick={barChartSetter}><b>Bar Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/two/scatter" onClick={scatterChartSetter}><b>Scatter Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/two/composed" onClick={twocomposedChartSetter}><b>Composed Chart</b></Nav.Link>
+            </Navbar>
+        <Container className="marginTop">
+        <ComposedChart width={1400} height={350} ref={ref} data={rows}
+              margin={{ top: 5, right: 100, left: 5, bottom: 5 }}>
+          <defs>
+            <linearGradient id="cGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="10%" stopColor={params[0].color} stopOpacity={0.9}/>
+              <stop offset="97%" stopColor={params[0].color} stopOpacity={0.1}/>
+            </linearGradient>
+          </defs>
+          <XAxis dataKey="labelName" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <CartesianGrid stroke="#f5f5f5" />
+          <Area type={params[0].lineType} dataKey="a" stroke={params[0].color} fillOpacity={params[0].strokeOpacity}
+           strokeWidth={params[0].strokeWidth} strokeDasharray={params[0].strokeDash} fill="url(#cGrad)" name={params[0].legendName}/>
+          <Bar dataKey="b" fill={params[1].color} fillOpacity={params[1].strokeOpacity} 
+           maxBarSize={150} name={params[1].legendName}/>
+        </ComposedChart>
+        </Container>
+        <div>
+          <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>
+        </div>
+        
+          <Container className="fixed scroll">
+            <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
+          </Container>
+          <Container>
+            <Row>
+              <ButtonGroup className="buttonContainer">
               <Col md={{ offset: 2 }}><ButtonComp variant={"primary"} text='Add new row' onClick={increaseRows}/></Col>
               <Col md={{ offset: 0 }}><ButtonComp variant={"primary"} text='Download Chart' onClick={handleDownload}/></Col>
               <Col md={{ offset: 0 }}><ButtonComp variant={"danger"} text='Delete Table'  onClick={deleteAll} /></Col>
@@ -630,9 +771,18 @@ const App = () => {
           </Container>
           </Route>
           <Route exact path="/three/composed">
+            <Navbar variant="light" bg="light" justify className="justify-content-between" >
+              <Nav.Link as={Link}  to="/three/threeline" onClick={threelineChartSetter}><b>Line Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/threearea" onClick={threeareaChartSetter}><b>Area Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/threebar" onClick={threebarChartSetter}><b>Bar Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/threescatter" onClick={threescatterChartSetter}><b>Scatter Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/composed" onClick={composedChartSetter}><b>Composed Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/composed2" onClick={composedChartSetter}><b>Composed Chart 2</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/composed3" onClick={composedChartSetter}><b>Composed Chart 3</b></Nav.Link>
+            </Navbar>
         <Container className="marginTop">
         <ComposedChart width={1400} height={350} ref={ref} data={rows}
-              margin={{ top: 10, right: 130, left: 5, bottom: 10 }}>
+              margin={{ top: 5, right: 100, left: 5, bottom: 5 }}>
           <defs>
             <linearGradient id="cGrad" x1="0" y1="0" x2="0" y2="1">
               <stop offset="10%" stopColor={params[0].color} stopOpacity={0.9}/>
@@ -661,7 +811,7 @@ const App = () => {
           </Container>
           <Container>
             <Row>
-              <ButtonGroup>
+              <ButtonGroup className="buttonContainer">
               <Col md={{ offset: 2 }}><ButtonComp variant={"primary"} text='Add new row' onClick={increaseRows}/></Col>
               <Col md={{ offset: 0 }}><ButtonComp variant={"primary"} text='Download Chart' onClick={handleDownload}/></Col>
               <Col md={{ offset: 0 }}><ButtonComp variant={"danger"} text='Delete Table'  onClick={deleteAll} /></Col>
@@ -670,9 +820,18 @@ const App = () => {
           </Container>
           </Route>
           <Route exact path="/three/composed2">
+            <Navbar variant="light" bg="light" justify className="justify-content-between" >
+              <Nav.Link as={Link}  to="/three/threeline" onClick={threelineChartSetter}><b>Line Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/threearea" onClick={threeareaChartSetter}><b>Area Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/threebar" onClick={threebarChartSetter}><b>Bar Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/threescatter" onClick={threescatterChartSetter}><b>Scatter Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/composed" onClick={composedChartSetter}><b>Composed Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/composed2" onClick={composedChartSetter}><b>Composed Chart 2</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/composed3" onClick={composedChartSetter}><b>Composed Chart 3</b></Nav.Link>
+            </Navbar>
         <Container className="marginTop">
         <ComposedChart width={1400} height={350} ref={ref} data={rows}
-              margin={{ top: 10, right: 130, left: 5, bottom: 10 }}>
+              margin={{ top: 5, right: 100, left: 5, bottom: 5 }}>
           <defs>
             <linearGradient id="c2grad" x1="0" y1="0" x2="0" y2="1">
               <stop offset="10%" stopColor={params[0].color} stopOpacity={0.9}/>
@@ -699,7 +858,7 @@ const App = () => {
           <Container className="fixed scroll">
             <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
           </Container>
-          <Container>
+          <Container className="buttonContainer">
             <Row>
               <ButtonGroup>
               <Col md={{ offset: 2 }}><ButtonComp variant={"primary"} text='Add new row' onClick={increaseRows}/></Col>
@@ -710,9 +869,18 @@ const App = () => {
           </Container>
           </Route>
           <Route exact path="/three/composed3">
+            <Navbar variant="light" bg="light" justify className="justify-content-between" >
+              <Nav.Link as={Link}  to="/three/threeline" onClick={threelineChartSetter}><b>Line Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/threearea" onClick={threeareaChartSetter}><b>Area Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/threebar" onClick={threebarChartSetter}><b>Bar Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/threescatter" onClick={threescatterChartSetter}><b>Scatter Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/composed" onClick={composedChartSetter}><b>Composed Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/composed2" onClick={composedChartSetter}><b>Composed Chart 2</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/composed3" onClick={composedChartSetter}><b>Composed Chart 3</b></Nav.Link>
+            </Navbar>
         <Container className="marginTop">
         <ComposedChart width={1400} height={350} ref={ref} data={rows}
-              margin={{ top: 10, right: 130, left: 5, bottom: 10 }}>
+              margin={{ top: 5, right: 100, left: 5, bottom: 5 }}>
           <defs>
             <linearGradient id="c3grad" x1="0" y1="0" x2="0" y2="1">
               <stop offset="10%" stopColor={params[0].color} stopOpacity={0.9}/>
@@ -741,7 +909,7 @@ const App = () => {
           </Container>
           <Container>
             <Row>
-              <ButtonGroup>
+              <ButtonGroup className="buttonContainer"> 
               <Col md={{ offset: 2 }}><ButtonComp variant={"primary"} text='Add new row' onClick={increaseRows}/></Col>
               <Col md={{ offset: 0 }}><ButtonComp variant={"primary"} text='Download Chart' onClick={handleDownload}/></Col>
               <Col md={{ offset: 0 }}><ButtonComp variant={"danger"} text='Delete Table'  onClick={deleteAll} /></Col>
@@ -750,9 +918,15 @@ const App = () => {
           </Container>
           </Route>
           <Route exact path="/one/onescatter">
+            <Navbar variant="light" bg="light" justify className="justify-content-between" >
+              <Nav.Link as={Link}  to="/one/oneline" onClick={onelineChartSetter}><b>Line Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/one/onearea" onClick={oneareaChartSetter}><b>Area Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/one/onebar" onClick={onebarChartSetter}><b>Bar Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/one/onescatter" onClick={onescatterChartSetter}><b>Scatter Chart</b></Nav.Link>
+            </Navbar>
           <Container className="marginTop">
-          <ScatterChart width={730} height={250} data={rows}
-           margin={{ top: 20, right: 20, bottom: 10, left: 10 }}>
+          <ScatterChart width={1400} height={350} ref={ref} data={rows}
+              margin={{ top: 5, right: 100, left: 5, bottom: 5 }}>
            <CartesianGrid strokeDasharray="3 3" />
            <XAxis dataKey="labelName" name="value"/>
            <YAxis />
@@ -772,7 +946,7 @@ const App = () => {
           </Container>
           <Container>
             <Row>
-              <ButtonGroup>
+              <ButtonGroup className="buttonContainer">
               <Col md={{ offset: 2 }}><ButtonComp variant={"primary"} text='Add new row' onClick={increaseRows}/></Col>
               <Col md={{ offset: 0 }}><ButtonComp variant={"primary"} text='Download Chart' onClick={handleDownload}/></Col>
               <Col md={{ offset: 0 }}><ButtonComp variant={"danger"} text='Delete Table'  onClick={deleteAll} /></Col>
@@ -782,9 +956,16 @@ const App = () => {
           </Route>
           
           <Route exact path="/two/scatter">
+            <Navbar variant="light" bg="light" justify className="justify-content-between" >
+              <Nav.Link as={Link}  to="/two/line" onClick={lineChartSetter}><b>Line Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/two/area" onClick={areaChartSetter}><b>Area Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/two/bar" onClick={barChartSetter}><b>Bar Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/two/scatter" onClick={scatterChartSetter}><b>Scatter Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/two/composed" onClick={twocomposedChartSetter}><b>Composed Chart</b></Nav.Link>
+            </Navbar>
           <Container className="marginTop">
-          <ScatterChart width={730} height={250} data={rows}
-           margin={{ top: 20, right: 20, bottom: 10, left: 10 }}>
+          <ScatterChart width={1400} height={350} ref={ref} data={rows}
+              margin={{ top: 5, right: 100, left: 5, bottom: 5 }}>
            <CartesianGrid strokeDasharray="3 3" />
            <XAxis dataKey="labelName" name="value"/>
            <YAxis />
@@ -806,7 +987,7 @@ const App = () => {
           </Container>
           <Container>
             <Row>
-              <ButtonGroup>
+              <ButtonGroup className="buttonContainer">
               <Col md={{ offset: 2 }}><ButtonComp variant={"primary"} text='Add new row' onClick={increaseRows}/></Col>
               <Col md={{ offset: 0 }}><ButtonComp variant={"primary"} text='Download Chart' onClick={handleDownload}/></Col>
               <Col md={{ offset: 0 }}><ButtonComp variant={"danger"} text='Delete Table'  onClick={deleteAll} /></Col>
@@ -815,9 +996,18 @@ const App = () => {
           </Container>
           </Route>
           <Route exact path="/three/threescatter">
+            <Navbar variant="light" bg="light" justify className="justify-content-between" >
+              <Nav.Link as={Link}  to="/three/threeline" onClick={threelineChartSetter}><b>Line Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/threearea" onClick={threeareaChartSetter}><b>Area Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/threebar" onClick={threebarChartSetter}><b>Bar Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/threescatter" onClick={threescatterChartSetter}><b>Scatter Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/composed" onClick={composedChartSetter}><b>Composed Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/composed2" onClick={composedChartSetter}><b>Composed Chart 2</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/composed3" onClick={composedChartSetter}><b>Composed Chart 3</b></Nav.Link>
+            </Navbar>
           <Container className="marginTop">
-          <ScatterChart width={730} height={250} data={rows}
-           margin={{ top: 20, right: 20, bottom: 10, left: 10 }}>
+          <ScatterChart width={1400} height={350} ref={ref} data={rows}
+              margin={{ top: 5, right: 100, left: 5, bottom: 5 }}>
            <CartesianGrid strokeDasharray="3 3" />
            <XAxis dataKey="labelName" name="value"/>
            <YAxis />
@@ -838,7 +1028,7 @@ const App = () => {
           <Container className="fixed scroll">
             <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
           </Container>
-          <Container>
+          <Container className="buttonContainer">
             <Row>
               <ButtonGroup>
               <Col md={{ offset: 2 }}><ButtonComp variant={"primary"} text='Add new row' onClick={increaseRows}/></Col>
@@ -945,4 +1135,19 @@ return(
       </>
     )
   }
+              <Nav.Link as={Link}  to="/one/oneline" onClick={onelineChartSetter}><b>Line Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/two/line" onClick={lineChartSetter}><b>Line Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/threeline" onClick={threelineChartSetter}><b>Line Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/one/onearea" onClick={oneareaChartSetter}><b>Area Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/two/area" onClick={areaChartSetter}><b>Area Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/threearea" onClick={threeareaChartSetter}><b>Area Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/one/onebar" onClick={onebarChartSetter}><b>Bar Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/two/bar" onClick={barChartSetter}><b>Bar Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/threebar" onClick={threebarChartSetter}><b>Bar Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/one/onescatter" onClick={onescatterChartSetter}><b>Scatter Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/two/scatter" onClick={scatterChartSetter}><b>Scatter Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/threescatter" onClick={threescatterChartSetter}><b>Scatter Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/composed" onClick={composedChartSetter}><b>Composed Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/composed2" onClick={composedChartSetter}><b>Composed 2 Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/three/composed3" onClick={composedChartSetter}><b>Composed 3 Chart</b></Nav.Link>
   */

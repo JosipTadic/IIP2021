@@ -4,7 +4,8 @@ const WidthSelect = ({modifyParams, param, chartState}) => {
   if(!chartState.width){return(null)}
     return(
     <>
-      <input type="number" placeholder="Width" name="strokeWidth" onChange={e => modifyParams(param.id, 'strokeWidth', e.target.value)}/>
+      <input type="number" placeholder="Width" name="strokeWidth" style={{width: '70px', margin: '1px'}}
+      onChange={e => modifyParams(param.id, 'strokeWidth', e.target.value)}/>
     </>
     )
 }

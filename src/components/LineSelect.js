@@ -4,7 +4,7 @@ const LineSelect = ({modifyParams, param, chartState}) => {
   if(!chartState.type) {return(null)}
     return(
       <>
-        <select onChange={e => modifyParams(param.id, 'lineType', e.target.value)}>
+        <select style={{width: '115px', height: '29px', margin: '1px'}} onChange={e => modifyParams(param.id, 'lineType', e.target.value)}>
               <option value="monotone">Monotone</option>
               <option value="basis">Basis</option>
               <option value="linear">Linear</option>
