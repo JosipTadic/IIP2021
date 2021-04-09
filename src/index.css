@@ -15,16 +15,19 @@ code {
 }
 .scroll{
   overflow-y: auto;
+  padding: 5px;
+  margin-top: 5px;
   flex: 1;
   height: 300px;
 }
 .fixed tbody th{
-  position: sticky;
   top: 0;
   background: rgb(224, 224, 224);
 }
 .marginTop{
-  margin-top: 5px;
+  margin-top: 10px;
+  left: 0%;
+  padding: 0%;
 }
 .center{
   display: flex;
@@ -43,9 +46,12 @@ code {
   width: 100%;
 }
 .navbar {
-   
+  height: 0.09vh;
   align-items: center;
   top: 0%;
   left: 0%;
   padding: 30px 100px;
+}
+.buttonContainer{
+  padding: 10px;
 }

@@ -5,10 +5,13 @@ import DashSelect from './DashSelect';
 import WidthSelect from './WidthSelect';
 import OpacitySelect from './OpacitySelect';
 import LegendName from './LegendName';
+import { Container, Row, Col } from 'react-bootstrap';
 
 const ParameterCustomization = ({params, modifyParams, chartState}) => {
-    return( 
-    <>
+    return(
+      <Container fluid>
+      <Row>
+        <Col>
         {
           params.filter(param => param.id <= chartState.numberOfVariables).map(param => <InputComp key={param.id} 
             modifyParams={modifyParams} param={param}/>)
@@ -22,18 +25,20 @@ const ParameterCustomization = ({params, modifyParams, chartState}) => {
             modifyParams={modifyParams} param={param} chartState={chartState}/>)
         }
         {
-          params.filter(param => param.id <= chartState.numberOfVariables).map(param => <DashSelect key={param.id} 
+          params.filter(param => param.id <= chartState.numberOfVariables).map(param => <WidthSelect key={param.id} 
             modifyParams={modifyParams} param={param} chartState={chartState}/>)
         }
         {
-          params.filter(param => param.id <= chartState.numberOfVariables).map(param => <WidthSelect key={param.id} 
+          params.filter(param => param.id <= chartState.numberOfVariables).map(param => <DashSelect key={param.id} 
             modifyParams={modifyParams} param={param} chartState={chartState}/>)
         }
         {
           params.filter(param => param.id <= chartState.numberOfVariables).map(param => <OpacitySelect key={param.id} 
             modifyParams={modifyParams} param={param} chartState={chartState}/>)
-        } 
-    </>
+        }
+        </Col>
+      </Row>
+    </Container>
     )}
 
 export default ParameterCustomization;
