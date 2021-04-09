@@ -1,46 +1,24 @@
 import React from "react";
 import {Link} from "react-router-dom"; 
 import PostDetails from "./PostDetails";
+import DisplayAllPosts from '../blog/DisplayAllPosts'
+import Blog from "../components/Blog";
 
-const Post = ({ title, content, editPost, id, deletePost }) => {
-    {console.log()}
+const Post = () => { 
   return (
-    <>
-
-        <div className="blog-card">
-            <div className="meta">
-           <div className="blogPhoto" />
-            <ul className="details">
-                <li className="author">John Doe</li>
-                <li className="date">Aug. 24, 2015</li>
-                <li className="tags">
-                <ul>
-                    <li>Learn</li>
-                    <li>Code</li> 
-                </ul>
-                </li>
-            </ul>
-            </div>
-
-
-            <div className="description">
-            <h1>{ title }</h1>
-            <p> {content} </p> 
-            <Link to={{
-                    pathname: `/code/${id}`,
-                    state: { id: id }
-                }} 
-                 >
-                     <button onClick={() => PostDetails(id)} className='read-more' >Read more</button>
-                    {console.log("postDetail-button")}
-            </Link>
-            </div>
+    <div className="navbar-blog"> 
+    <div className="links"> 
+        <Link to="/blog">
+              <button>All posts</button> 
+        </Link>
+        <Link to="/create">
+              <button>Create New Post</button> 
+        </Link>
         </div>
-    
-    
-    </>
-  );
-};
+   
+</div> 
+  )
+}
 export default Post;
 
 /*

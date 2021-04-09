@@ -5,15 +5,20 @@ const About = () => {
   
   return (
     <div className="container">
+       <div className="front">   
+                    <div className="center-about">
+                      <h1 className="center-about-text">About D-Wiz</h1>        
+                      
+                    </div> 
         <div className="leftcolumn">
-                <div className="card-post">
-                    <h2>About</h2>
-                    <h5>ttile desc, date</h5>
-                    <div class="fakeimg" >Image</div>
-                    <p>some text...</p>
-                    <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                <div className="card-post"> 
+                    
+                    <p> D-Wiz helps people see and understand data. 
+                      Our visual analytics platform is transforming the way people use data to solve problems. 
+                      See why organizations of all sizes trust D-Wiz to help them be more data-driven.</p>
 
                 </div>
+            </div> 
             </div> 
     </div>
     

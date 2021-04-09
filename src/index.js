@@ -8,6 +8,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Home from './components/Home';
 import About from './components/About';
 import Blog from './components/Blog';
+import CreateNewPost from './blog/CreateNewPost';
 import Container from 'react-bootstrap/Container';
 import {nanoid} from 'nanoid';
 import './index.css';
@@ -20,6 +21,7 @@ import {BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
 import TableComp from './components/TableComp';
 import ParameterCustomization from './components/ParameterCustomization';
 import ButtonComp from './components/ButtonComp';
+import PostDetails from './blog/PostDetails';
 
 // npm i -D typescript @types/node @types/react @types/react-dom
 
@@ -323,6 +325,16 @@ const App = () => {
               <Nav.Link as={Link}  to="/three/composed2" onClick={composedChartSetter}><b>Composed Chart 2</b></Nav.Link>
               <Nav.Link as={Link}  to="/three/composed3" onClick={composedChartSetter}><b>Composed Chart 3</b></Nav.Link>
             </Navbar>
+            </div>
+          </Route>
+        <Route exact path="/create">
+          <div>
+              <CreateNewPost/>
+          </div>
+        </Route>
+        <Route exact path="/blogs/:id">
+          <div>
+              <PostDetails/>
           </div>
         </Route>
           <Route exact path="/one/oneline">
@@ -1048,7 +1060,7 @@ ReactDOM.render(
     <App />,
   document.getElementById('root')
 )
-/*const DashSelect = ({modifyParams, param}) => {
+/* const DashSelect = ({modifyParams, param}) => {
 return(
 <>
   <input type="number" placeholder="Dash" name="strokeDash" onChange={e => modifyParams(param.id, 'strokeDash', e.target.value)}/>
@@ -1126,7 +1138,6 @@ return(
         </Route>
 */
 /*  const [isLabel, setIsLabel] = useState(true)
-
   const showLabel = (props) => {
     if(!props.isLabel){return(null)}
     return(

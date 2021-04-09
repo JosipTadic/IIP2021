@@ -26,19 +26,59 @@ const Home = () => {
              </div> 
              <div className="column-66">
               <h1 className="xlarge-font"><b> About D-Wiz</b></h1> 
-              <p><span >tu nešto napisati čemu služi alat/website </span></p>
+              <p><span >D-Wiz helps people see and understand data. </span></p>
               <Link to="about">
-                <button className="button">Read More</button> 
+                <button className="button-read">Read More</button> 
               </Link>
               
             </div>
+          </div> 
           </div>
-        </div>
 
+          <div className="container">
+          <div className="row">
+                <div className="column-33">
+                <img src={charts} alt="charts" />  
+                </div> 
+                <div className="column-66">
+                  <h1 className="xlarge-font"><b> Learn about data visualization </b></h1> 
+                  <p><span > Interested in data visualization? Learn more by reading our blogs </span></p>
+                  <Link to="blog">
+                    <button className="button-read">Read More</button> 
+                  </Link>
+                  
+                </div>
+          </div> 
+      </div> 
+       <footer>
+         <p> Author: D-wiz magovi</p>
+       </footer>
+      
+       </div> 
+  );
+};
+
+export default Home;
+//<img src={logo} alt="Logo" />   
+/* <div className="first">
+        
+          <h1 className="logo"> D-Wiz</h1>
+        <p className="p-tag"> Visualization tool but made it simple</p>
+        </div>
+        
 
         
-            
+        <div className="second">
+          <h1> About D-Wiz</h1>
+          <p>tu nešto napisati čemu služi alat/website</p> 
+        </div>
         <div className="third">
+          <h1>Our tools</h1>
+          <p> možda nekakav grid sa buttonom na svaki alat iz navbara</p>
+        </div> */
+
+
+        /*   <div className="third">
           <h1 className="third-title">Our tools</h1>
          
           <div className="row">
@@ -99,48 +139,4 @@ const Home = () => {
               </div> 
             </div>
           </div>
-        </div>     
-          
-        <div className="container">
-      <div className="row">
-            <div className="column-33">
-              <img src={charts} alt="charts" /> 
-             </div> 
-             <div className="column-66">
-              <h2> <b> Learn about data visualization</b></h2> 
-              <p><span >tu nešto napisati čemu služi alat/website </span></p>
-              <Link to="blog">
-                <button className="button">Read More</button> 
-              </Link>
-              
-            </div>
-          </div>
-        </div>
-      
-      </div>
-       <footer>
-         <p> Author: D-wiz magovi</p>
-       </footer>
-      
-       </div> 
-  );
-};
-
-export default Home;
-//<img src={logo} alt="Logo" />   
-/* <div className="first">
-        
-          <h1 className="logo"> D-Wiz</h1>
-        <p className="p-tag"> Visualization tool but made it simple</p>
-        </div>
-        
-
-        
-        <div className="second">
-          <h1> About D-Wiz</h1>
-          <p>tu nešto napisati čemu služi alat/website</p> 
-        </div>
-        <div className="third">
-          <h1>Our tools</h1>
-          <p> možda nekakav grid sa buttonom na svaki alat iz navbara</p>
-        </div> */
+        </div>      */

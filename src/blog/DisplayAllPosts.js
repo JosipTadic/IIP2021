@@ -1,9 +1,26 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import CreateNewPost from "./CreateNewPost";
 import Post from "./Post";
 import ModifyPost from "./ModifyPost" 
+import PostList from "./PostList"
+import useFetch from './useFetch'
 const DisplayAllPosts = () => {
-  const [title, setTitle] = useState("");
+
+  const { error, isPending, data: blogs } = useFetch('http://localhost:8000/blogs')
+  
+  
+    return(
+      <div className="home">
+              { error && <div>{ error }</div> }
+              { isPending && <div>Loading...</div> }
+              {blogs && <PostList blogs={blogs} />}
+    </div>
+    )
+
+}
+export default DisplayAllPosts;
+
+  /*const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [allPosts, setAllPosts] = useState([]);
   const [isCreateNewPost, setIsCreateNewPost] = useState(false);
@@ -125,4 +142,4 @@ const DisplayAllPosts = () => {
     </>
   );
 };
-export default DisplayAllPosts;
+*/
