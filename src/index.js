@@ -23,6 +23,7 @@ import ParameterCustomization from './components/ParameterCustomization';
 import ButtonComp from './components/ButtonComp';
 import NavComp from './components/NavComp';
 import PostDetails from './blog/PostDetails';
+import NotFound from './blog/NotFound';
 
 // npm i -D typescript @types/node @types/react @types/react-dom
 
@@ -305,6 +306,11 @@ const App = () => {
         <Route exact path="/blogs/:id">
           <div>
               <PostDetails/>
+          </div>
+        </Route>
+        <Route exact path="*">
+          <div>
+              <NotFound />
           </div>
         </Route>
           <Route exact path="/one/oneline">

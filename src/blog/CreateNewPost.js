@@ -1,36 +1,61 @@
-import React from "react";
+import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import Post from './Post'
-const CreateNewPost = props => {
+
+const CreateNewPost = () => {
+  const [title, setTitle] = useState('');
+  const [body, setBody] = useState('');
+  const [author, setAuthor] = useState('author1');
+  const history = useHistory();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const blog = { title, body, author };
+
+    fetch('http://localhost:8000/blogs/', {
+      method: 'POST',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(blog)
+    }).then(() => {
+      // history.go(-1);
+      history.push('/blog');
+    })
+  }
+
   return (
-     <div> 
-       <Post />
-       <div className="container"> 
-        <form onSubmit={props.savePost}>
-          <h1>Create New Post</h1>
-          <input
-            type="text"
-            onChange={props.savePostTitleToState}
-            placeholder="title, samo radi css-a "
-            size="39"
-            required
-            ref={props.getTitle}
-          ></input>
-          <br />
-          <br />
+    <div> 
+    <Post />
+      <div className="create">
+        <h2>Add a New Blog</h2>
+        <form onSubmit={handleSubmit}>
+          <label>Blog title:</label>
+          <input 
+            type="text" 
+            required 
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <label>Blog body:</label>
           <textarea
-            onChange={props.savePostContentToState}
-            placeholder="ne dela za sad"
-            rows="8"
-            cols="41"
             required
-            ref={props.getContent}
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
           ></textarea>
-          <br />
-          <br />
-          <button>Save Post</button>
+          <label>Blog author:</label>
+          <select
+            value={author}
+            onChange={(e) => setAuthor(e.target.value)}
+          >
+            <option value="author1">author1</option>
+            <option value="author2">author2</option>
+          </select>
+          <button>Add Blog</button>
         </form>
       </div>
-      </div>
+    </div>
   );
-};
+}
+ 
 export default CreateNewPost;
+
+ 
