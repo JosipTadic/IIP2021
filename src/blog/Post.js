@@ -3,6 +3,8 @@ import {Link} from "react-router-dom";
 import PostDetails from "./PostDetails";
 import DisplayAllPosts from '../blog/DisplayAllPosts'
 import Blog from "../components/Blog";
+import SignedInLinks from '../signed/SignedInLinks'
+import SignedOutLinks from "../signed/SignedOutLinks";
 
 const Post = () => { 
   return (
@@ -14,8 +16,10 @@ const Post = () => {
         <Link to="/create">
               <button>Create New Post</button> 
         </Link>
+        <SignedInLinks />
+        <SignedOutLinks />
         </div>
-   
+         
 </div> 
   )
 }

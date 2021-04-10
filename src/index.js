@@ -21,10 +21,16 @@ import {BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
 import TableComp from './components/TableComp';
 import ParameterCustomization from './components/ParameterCustomization';
 import ButtonComp from './components/ButtonComp';
-import PostDetails from './blog/PostDetails';
-import NotFound from './blog/NotFound';
-
+import PostDetails from './blog/PostDetails'; 
+import SignIn from './auth/SignIn';
+import SignUp from './auth/SignUp';
+import {createStore, applyMiddleware } from 'redux';
+import rootReducer from './store/reducers/rootReducer';
+import {Provider} from 'react-redux';
+import thunk from 'redux-thunk'
 // npm i -D typescript @types/node @types/react @types/react-dom
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 const App = () => {
 
@@ -294,6 +300,16 @@ const App = () => {
               <Blog/>
           </div>
         </Route>
+        <Route exact path="/signin">
+          <div>
+              <SignIn />
+          </div>
+        </Route>
+        <Route exact path="/signup">
+          <div>
+              <SignUp />
+          </div>
+        </Route>
         <Route exact path="/one">
           <div>
             <Navbar variant="light" bg="light" justify className="justify-content-between" >
@@ -337,12 +353,7 @@ const App = () => {
           <div>
               <PostDetails/>
           </div>
-        </Route>
-        <Route exact path="*">
-          <div>
-              <NotFound />
-          </div>
-        </Route>
+        </Route> 
           <Route exact path="/one/oneline">
             <Navbar variant="light" bg="light" justify className="justify-content-between" >
               <Nav.Link as={Link}  to="/one/oneline" onClick={onelineChartSetter}><b>Line Chart</b></Nav.Link>
@@ -1063,7 +1074,9 @@ const App = () => {
 }
 
 ReactDOM.render(
-    <App />,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root')
 )
 /* const DashSelect = ({modifyParams, param}) => {

@@ -1,16 +1,15 @@
 import {Link} from "react-router-dom"; 
+import PostDetails from "./PostDetails";
 
-const PostList = ({ blogs, title, handleDelete}) => {
+const PostList = ({projects}) => {
     return (
       <div className="blog-list"> 
-        {blogs.map(blog => (
-          <div className="blog-preview" key={blog.id} >
-            <Link to={`/blogs/${blog.id}`}>
-                <h2>{ blog.title }</h2>
-                <p>Written by { blog.author }</p> 
-            </Link>
-          </div>
-        ))}
+         
+        { projects && projects.map(project => {
+        return (
+          <PostDetails project={project} key={project.id}  />
+        )
+      })}  
       </div>
     );
   }
