@@ -8,8 +8,13 @@
     "@testing-library/user-event": "^12.2.2",
     "bootstrap": "^5.0.0-beta1",
     "d3": "^6.2.0",
+    "dom-to-image": "^2.6.0",
     "file-saver": "^2.0.5",
+<<<<<<< HEAD
     "firebase": "^8.3.3",
+=======
+    "js-file-download": "^0.4.12",
+>>>>>>> 79e9962ec4939e4dfb2bb913770d78e0260ee3ac
     "nanoid": "^3.1.18",
     "popper.js": "^1.16.1",
     "react": "^17.0.1",

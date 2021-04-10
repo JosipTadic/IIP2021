@@ -1,8 +1,14 @@
 import React from 'react';
 import TableRow from './TableRow';
 import Table from 'react-bootstrap/Table';
+import './design.css';
 
 const TableComp = ({rows, deleteRow, modifyRow, chartState}) => {
+    if(rows < 1){
+      return(
+        <h2 className="center">Press "add new row" to start visualizing!</h2>
+      )
+    }
     if (chartState.numberOfVariables === 1){
       return(
         <Table striped bordered hover size="sm">
