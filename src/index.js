@@ -22,6 +22,7 @@ import TableComp from './components/TableComp';
 import ParameterCustomization from './components/ParameterCustomization';
 import ButtonComp from './components/ButtonComp';
 import PostDetails from './blog/PostDetails';
+import NotFound from './blog/NotFound';
 
 const App = () => {
 
@@ -316,6 +317,7 @@ const App = () => {
               <PostDetails/>
           </div>
         </Route>
+<<<<<<< HEAD
         <Route exact path="/one/oneline">
           <Navbar variant="light" bg="light" justify className="justify-content-between" >
             <Nav.Link as={Link}  to="/one/oneline" onClick={onelineChartSetter}><b>Line Chart</b></Nav.Link>
@@ -336,6 +338,33 @@ const App = () => {
                 <Line strokeWidth={params[0].strokeWidth} name={params[0].legendName}
                  strokeDasharray={params[0].strokeDash} type={params[0].lineType} dataKey="a" stroke={params[0].color}/>
                 </LineChart>
+=======
+        <Route exact path="*">
+          <div>
+              <NotFound />
+          </div>
+        </Route>
+          <Route exact path="/one/oneline">
+            <Navbar variant="light" bg="light" justify className="justify-content-between" >
+              <Nav.Link as={Link}  to="/one/oneline" onClick={onelineChartSetter}><b>Line Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/one/onearea" onClick={oneareaChartSetter}><b>Area Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/one/onebar" onClick={onebarChartSetter}><b>Bar Chart</b></Nav.Link>
+              <Nav.Link as={Link}  to="/one/onescatter" onClick={onescatterChartSetter}><b>Scatter Chart</b></Nav.Link>
+            </Navbar>
+        <Container className="marginTop">
+          <ResponsiveContainer className="justify-content-md-center">
+            <Row>
+              <LineChart width={1400} height={350} ref={ref} data={rows}
+              margin={{ top: 5, right: 100, left: 5, bottom: 5 }}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="labelName"/>
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Line strokeWidth={params[0].strokeWidth} name={params[0].legendName}
+               strokeDasharray={params[0].strokeDash} type={params[0].lineType} dataKey="a" stroke={params[0].color}/>
+              </LineChart>
+>>>>>>> 15dcfb33bb7e379e3f52672121beb47fc0a65e70
               </Row>
             </ResponsiveContainer>
           </Container>
