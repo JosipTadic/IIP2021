@@ -25,19 +25,22 @@ import ButtonComp from './components/ButtonComp';
 import PostDetails from './blog/PostDetails'; 
 import SignIn from './auth/SignIn';
 import SignUp from './auth/SignUp';
-import {createStore, applyMiddleware } from 'redux';
+import {createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from './store/reducers/rootReducer';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk'
-// npm i -D typescript @types/node @types/react @types/react-do
-import PostDetails from './blog/PostDetails';
-import NotFound from './blog/NotFound';
+import {reduxFirestore, getFirestore} from 'redux-firestore'
+import {reactReduxFirebase, getFirebase} from 'react-redux-firebase'
+import fbConfig from './config/fbConfig'
+// npm i -D typescript @types/node @types/react @types/react-do  
 import domtoimage from 'dom-to-image';
 import fileDownload from "js-file-download"; 
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+
+ 
 
 const App = () => {
+
 
   const [rows, setRows] = useState([{
       id: nanoid(),
@@ -125,9 +128,9 @@ const App = () => {
     setRows([]);
   }
 
-  /*const [png, ref] = useRechartToPng();
+ const [png, ref] = useRechartToPng();
 
-  const handleDownload = React.useCallback(async () => {
+   /*const handleDownload = React.useCallback(async () => {
     FileSaver.saveAs(png, "myChart.png");
   }, [png]);*/
 
@@ -1123,6 +1126,14 @@ const App = () => {
   </>
   );
 }
+
+const store = createStore(rootReducer,
+  compose(
+    applyMiddleware(thunk.withExtraArgument({getFirebase, getFirestore})), 
+    reactReduxFirebase(fbConfig), // redux binding for firebase
+    reduxFirestore(fbConfig) // redux bindings for firestore
+  )
+);
 
 ReactDOM.render(
   <Provider store={store}>

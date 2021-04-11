@@ -27,9 +27,13 @@ const projectReducer = (state = initState, action ) => {
   switch (action.type) {
     case 'CREATE_POST':
       console.log('create post', action.project);
+      return state;
+    case 'CREATE_POST_ERR':
+        console.log('create project errot', action.err);
+        return state;
+    default: 
+      return state; 
   }
-    return state
-
 }
 
 export default projectReducer;

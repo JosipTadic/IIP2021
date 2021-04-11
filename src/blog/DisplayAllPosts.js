@@ -2,6 +2,8 @@ import React, { Component, useState, useEffect, useRef } from "react";
 import PostList from "./PostList"
 import useFetch from './useFetch'
 import {connect} from 'react-redux' 
+import {firestoreConnect} from 'react-redux-firebase'
+import {compose} from 'redux'
 
 class DisplayAllPosts extends Component {
   render() {
@@ -22,14 +24,20 @@ class DisplayAllPosts extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state)
   return {
-    projects: state.project.projects
+    projects: state.firestore.ordered.projects
 
   }
 
 }
 
-export default connect(mapStateToProps)(DisplayAllPosts);
+export default compose(
+  connect(mapStateToProps),
+  firestoreConnect([
+    {collection: 'projects'}
+  ])
+)(DisplayAllPosts);
 
   
 // {blogs && <PostList blogs={blogs} />}
