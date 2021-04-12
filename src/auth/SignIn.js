@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {signIn} from '../store/actions/authActions'
-import {Redirect} from 'react-router-dom'
+import {Redirect} from 'react-router-dom' 
 
 class SignIn extends Component {
     state = {
@@ -24,8 +24,8 @@ class SignIn extends Component {
         const {authError, auth} = this.props;
         if (auth.uid) return <Redirect to='/blog' />
         return (
-            <div className="container"> 
-                <form onSubmit={this.handleSubmit} >
+            <div className="container">  
+                <form className="create" onSubmit={this.handleSubmit} >
                     <h5>Sign In</h5>
                     <div>
                         <label htmlFor="email"> Email</label>

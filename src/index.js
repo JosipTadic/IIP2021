@@ -35,7 +35,7 @@ import fbConfig from './config/fbConfig'
 // npm i -D typescript @types/node @types/react @types/react-do  
 import domtoimage from 'dom-to-image';
 import fileDownload from "js-file-download"; 
-
+import {Redirect} from 'react-router-dom'
 
  
 
@@ -306,7 +306,7 @@ const App = () => {
               <SignUp />
           </div>
         </Route>
-        <Route exact path="/one">
+        <Route exact path="/one"> 
           <div>
             <Navbar variant="light" bg="light" justify className="justify-content-between" >
               <Nav.Link as={Link}  to="/one/oneline" onClick={onelineChartSetter}><b>Line Chart</b></Nav.Link>

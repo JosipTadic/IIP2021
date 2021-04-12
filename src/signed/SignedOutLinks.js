@@ -9,7 +9,7 @@ const SignedOutLinks = () => {
               <button>All posts </button>
             </Link>
             <NavLink to="/signup"><button>Sign Up </button></NavLink> 
-            <NavLink to="/signin"> <button>Login </button></NavLink>  
+            <NavLink to="/signin"><button>Login </button></NavLink>  
             
         </div> 
     )
