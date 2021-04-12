@@ -28,24 +28,28 @@ class CreateNewPost extends Component {
     if (!auth.uid) return <Redirect to='/signin' />
     return (
       <div className="container">
-        <form className="white" onSubmit={this.handleSubmit}>
-          <h5 className="grey-text text-darken-3">Create a New Project</h5>
+        <Post />
+        <form className="create" onSubmit={this.handleSubmit}>
+        <h2>Create a New Project</h2> 
           <div className="input-field">
-            <input type="text" id='title' onChange={this.handleChange} />
             <label htmlFor="title">Project Title</label>
+            <input type="text" id='title' onChange={this.handleChange} />
+            
           </div>
           <div className="input-field">
-            <textarea id="content" className="materialize-textarea" onChange={this.handleChange}></textarea>
             <label htmlFor="content">Project Content</label>
+            <textarea id="content" onChange={this.handleChange}></textarea>
+            
           </div>
-          <div className="input-field">
-            <button className="btn pink lighten-1">Create</button>
+          <div>
+            <button>Create</button>
           </div>
         </form>
       </div>
     )
   }
 }
+
 
 const mapStateToProps = (state) => {
   console.log(state)

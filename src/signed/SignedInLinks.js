@@ -7,12 +7,15 @@ const SignedInLinks = (props) => {
     
     return (
         
-         <div>
+         <div className="navbar-blog" >
+           <Link to="/blog">
+              <button>All posts </button>
+            </Link>
             <Link to="/create">
               <button>Create New Post</button> 
             </Link>
             <button onClick={props.signOut}>Log Out </button> 
-            <h3>Welcome back {props.profile.initials}</h3>
+            <p> Welcome back {props.profile.firstName}</p>
         </div> 
     )
 

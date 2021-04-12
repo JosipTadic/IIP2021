@@ -258,10 +258,9 @@ footer{
     justify-content: center;
   }
 
-  .blog-card {
-    display: flex;
+  .blog-card {  
     flex-direction: column;
-    margin: 1rem auto;
+    margin: 2rem auto;
     box-shadow: 0 3px 7px -1px rgba(0, 0, 0, .1);
     margin-bottom: 1.6%;
     background: #fff;
@@ -269,7 +268,7 @@ footer{
     font-family: sans-serif;
     border-radius: 5px;
     overflow: hidden;
-    z-index: 0;
+    z-index: 0; 
 }
 .blog-card {
     color: inherit;
@@ -281,7 +280,7 @@ footer{
 .blog-card .meta {
     position: relative;
     z-index: 0;
-    height: 200px;
+    height: 300px;
 }
 .blog-card .photo {
     position: absolute;
@@ -310,6 +309,15 @@ footer{
     padding: 10px;
     width: 100%;
     font-size: 0.9rem;
+}
+.blog-card a{
+  color:rgba(0, 0, 0, .6);
+}
+.blog-card h1{
+  color: black;
+  align-items: center; 
+  letter-spacing: 3px; 
+  text-transform: uppercase; 
 }
 .blog-card .details a {
     text-decoration: dotted underline;
@@ -505,17 +513,39 @@ footer{
   .navbar-blog {
     padding: 20px;
     display: flex;
-    align-items: center;
-    max-width: auto;
-    margin: 0 auto;
-    border-bottom: 1px solid #f2f2f2;
+    align-items: center; 
+    letter-spacing: 3px; 
+    text-transform: uppercase; 
+    max-width: 100%;
+    margin: 0 auto; 
   }
-  .navbar-blog h1 {
+  .navbar-blog h1{
     color: #f4a261;
+    text-decoration: none;
+    font-size: 24px;
+    width: auto;
   }
+  a{
+    color: #FFFFFF;
+    text-decoration: none;
+  }
+  .navbar-blog p{
+    color: #f4a261;
+    font-size: 18px;
+    letter-spacing: 3px;
+    font-weight: bolder;
+    text-transform: uppercase; 
+    padding-left: 20px;
+    margin-top: 15px;  
+  }
+  
+  
    
-  .navbar-blog button {
-    margin-left: 16px;
+  .navbar-blog button { 
+    font-size: 18px; 
+    letter-spacing: 3px;
+    font-weight: bolder;
+    text-transform: uppercase; 
     text-decoration: none;
     padding: 6px;
     border: none;
@@ -535,7 +565,10 @@ footer{
     box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
   }
   .blog-preview h2 {
-    font-size: 20px;
+    font-size: 20px; 
+    letter-spacing: 3px;
+    font-weight: bolder;
+    text-transform: uppercase;
     color: #f4a261;
     margin-bottom: 8px;
   }

@@ -11,15 +11,11 @@ const Post = (props) => {
   const {auth, profile} = props;
   const links = auth.uid ? <SignedInLinks profile={profile} /> : <SignedOutLinks />
   return (
-    <div className="navbar-blog"> 
-    <div className="links"> 
-        <Link to="/blog">
-              <button>All posts</button> 
-        </Link>
-        {links}
-        </div>
+    <div className="navbar-blog">  
          
-</div> 
+        {links}       
+         
+    </div> 
   )
 }
 
