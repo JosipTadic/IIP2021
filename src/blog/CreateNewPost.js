@@ -3,6 +3,8 @@ import { useHistory } from "react-router-dom";
 import Post from './Post'
 import {connect} from 'react-redux'
 import {createPost} from '../store/actions/postActions.js'
+import {Redirect} from 'react-router-dom'
+
 
 class CreateNewPost extends Component {
   state = {
@@ -20,6 +22,8 @@ class CreateNewPost extends Component {
     this.props.createPost(this.state);
   }
   render() {
+    const { auth} = this.props;
+    if (!auth.uid) return <Redirect to='/signin' />
     return (
       <div className="container">
         <form className="white" onSubmit={this.handleSubmit}>
@@ -41,13 +45,22 @@ class CreateNewPost extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  console.log(state)
+  return {
+    auth: state.firebase.auth
+
+  }
+
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     createPost: (project) => dispatch(createPost(project))
   }
 }
 
-export default connect(null, mapDispatchToProps)(CreateNewPost)
+export default connect(mapStateToProps, mapDispatchToProps)(CreateNewPost)
 
 
 /*const CreateNewPost = () => {

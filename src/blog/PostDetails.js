@@ -1,20 +1,56 @@
-import React from 'react';
-import {useParams, useHistory} from "react-router-dom"; 
-import Post from './Post';
-import useFetch from "./useFetch";
-
-const PostDetails = ({project}) => {  
-    
-  return (
-      <div className="container">
-       
-       <div className="blog-details">
-        <span className="card-title ">{project.title}</span>
+import React from 'react'
+import {useParams} from 'react-router-dom'
+import { connect } from 'react-redux'
+import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from 'redux'
+import {withRouter} from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
+const PostDetails = ( props ) => { 
+    const { project , auth} = props; 
+    if (!auth.uid) return <Redirect to='/signin' />
+    if(project) {
+ 
+        return (
+        <div className="container section project-details">
+            <div className="card z-depth-0">
+            <div className="card-content">
+                <span className="card-title">Project title - { project.title }</span>
+                <p> {project.content}</p>
+            </div>
+            <div className="card-action grey lighten-4 grey-text">
+                <div>{project.authorFirstName} {project.authortLastName}</div>
+                <div>date</div>
+            </div>
+            </div>
         </div>
-    </div>
-    )
-}
-export default PostDetails;
+        )
+     
+    } else {
+        return (
+          <div className="container center">
+            <p>Loading project...</p>
+          </div>
+        )
+      }
+    }
+    const mapStateToProps = (state, ownProps) => {
+        // console.log(state);
+        const id = ownProps.match.params.id;
+        const projects = state.firestore.data.projects;
+        const project = projects ? projects[id] : null
+        return {
+          project: project,
+          auth: state.firebase.auth
+        }
+      }
+      
+      export default compose(
+        withRouter,
+        connect(mapStateToProps),
+        firestoreConnect([{
+          collection: 'projects'
+        }])
+      )(PostDetails);
 
 /*  
   const { id } = useParams();
@@ -28,7 +64,6 @@ export default PostDetails;
           history.push('/blog');
         }) 
       }
-
 
        { isPending && <div>Loading...</div> }
             { error && <div>{ error }</div> }

@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom"; 
-import PostDetails from "./PostDetails";
+import PostSum from "./PostSum";
 
 const PostList = ({projects}) => {
     return (
@@ -7,7 +7,9 @@ const PostList = ({projects}) => {
          
         { projects && projects.map(project => {
         return (
-          <PostDetails project={project} key={project.id}  />
+          <Link to={'/blogs/'+ project.id} key={project.id}> 
+            <PostSum project={project}    />
+          </Link>
         )
       })}  
       </div>

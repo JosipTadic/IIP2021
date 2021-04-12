@@ -1130,8 +1130,8 @@ const App = () => {
 const store = createStore(rootReducer,
   compose(
     applyMiddleware(thunk.withExtraArgument({getFirebase, getFirestore})), 
-    reactReduxFirebase(fbConfig), // redux binding for firebase
-    reduxFirestore(fbConfig) // redux bindings for firestore
+    reactReduxFirebase(fbConfig, {useFirestoreForProfile: true, userProfile: 'users'}), // redux binding for firebase
+    reduxFirestore(fbConfig ) // redux bindings for firestore
   )
 );
 
