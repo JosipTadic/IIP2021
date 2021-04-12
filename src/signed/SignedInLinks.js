@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {signOut} from '../store/actions/authActions';
 
@@ -8,9 +8,11 @@ const SignedInLinks = (props) => {
     return (
         
          <div>
-            <NavLink to="/"><button>New Project</button></NavLink> 
+            <Link to="/create">
+              <button>Create New Post</button> 
+            </Link>
             <button onClick={props.signOut}>Log Out </button> 
-            <p>Welcome back {props.profile.initials}</p>
+            <h3>Welcome back {props.profile.initials}</h3>
         </div> 
     )
 

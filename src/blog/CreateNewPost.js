@@ -4,6 +4,7 @@ import Post from './Post'
 import {connect} from 'react-redux'
 import {createPost} from '../store/actions/postActions.js'
 import {Redirect} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 
 
 class CreateNewPost extends Component {
@@ -20,6 +21,7 @@ class CreateNewPost extends Component {
     e.preventDefault();
     // console.log(this.state);
     this.props.createPost(this.state);
+    this.props.history.push('/blog');
   }
   render() {
     const { auth} = this.props;
@@ -60,7 +62,7 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateNewPost)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateNewPost));
 
 
 /*const CreateNewPost = () => {

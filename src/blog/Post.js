@@ -16,10 +16,7 @@ const Post = (props) => {
         <Link to="/blog">
               <button>All posts</button> 
         </Link>
-        <Link to="/create">
-              <button>Create New Post</button> 
-        </Link>
-          {links}
+        {links}
         </div>
          
 </div> 
