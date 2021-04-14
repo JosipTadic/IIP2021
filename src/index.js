@@ -35,8 +35,9 @@ import fbConfig from './config/fbConfig'
 // npm i -D typescript @types/node @types/react @types/react-do  
 import domtoimage from 'dom-to-image';
 import fileDownload from "js-file-download"; 
-import {Redirect} from 'react-router-dom'
-
+import {Redirect} from 'react-router-dom';
+import Cards from './components/Cards';
+import SubNavBar from './components/SubNavBar';
  
 
 const App = () => {
@@ -47,7 +48,6 @@ const App = () => {
       a: '',
       b: '',
       c: '',
-      d: '',
       labelName: '',
   }]);
 
@@ -106,7 +106,6 @@ const App = () => {
       a: '',
       b: '',
       c: '',
-      d: '',
       labelName: '',
     }
     setRows(rows.concat(newRow));
@@ -128,7 +127,7 @@ const App = () => {
     setRows([]);
   }
 
- const [png, ref] = useRechartToPng();
+ //const [png, ref] = useRechartToPng();
 
    /*const handleDownload = React.useCallback(async () => {
     FileSaver.saveAs(png, "myChart.png");
@@ -141,132 +140,15 @@ const App = () => {
        });
    }
 
-  const onelineChartSetter = () =>
-  setChartState({ 
-    numberOfVariables: 1,
-    dash: true,
-    type: true,
-    width: true,
-    opacity: false,
-    colorChoice: true
-  })
-  const lineChartSetter = () =>
-  setChartState({ 
-    numberOfVariables: 2,
-    dash: true,
-    type: true,
-    width: true,
-    opacity: false,
-    colorChoice: true
-  })
-  const threelineChartSetter = () =>
-  setChartState({ 
-    numberOfVariables: 3,
-    dash: true,
-    type: true,
-    width: true,
-    opacity: false,
-    colorChoice: true
-  })
-  const oneareaChartSetter = () =>
-  setChartState({ 
-    numberOfVariables: 1,
-    dash: true,
-    type: true,
-    width: true,
-    opacity: true,
-    colorChoice: true
-  })
-  const areaChartSetter = () =>
-  setChartState({ 
-    numberOfVariables: 2,
-    dash: true,
-    type: true,
-    width: true,
-    opacity: true,
-    colorChoice: true
-  })
-  const threeareaChartSetter = () =>
-  setChartState({ 
-    numberOfVariables: 3,
-    dash: true,
-    type: true,
-    width: true,
-    opacity: true,
-    colorChoice: true
-  })
-  const onebarChartSetter = () =>
-  setChartState({ 
-    numberOfVariables: 1,
-    dash: false,
-    type: false,
-    width: true,
-    opacity: true,
-    colorChoice: true
-  })
-  const barChartSetter = () =>
-  setChartState({ 
-    numberOfVariables: 2,
-    dash: false,
-    type: false,
-    width: true,
-    opacity: true,
-    colorChoice: true
-  })
-  const threebarChartSetter = () =>
-  setChartState({ 
-    numberOfVariables: 3,
-    dash: false,
-    type: false,
-    width: true,
-    opacity: true,
-    colorChoice: true
-  })
-  const onescatterChartSetter = () =>
-  setChartState({ 
-    numberOfVariables: 1,
-    dash: false,
-    type: false,
-    width: true,
-    opacity: true,
-    colorChoice: true
-  })
-  const scatterChartSetter = () =>
-  setChartState({ 
-    numberOfVariables: 2,
-    dash: false,
-    type: false,
-    width: true,
-    opacity: true,
-    colorChoice: true
-  })
-  const threescatterChartSetter = () =>
-  setChartState({ 
-    numberOfVariables: 3,
-    dash: false,
-    type: false,
-    width: true,
-    opacity: true,
-    colorChoice: true
-  })
-  const composedChartSetter = () =>
-  setChartState({ 
-    numberOfVariables: 3,
-    dash: true,
-    type: true,
-    width: true,
-    opacity: true,
-    colorChoice: true
-  })
-  const twocomposedChartSetter = () =>
-  setChartState({ 
-    numberOfVariables: 2,
-    dash: true,
-    type: true,
-    width: true,
-    opacity: true,
-    colorChoice: true
-  })
+   const chartsSetter = ({nov,dash,type,width,opacity,color}) =>
+   setChartState({ 
+     numberOfVariables: nov,
+     dash: dash,
+     type: type,
+     width: width,
+     opacity: opacity,
+     colorChoice: color
+   })
 
   return(
   <>
@@ -306,39 +188,14 @@ const App = () => {
               <SignUp />
           </div>
         </Route>
-        <Route exact path="/one"> 
-          <div>
-            <Navbar variant="light" bg="light" justify className="justify-content-between" >
-              <Nav.Link as={Link}  to="/one/oneline" onClick={onelineChartSetter}><b>Line Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/one/onearea" onClick={oneareaChartSetter}><b>Area Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/one/onebar" onClick={onebarChartSetter}><b>Bar Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/one/onescatter" onClick={onescatterChartSetter}><b>Scatter Chart</b></Nav.Link>
-            </Navbar>
-          </div>
+        <Route exact path="/one">
+          <Cards variableNumber={1} chartsSetter={chartsSetter}/>
         </Route>
         <Route exact path="/two">
-          <div>
-            <Navbar variant="light" bg="light" justify className="justify-content-between" >
-              <Nav.Link as={Link}  to="/two/line" onClick={lineChartSetter}><b>Line Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/two/area" onClick={areaChartSetter}><b>Area Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/two/bar" onClick={barChartSetter}><b>Bar Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/two/scatter" onClick={scatterChartSetter}><b>Scatter Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/two/composed" onClick={twocomposedChartSetter}><b>Composed Chart</b></Nav.Link>
-            </Navbar>
-          </div>
+          <Cards variableNumber={2} chartsSetter={chartsSetter}/>
         </Route>
         <Route exact path="/three">
-          <div>
-            <Navbar variant="light" bg="light" justify className="justify-content-between" >
-              <Nav.Link as={Link}  to="/three/threeline" onClick={threelineChartSetter}><b>Line Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/three/threearea" onClick={threeareaChartSetter}><b>Area Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/three/threebar" onClick={threebarChartSetter}><b>Bar Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/three/threescatter" onClick={threescatterChartSetter}><b>Scatter Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/three/composed" onClick={composedChartSetter}><b>Composed Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/three/composed2" onClick={composedChartSetter}><b>Composed Chart 2</b></Nav.Link>
-              <Nav.Link as={Link}  to="/three/composed3" onClick={composedChartSetter}><b>Composed Chart 3</b></Nav.Link>
-            </Navbar>
-          </div>
+          <Cards variableNumber={3} chartsSetter={chartsSetter}/>
         </Route>
         <Route exact path="/create">
           <div>
@@ -351,45 +208,9 @@ const App = () => {
           </div>
 
         </Route> 
-          <Route exact path="/one/oneline">
-            <Navbar variant="light" bg="light" justify className="justify-content-between" >
-              <Nav.Link as={Link}  to="/one/oneline" onClick={onelineChartSetter}><b>Line Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/one/onearea" onClick={oneareaChartSetter}><b>Area Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/one/onebar" onClick={onebarChartSetter}><b>Bar Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/one/onescatter" onClick={onescatterChartSetter}><b>Scatter Chart</b></Nav.Link>
-            </Navbar>
-        <Container className="marginTop">
-          <ResponsiveContainer className="justify-content-md-center">
-            <Row>
-              <LineChart width={1400} height={350} ref={ref} data={rows}
-              margin={{ top: 5, right: 100, left: 5, bottom: 5 }}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="labelName"/>
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Line strokeWidth={params[0].strokeWidth} name={params[0].legendName}
-               strokeDasharray={params[0].strokeDash} type={params[0].lineType} dataKey="a" stroke={params[0].color}/>
-              </LineChart>
-              </Row>
-          </ResponsiveContainer>
-        </Container>
-        <div>
-          <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>
-        </div>
-        
-
-        </Route>
-
-        
-
+          
         <Route exact path="/one/oneline">
-          <Navbar variant="light" bg="light" justify className="justify-content-between" >
-            <Nav.Link as={Link}  to="/one/oneline" onClick={onelineChartSetter}><b>Line Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/one/onearea" onClick={oneareaChartSetter}><b>Area Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/one/onebar" onClick={onebarChartSetter}><b>Bar Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/one/onescatter" onClick={onescatterChartSetter}><b>Scatter Chart</b></Nav.Link>
-          </Navbar>
+          <SubNavBar variableNumber={1} chartsSetter={chartsSetter} />
           <div id="blob1">
             <Container className="marginTop">
               <ResponsiveContainer className="justify-content-md-center">
@@ -426,13 +247,7 @@ const App = () => {
         </Route>
 
         <Route exact path="/two/line">
-          <Navbar variant="light" bg="light" justify className="justify-content-between" >
-            <Nav.Link as={Link}  to="/two/line" onClick={lineChartSetter}><b>Line Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/two/area" onClick={areaChartSetter}><b>Area Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/two/bar" onClick={barChartSetter}><b>Bar Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/two/scatter" onClick={scatterChartSetter}><b>Scatter Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/two/composed" onClick={twocomposedChartSetter}><b>Composed Chart</b></Nav.Link>
-          </Navbar>
+          <SubNavBar variableNumber={2} chartsSetter={chartsSetter} />
           <div id="blob2">
             <Container className="marginTop">
               <ResponsiveContainer className="justify-content-md-center">
@@ -471,15 +286,7 @@ const App = () => {
         </Route>
 
         <Route exact path="/three/threeline">
-          <Navbar variant="light" bg="light" justify className="justify-content-between" >
-            <Nav.Link as={Link}  to="/three/threeline" onClick={threelineChartSetter}><b>Line Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/threearea" onClick={threeareaChartSetter}><b>Area Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/threebar" onClick={threebarChartSetter}><b>Bar Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/threescatter" onClick={threescatterChartSetter}><b>Scatter Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/composed" onClick={composedChartSetter}><b>Composed Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/composed2" onClick={composedChartSetter}><b>Composed Chart 2</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/composed3" onClick={composedChartSetter}><b>Composed Chart 3</b></Nav.Link>
-          </Navbar>
+          <SubNavBar variableNumber={3} chartsSetter={chartsSetter} />
           <div id="blob3">
             <Container className="marginTop">
               <ResponsiveContainer className="justify-content-md-center">
@@ -520,12 +327,7 @@ const App = () => {
         </Route>
 
         <Route exact path="/one/onearea">
-          <Navbar variant="light" bg="light" justify className="justify-content-between" >
-            <Nav.Link as={Link}  to="/one/oneline" onClick={onelineChartSetter}><b>Line Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/one/onearea" onClick={oneareaChartSetter}><b>Area Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/one/onebar" onClick={onebarChartSetter}><b>Bar Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/one/onescatter" onClick={onescatterChartSetter}><b>Scatter Chart</b></Nav.Link>
-          </Navbar>
+          <SubNavBar variableNumber={1} chartsSetter={chartsSetter} />
           <div id="blob4">
             <Container className="marginTop">
               <AreaChart width={1400} height={350} data={rows}
@@ -564,13 +366,7 @@ const App = () => {
         </Route>
 
         <Route exact path="/two/area">
-            <Navbar variant="light" bg="light" justify className="justify-content-between" >
-              <Nav.Link as={Link}  to="/two/line" onClick={lineChartSetter}><b>Line Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/two/area" onClick={areaChartSetter}><b>Area Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/two/bar" onClick={barChartSetter}><b>Bar Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/two/scatter" onClick={scatterChartSetter}><b>Scatter Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/two/composed" onClick={twocomposedChartSetter}><b>Composed Chart</b></Nav.Link>
-            </Navbar>
+          <SubNavBar variableNumber={2} chartsSetter={chartsSetter} />
           <div id="blob5">
             <Container className="marginTop">
               <AreaChart width={1400} height={350} data={rows}
@@ -615,15 +411,7 @@ const App = () => {
         </Route>
 
         <Route exact path="/three/threearea">
-          <Navbar variant="light" bg="light" justify className="justify-content-between" >
-            <Nav.Link as={Link}  to="/three/threeline" onClick={threelineChartSetter}><b>Line Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/threearea" onClick={threeareaChartSetter}><b>Area Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/threebar" onClick={threebarChartSetter}><b>Bar Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/threescatter" onClick={threescatterChartSetter}><b>Scatter Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/composed" onClick={composedChartSetter}><b>Composed Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/composed2" onClick={composedChartSetter}><b>Composed Chart 2</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/composed3" onClick={composedChartSetter}><b>Composed Chart 3</b></Nav.Link>
-          </Navbar>
+          <SubNavBar variableNumber={3} chartsSetter={chartsSetter} />
           <div id="blob6">
             <Container className="marginTop">
               <AreaChart width={1400} height={350} data={rows}
@@ -675,12 +463,7 @@ const App = () => {
         </Route>
         
         <Route exact path="/one/onebar">
-          <Navbar variant="light" bg="light" justify className="justify-content-between" >
-            <Nav.Link as={Link}  to="/one/oneline" onClick={onelineChartSetter}><b>Line Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/one/onearea" onClick={oneareaChartSetter}><b>Area Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/one/onebar" onClick={onebarChartSetter}><b>Bar Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/one/onescatter" onClick={onescatterChartSetter}><b>Scatter Chart</b></Nav.Link>
-          </Navbar>
+          <SubNavBar variableNumber={1} chartsSetter={chartsSetter} />
           <div id="blob7">
             <Container className="marginTop">
               <BarChart width={1400} height={350} data={rows}
@@ -714,13 +497,7 @@ const App = () => {
         </Route>
 
         <Route exact path="/two/bar">
-          <Navbar variant="light" bg="light" justify className="justify-content-between" >
-            <Nav.Link as={Link}  to="/two/line" onClick={lineChartSetter}><b>Line Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/two/area" onClick={areaChartSetter}><b>Area Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/two/bar" onClick={barChartSetter}><b>Bar Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/two/scatter" onClick={scatterChartSetter}><b>Scatter Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/two/composed" onClick={twocomposedChartSetter}><b>Composed Chart</b></Nav.Link>
-          </Navbar>
+          <SubNavBar variableNumber={2} chartsSetter={chartsSetter} />
           <div id="blob8">
             <Container className="marginTop">
               <BarChart width={1400} height={350} data={rows}
@@ -755,15 +532,7 @@ const App = () => {
         </Route>
         
         <Route exact path="/three/threebar">
-          <Navbar variant="light" bg="light" justify className="justify-content-between" >
-            <Nav.Link as={Link}  to="/three/threeline" onClick={threelineChartSetter}><b>Line Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/threearea" onClick={threeareaChartSetter}><b>Area Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/threebar" onClick={threebarChartSetter}><b>Bar Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/threescatter" onClick={threescatterChartSetter}><b>Scatter Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/composed" onClick={composedChartSetter}><b>Composed Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/composed2" onClick={composedChartSetter}><b>Composed Chart 2</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/composed3" onClick={composedChartSetter}><b>Composed Chart 3</b></Nav.Link>
-          </Navbar>
+          <SubNavBar variableNumber={3} chartsSetter={chartsSetter} />
           <div id="blob9">
             <Container className="marginTop">
               <BarChart width={1400} height={350} data={rows}
@@ -800,13 +569,7 @@ const App = () => {
         </Route>
 
         <Route exact path="/two/composed">
-          <Navbar variant="light" bg="light" justify className="justify-content-between" >
-            <Nav.Link as={Link}  to="/two/line" onClick={lineChartSetter}><b>Line Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/two/area" onClick={areaChartSetter}><b>Area Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/two/bar" onClick={barChartSetter}><b>Bar Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/two/scatter" onClick={scatterChartSetter}><b>Scatter Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/two/composed" onClick={twocomposedChartSetter}><b>Composed Chart</b></Nav.Link>
-          </Navbar>
+          <SubNavBar variableNumber={2} chartsSetter={chartsSetter} />
           <div id="blob10">
             <Container className="marginTop">
               <ComposedChart width={1400} height={350} data={rows}
@@ -847,15 +610,7 @@ const App = () => {
         </Route>
 
         <Route exact path="/three/composed">
-          <Navbar variant="light" bg="light" justify className="justify-content-between" >
-            <Nav.Link as={Link}  to="/three/threeline" onClick={threelineChartSetter}><b>Line Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/threearea" onClick={threeareaChartSetter}><b>Area Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/threebar" onClick={threebarChartSetter}><b>Bar Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/threescatter" onClick={threescatterChartSetter}><b>Scatter Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/composed" onClick={composedChartSetter}><b>Composed Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/composed2" onClick={composedChartSetter}><b>Composed Chart 2</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/composed3" onClick={composedChartSetter}><b>Composed Chart 3</b></Nav.Link>
-          </Navbar>
+          <SubNavBar variableNumber={3} chartsSetter={chartsSetter} />
           <div id="blob11">
             <Container className="marginTop">
               <ComposedChart width={1400} height={350} data={rows}
@@ -898,15 +653,7 @@ const App = () => {
         </Route>
 
         <Route exact path="/three/composed2">
-          <Navbar variant="light" bg="light" justify className="justify-content-between" >
-            <Nav.Link as={Link}  to="/three/threeline" onClick={threelineChartSetter}><b>Line Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/threearea" onClick={threeareaChartSetter}><b>Area Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/threebar" onClick={threebarChartSetter}><b>Bar Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/threescatter" onClick={threescatterChartSetter}><b>Scatter Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/composed" onClick={composedChartSetter}><b>Composed Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/composed2" onClick={composedChartSetter}><b>Composed Chart 2</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/composed3" onClick={composedChartSetter}><b>Composed Chart 3</b></Nav.Link>
-          </Navbar>
+          <SubNavBar variableNumber={3} chartsSetter={chartsSetter} />
           <div id="blob12">
             <Container className="marginTop">
               <ComposedChart width={1400} height={350} data={rows}
@@ -949,15 +696,7 @@ const App = () => {
         </Route>
 
         <Route exact path="/three/composed3">
-          <Navbar variant="light" bg="light" justify className="justify-content-between" >
-            <Nav.Link as={Link}  to="/three/threeline" onClick={threelineChartSetter}><b>Line Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/threearea" onClick={threeareaChartSetter}><b>Area Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/threebar" onClick={threebarChartSetter}><b>Bar Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/threescatter" onClick={threescatterChartSetter}><b>Scatter Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/composed" onClick={composedChartSetter}><b>Composed Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/composed2" onClick={composedChartSetter}><b>Composed Chart 2</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/composed3" onClick={composedChartSetter}><b>Composed Chart 3</b></Nav.Link>
-          </Navbar>
+          <SubNavBar variableNumber={3} chartsSetter={chartsSetter} />
           <div id="blob13">
             <Container className="marginTop">
               <ComposedChart width={1400} height={350} data={rows}
@@ -1000,12 +739,7 @@ const App = () => {
         </Route>
 
         <Route exact path="/one/onescatter">
-          <Navbar variant="light" bg="light" justify className="justify-content-between" >
-            <Nav.Link as={Link}  to="/one/oneline" onClick={onelineChartSetter}><b>Line Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/one/onearea" onClick={oneareaChartSetter}><b>Area Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/one/onebar" onClick={onebarChartSetter}><b>Bar Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/one/onescatter" onClick={onescatterChartSetter}><b>Scatter Chart</b></Nav.Link>
-          </Navbar>
+          <SubNavBar variableNumber={1} chartsSetter={chartsSetter} />
           <div id="blob14">
             <Container className="marginTop">
               <ScatterChart width={1400} height={350} data={rows}
@@ -1038,13 +772,7 @@ const App = () => {
         </Route>
           
         <Route exact path="/two/scatter">
-          <Navbar variant="light" bg="light" justify className="justify-content-between" >
-            <Nav.Link as={Link}  to="/two/line" onClick={lineChartSetter}><b>Line Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/two/area" onClick={areaChartSetter}><b>Area Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/two/bar" onClick={barChartSetter}><b>Bar Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/two/scatter" onClick={scatterChartSetter}><b>Scatter Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/two/composed" onClick={twocomposedChartSetter}><b>Composed Chart</b></Nav.Link>
-          </Navbar>
+          <SubNavBar variableNumber={2} chartsSetter={chartsSetter} />
           <div id="blob15">
             <Container className="marginTop">
               <ScatterChart width={1400} height={350} data={rows}
@@ -1078,15 +806,7 @@ const App = () => {
           </Container>
         </Route>
         <Route exact path="/three/threescatter">
-          <Navbar variant="light" bg="light" justify className="justify-content-between" >
-            <Nav.Link as={Link}  to="/three/threeline" onClick={threelineChartSetter}><b>Line Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/threearea" onClick={threeareaChartSetter}><b>Area Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/threebar" onClick={threebarChartSetter}><b>Bar Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/threescatter" onClick={threescatterChartSetter}><b>Scatter Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/composed" onClick={composedChartSetter}><b>Composed Chart</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/composed2" onClick={composedChartSetter}><b>Composed Chart 2</b></Nav.Link>
-            <Nav.Link as={Link}  to="/three/composed3" onClick={composedChartSetter}><b>Composed Chart 3</b></Nav.Link>
-          </Navbar>
+          <SubNavBar variableNumber={3} chartsSetter={chartsSetter} />
           <div id="blob16">
             <Container className="marginTop">
               <ScatterChart width={1400} height={350} data={rows}

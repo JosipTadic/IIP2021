@@ -622,5 +622,9 @@ footer{
   border-radius: 8px;
   cursor: pointer;
 }
-
-
+.margin10{
+  margin: 110px 10px 10px 10px;
+}
+.nolinkeffect{
+  text-decoration: none;
+}
