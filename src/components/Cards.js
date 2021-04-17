@@ -22,8 +22,8 @@ const Cards = ({variableNumber, chartsSetter}) => {
                           <Card.Body>
                             <Card.Title className="nolinkeffect">Line Chart</Card.Title>
                             <Card.Text>
-                              This is a wider card with supporting text below as a natural lead-in to
-                              additional content. This content is a little bit longer.
+                              A line chart or line plot or line graph or curve chart is a type of chart which displays information as a 
+                              series of data points called 'markers' connected by line segments, basic type of chart.
                             </Card.Text>
                           </Card.Body>    
                           </Card>
@@ -36,8 +36,8 @@ const Cards = ({variableNumber, chartsSetter}) => {
                         <Card.Body>
                           <Card.Title className="nolinkeffect">Area Chart</Card.Title>
                           <Card.Text>
-                            This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.
+                            An area chart displays graphically quantitative data. It is based on the line chart. 
+                            The area between axis and line are commonly emphasized with colors, textures and hatchings.
                           </Card.Text>
                         </Card.Body>    
                       </Card>
@@ -50,8 +50,8 @@ const Cards = ({variableNumber, chartsSetter}) => {
                         <Card.Body>
                           <Card.Title className="nolinkeffect">Bar Chart</Card.Title>
                           <Card.Text>
-                            This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.
+                            A bar chart or bar graph is a chart or graph that presents categorical data with
+                            rectangular bars with heights or lengths proportional to the values that they represent.
                           </Card.Text>
                         </Card.Body>    
                       </Card>
@@ -64,8 +64,8 @@ const Cards = ({variableNumber, chartsSetter}) => {
                         <Card.Body>
                           <Card.Title className="nolinkeffect">Scatter Chart</Card.Title>
                           <Card.Text>
-                            This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.
+                            A scatter chart uses dots to represent values for two different numeric variables.
+                            The position of each dot on the horizontal axis indicates values for an individual data point.
                           </Card.Text>
                         </Card.Body>    
                       </Card>
@@ -88,8 +88,8 @@ const Cards = ({variableNumber, chartsSetter}) => {
                                 <Card.Body>
                                     <Card.Title className="nolinkeffect">Line Chart</Card.Title>
                                     <Card.Text>
-                                      This is a wider card with supporting text below as a natural lead-in to
-                                      additional content. This content is a little bit longer.
+                                      A line chart or line plot or line graph or curve chart is a type of chart which displays information as a 
+                                      series of data points called 'markers' connected by line segments, basic type of chart.
                                     </Card.Text>
                                 </Card.Body>    
                             </Card>
@@ -102,8 +102,8 @@ const Cards = ({variableNumber, chartsSetter}) => {
                                 <Card.Body>
                                 <Card.Title className="nolinkeffect">Area Chart</Card.Title>
                                 <Card.Text>
-                                  This is a wider card with supporting text below as a natural lead-in to
-                                  additional content. This content is a little bit longer.
+                                  An area chart displays graphically quantitative data. It is based on the line chart. 
+                                  The area between axis and line are commonly emphasized with colors, textures and hatchings.
                                 </Card.Text>
                                 </Card.Body>    
                             </Card>
@@ -116,8 +116,8 @@ const Cards = ({variableNumber, chartsSetter}) => {
                                 <Card.Body>
                                     <Card.Title className="nolinkeffect">Bar Chart</Card.Title>
                                     <Card.Text>
-                                      This is a wider card with supporting text below as a natural lead-in to
-                                      additional content. This content is a little bit longer.
+                                      A bar chart or bar graph is a chart or graph that presents categorical data with
+                                      rectangular bars with heights or lengths proportional to the values that they represent.
                                     </Card.Text>
                                 </Card.Body>    
                             </Card>
@@ -130,8 +130,8 @@ const Cards = ({variableNumber, chartsSetter}) => {
                                 <Card.Body>
                                     <Card.Title className="nolinkeffect">Scatter Chart</Card.Title>
                                     <Card.Text>
-                                      This is a wider card with supporting text below as a natural lead-in to
-                                      additional content. This content is a little bit longer.
+                                      A scatter chart uses dots to represent values for two different numeric variables.
+                                      The position of each dot on the horizontal axis indicates values for an individual data point.
                                     </Card.Text>
                                 </Card.Body>    
                             </Card>
@@ -144,8 +144,8 @@ const Cards = ({variableNumber, chartsSetter}) => {
                           <Card.Body>
                             <Card.Title className="nolinkeffect">Composed Chart</Card.Title>
                             <Card.Text>
-                              This is a wider card with supporting text below as a natural lead-in to
-                              additional content. This content is a little bit longer.
+                              A combination chart is a chart that combines two or more chart types in a single chart.
+                              It displays the data using a number of bars, lines, areas and/or dots, each for its own category.
                             </Card.Text>
                           </Card.Body>    
                         </Card>
@@ -167,8 +167,8 @@ const Cards = ({variableNumber, chartsSetter}) => {
                               <Card.Body>
                                 <Card.Title className="nolinkeffect">Line Chart</Card.Title>
                                 <Card.Text>
-                                  This is a wider card with supporting text below as a natural lead-in to
-                                  additional content. This content is a little bit longer.
+                                  A line chart or line plot or line graph or curve chart is a type of chart which displays information as a 
+                                  series of data points called 'markers' connected by line segments, basic type of chart.
                                 </Card.Text>
                               </Card.Body>    
                             </Card>
@@ -181,8 +181,8 @@ const Cards = ({variableNumber, chartsSetter}) => {
                               <Card.Body>
                                 <Card.Title className="nolinkeffect">Area Chart</Card.Title>
                                 <Card.Text>
-                                  This is a wider card with supporting text below as a natural lead-in to
-                                  additional content. This content is a little bit longer.
+                                  An area chart displays graphically quantitative data. It is based on the line chart. 
+                                  The area between axis and line are commonly emphasized with colors, textures and hatchings.
                                 </Card.Text>
                               </Card.Body>    
                             </Card>
@@ -195,8 +195,8 @@ const Cards = ({variableNumber, chartsSetter}) => {
                               <Card.Body>
                                 <Card.Title className="nolinkeffect">Bar Chart</Card.Title>
                                 <Card.Text>
-                                  This is a wider card with supporting text below as a natural lead-in to
-                                  additional content. This content is a little bit longer.
+                                  A bar chart or bar graph is a chart or graph that presents categorical data with
+                                  rectangular bars with heights or lengths proportional to the values that they represent.
                                 </Card.Text>
                               </Card.Body>    
                             </Card>
@@ -209,8 +209,8 @@ const Cards = ({variableNumber, chartsSetter}) => {
                               <Card.Body>
                                 <Card.Title className="nolinkeffect">Scatter Chart</Card.Title>
                                 <Card.Text>
-                                  This is a wider card with supporting text below as a natural lead-in to
-                                  additional content. This content is a little bit longer.
+                                  A scatter chart uses dots to represent values for two different numeric variables.
+                                  The position of each dot on the horizontal axis indicates values for an individual data point.
                                 </Card.Text>
                               </Card.Body>    
                             </Card>
@@ -223,8 +223,8 @@ const Cards = ({variableNumber, chartsSetter}) => {
                               <Card.Body>
                                 <Card.Title className="nolinkeffect">Composed Chart</Card.Title>
                                 <Card.Text>
-                                  This is a wider card with supporting text below as a natural lead-in to
-                                  additional content. This content is a little bit longer.
+                                  A combination chart is a chart that combines two or more chart types in a single chart.
+                                  It displays the data using a number of bars, lines, areas and/or dots, each for its own category.
                                 </Card.Text>
                               </Card.Body>    
                             </Card>

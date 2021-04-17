@@ -1,13 +1,17 @@
 import React from 'react';
 
 const DashSelect = ({modifyParams, param, chartState}) => {
-  if (!chartState.dash){return(null)}
-    return(
+  return(
     <>
-      <input type="number" placeholder="Dash" name="strokeDash" style={{width: '70px', margin: '1px'}} 
-      onChange={e => modifyParams(param.id, 'strokeDash', e.target.value)}/>
+      {
+        chartState.dash ?
+          <input type="number" placeholder="Dash" name="strokeDash" value={param.strokeDash} style={{width: '70px', margin: '1px'}} 
+          onChange={e => modifyParams(param.id, 'strokeDash', e.target.value)}/> 
+          :
+          null
+      }
     </>
-    )
+  )
 }
 
 export default DashSelect;

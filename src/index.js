@@ -45,10 +45,10 @@ const App = () => {
 
   const [rows, setRows] = useState([{
       id: nanoid(),
-      a: '',
-      b: '',
-      c: '',
-      labelName: '',
+      a: '1',
+      b: '1',
+      c: '1',
+      labelName: 'fff',
   }]);
 
   const [params, setParams] = useState(
@@ -84,12 +84,12 @@ const App = () => {
   )
 
   const [chartState, setChartState] = useState({
-    numberOfVariables: 2,
-    dash: false,
-    type: false,
-    width: false,
-    opacity: false,
-    colorChoice: false
+    numberOfVariables: 3,
+    dash: true,
+    type: true,
+    width: true,
+    opacity: true,
+    colorChoice: true
   })
 
   const modifyParams = (id, selectedParam, newValue) => {
@@ -206,7 +206,6 @@ const App = () => {
           <div>
               <PostDetails/>
           </div>
-
         </Route> 
           
         <Route exact path="/one/oneline">
@@ -222,8 +221,8 @@ const App = () => {
                   <YAxis />
                   <Tooltip />
                   <Legend />
-                  <Line strokeWidth={params[0].strokeWidth} name={params[0].legendName}
-                   strokeDasharray={params[0].strokeDash} type={params[0].lineType} dataKey="a" stroke={params[0].color}/>
+                  <Line strokeWidth={params[0].strokeWidth} strokeDasharray={params[0].strokeDash} name={params[0].legendName}
+                    type={params[0].lineType} dataKey="a" stroke={params[0].color}/>
                   </LineChart>
                 </Row>
               </ResponsiveContainer>
@@ -508,8 +507,10 @@ const App = () => {
                 <Tooltip />
                 <Legend />
                 <Bar dataKey="a" fill={params[0].color} fillOpacity={params[0].strokeOpacity} maxBarSize={150} name={params[0].legendName}>
+                  <LabelList dataKey="a" position="center" angle="15" />
                 </Bar>
                 <Bar dataKey="b" fill={params[1].color} fillOpacity={params[1].strokeOpacity} maxBarSize={150} name={params[1].legendName}>
+                  <LabelList dataKey="b" position="center" angle="15" />
                 </Bar>
               </BarChart>
             </Container>
@@ -543,10 +544,13 @@ const App = () => {
                 <Tooltip />
                 <Legend />
                 <Bar dataKey="a" fill={params[0].color} fillOpacity={params[0].strokeOpacity} maxBarSize={150} name={params[0].legendName}>
+                  <LabelList dataKey="a" position="center" angle="15" />
                 </Bar>
                 <Bar dataKey="b" fill={params[1].color} fillOpacity={params[1].strokeOpacity} maxBarSize={150} name={params[1].legendName}>
+                  <LabelList dataKey="b" position="center" angle="15" />
                 </Bar>
                 <Bar dataKey="c" fill={params[2].color} fillOpacity={params[2].strokeOpacity} maxBarSize={150} name={params[2].legendName}>
+                  <LabelList dataKey="c" position="center" angle="15" />
                 </Bar>
               </BarChart>
             </Container>
