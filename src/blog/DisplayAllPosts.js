@@ -1,16 +1,11 @@
 import React, { Component, useState, useEffect, useRef } from "react";
-import PostList from "./PostList"
-import useFetch from './useFetch'
+import PostList from "./PostList" 
 import {connect} from 'react-redux' 
 import {firestoreConnect} from 'react-redux-firebase'
-import {compose} from 'redux'
-import {Redirect} from 'react-router-dom'
-import Post from "./Post";
+import {compose} from 'redux' 
 
 class DisplayAllPosts extends Component {
-  render() { 
-
- // const { error, isPending, data: blogs } = useFetch('http://localhost:8000/blogs')
+  render() {  
   
   const {projects, auth} = this.props;
  // if (!auth.uid) return <Redirect to='/signin' />
@@ -39,13 +34,8 @@ const mapStateToProps = (state) => {
 export default compose(
   connect(mapStateToProps),
   firestoreConnect([
-    {collection: 'projects'}
-  ])
+    {collection: 'projects',
+    orderBy: ["createdAt", "desc"]
+  }])
 )(DisplayAllPosts);
-
-  
-// {blogs && <PostList blogs={blogs} />}
-/* 
- { error && <div>{ error }</div> }
-              { isPending && <div>Loading...</div> }
-*/
+ 

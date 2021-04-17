@@ -55,7 +55,7 @@ footer{
     color: #f4a261;
     text-transform: uppercase;  
     
-  }
+  } 
 
   .glitch {
     position: relative;
@@ -246,16 +246,11 @@ footer{
     padding: 5px;
   }
   .blogPhoto{
-    width: auto;
-    min-height: 11em;
-    background-color: black;
-    background-image: url(https://www.houseofbots.com/images/news/3486/cover.png);
-    background-repeat: no-repeat; 
-    background-size: cover; 
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 100%; 
+    display: block;
+    min-height: 28rem; /* layout hack */
+    background: #fff center center no-repeat;
+    background-size: cover;   
   }
 
   .blog-card {  
@@ -474,12 +469,7 @@ footer{
     padding-left: 20px;
   }
   
-  /* Fake image */
-  .fakeimg {
-    background-color: #aaa;
-    width: 100%;
-    padding: 20px;
-  }
+  
   
   /* Add a card effect for articles */
   .card-post {
@@ -579,8 +569,9 @@ footer{
   color: #f4a261;
   margin-bottom: 10px;
 }
-.blog-details div {
+.blog-details span {
   margin: 20px 0;
+  color: #f4a261;
 }
 .blog-details button {
   background: #f4a261;
@@ -624,3 +615,28 @@ footer{
 }
 
 
+.imgHolder{
+  height:40em;
+  overflow:hidden;
+  position:relative;
+}
+.imgHolder img{
+  width:100%;
+  min-height:40rem;
+  max-width:1500px;
+  left:50%;
+  -webkit-transform: translate(-50%, -10%);
+  -ms-transform: translate(-50%, -10%);
+  transform: translate(-50%, -10%);
+  position:absolute; 
+}
+.center-post-text { 
+    
+  font-size: 48px;
+  letter-spacing: 10px;
+  font-weight: bolder; 
+  color: #f4a261;
+  text-transform: uppercase;  
+  
+} 
+ 

@@ -1,5 +1,4 @@
-import React from 'react'
-import {useParams} from 'react-router-dom'
+import React from 'react' 
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
@@ -11,13 +10,18 @@ const PostDetails = ( props ) => {
  
         return (
         <div className="container">    
-        <Post />       
+        <Post />      
+             
             <div className="blog-preview">
-                <h2>Project title - { project.title }</h2>
+                <div className="imgHolder"> <img  src={project.image} />  </div>  
+                 <h1 className="center-post-text"> {project.title}</h1>    
                 <p> {project.content}</p>             
             
-                <span>author:{project.authorFirstName} {project.authortLastName}  </span>
-                <h2 className="blog-details">date</h2>
+            <div className="blog-details">
+                <span>Created by: {project.authorFirstName} {project.authortLastName}  </span> <br/>
+                <span>Created at: {project.createdAt.toDate().toDateString()}</span>
+            </div>
+                
             </div> 
         </div>
         )
@@ -46,30 +50,4 @@ const PostDetails = ( props ) => {
         firestoreConnect([{
           collection: 'projects'
         }])
-      )(PostDetails);
-
-/*  
-  const { id } = useParams();
-    const { data: blog, error, isPending } = useFetch('http://localhost:8000/blogs/' + id);
-    const history = useHistory();
-
-    const handleClick = () => {
-        fetch('http://localhost:8000/blogs/' + blog.id, {
-          method: 'DELETE'
-        }).then(() => {
-          history.push('/blog');
-        }) 
-      }
-
-       { isPending && <div>Loading...</div> }
-            { error && <div>{ error }</div> }
-            { blog && (
-                <article>
-                <h2>{ blog.title }</h2>
-                <p>Written by { blog.author }</p>
-                <div>{ blog.body }</div>
-                <button onClick={handleClick}>delete</button>
-                </article>
-            )}
-
-*/
+      )(PostDetails); 
