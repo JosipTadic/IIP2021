@@ -615,6 +615,7 @@ footer{
 }
 
 
+
 .imgHolder{
   height:40em;
   overflow:hidden;
@@ -640,3 +641,9 @@ footer{
   
 } 
  
+.margin10{
+  margin: 110px 10px 10px 10px;
+}
+.nolinkeffect{
+  text-decoration: none;
+}
