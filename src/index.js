@@ -5,8 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import Home from './components/Home';
-import About from './components/About';
+import Home from './components/Home'; 
 import Blog from './components/Blog';
 import CreateNewPost from './blog/CreateNewPost';
 import Container from 'react-bootstrap/Container';
@@ -167,12 +166,7 @@ const App = () => {
           <div>
             <Home/> 
           </div>
-        </Route>
-        <Route exact path="/about">
-          <div>
-              <About/>
-          </div>
-        </Route>
+        </Route> 
         <Route exact path="/blog">
           <div>
               <Blog/>
