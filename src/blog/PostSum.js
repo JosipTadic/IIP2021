@@ -14,8 +14,8 @@ const ProjectSum = ({project}) => {
 
 
         <div class="description">
-          <h1>{project.title} </h1>
-          <p className="author">Author: {project.authorFirstName} {project.authortLastName}</p> 
+          <h1 style={{textDecoration:"underline overline",textDecorationColor:"white"}}>{project.title} </h1>
+          <p className="author" style={{textDecoration:"underline overline", textDecorationColor:"white" }}>Author: {project.authorFirstName} {project.authortLastName}</p> 
         </div>
       </div>
  

@@ -330,6 +330,7 @@ footer{
     margin-right: 10px; 
 }
 .blog-card .details .date:before {
+     
     font-family: FontAwesome;
     margin-right: 10px; 
 }
@@ -348,14 +349,20 @@ footer{
     background: #fff;
     position: relative;
     z-index: 1;
+    text-decoration: none;
+}
+.date{
+  font-size: 18px;
 }
 .blog-card .description h1, .blog-card .description h2 {
     font-family: Poppins, sans-serif;
+    text-decoration: none;
 }
 .blog-card .description h1 {
     line-height: 1;
     margin: 0;
     font-size: 1.7rem;
+    text-decoration: none;
 }
 .blog-card .description h2 {
     font-size: 1rem;
@@ -363,6 +370,7 @@ footer{
     text-transform: uppercase;
     color: #a2a2a2;
     margin-top: 5px;
+    text-decoration: none;
 }
  
 .blog-card .description .read-more {
@@ -373,11 +381,13 @@ footer{
     text-transform: uppercase;
     border:none;
     background-color: transparent;
+    text-decoration: none;
 }
 
 .blog-card .description .read-more:hover:after {
     margin-left: 5px;
     opacity: 1;
+    text-decoration: none;
 }
 .blog-card p {
     position: relative;
@@ -409,6 +419,7 @@ footer{
    }
     .blog-card .description {
         flex-basis: 60%;
+        text-decoration: none;
    }
     .blog-card .description:before {
         transform: skewX(-3deg);
@@ -420,6 +431,7 @@ footer{
         top: 0;
         bottom: 0;
         z-index: -1;
+        text-decoration: none;
    }
     .blog-card.alt {
         flex-direction: row-reverse;
@@ -428,10 +440,17 @@ footer{
         left: inherit;
         right: -10px;
         transform: skew(3deg);
+        text-decoration: none;
    }
     .blog-card.alt .details {
         padding-left: 25px;
    }
+}
+.description{
+  text-decoration: none!important;
+
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
 }
 
 .card-action{
@@ -606,9 +625,11 @@ footer{
   padding: 6px 10px;
   margin: 10px 0;
   border: 1px solid #ddd;
-  box-sizing: border-box;
-  display: block;
+  box-sizing: border-box; 
+  overflow-y: scroll;
+  height: 100px;
 }
+ 
 .create button {
   background: #f4a261;
   color: #fff;
