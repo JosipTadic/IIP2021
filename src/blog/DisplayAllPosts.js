@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect, useRef } from "react";
+import React, { Component} from "react";
 import PostList from "./PostList" 
 import {connect} from 'react-redux' 
 import {firestoreConnect} from 'react-redux-firebase'
