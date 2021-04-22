@@ -1,0 +1,9 @@
+#margin10{
+    margin: 80px 10px 10px 10px;
+}
+#nolinkeffect{
+  text-decoration: none;
+}
+#fixedheight{
+    height: 3rem;
+}
