@@ -14,13 +14,10 @@ import './index.css';
 import { ResponsiveContainer, LineChart, Line, Area, AreaChart, CartesianGrid, LabelList,
    ScatterChart, Scatter, ComposedChart, BarChart, XAxis, YAxis, Tooltip, Legend, Bar } from 'recharts';
 import { ButtonGroup } from 'react-bootstrap';
-import { useRechartToPng } from "recharts-to-png";
-//import FileSaver from "file-saver";
 import {BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
 import TableComp from './components/TableComp';
 import ParameterCustomization from './components/ParameterCustomization';
 import ButtonComp from './components/ButtonComp';
-
 import PostDetails from './blog/PostDetails'; 
 import SignIn from './auth/SignIn';
 import SignUp from './auth/SignUp';
@@ -31,10 +28,8 @@ import thunk from 'redux-thunk'
 import {reduxFirestore, getFirestore} from 'redux-firestore'
 import {reactReduxFirebase, getFirebase} from 'react-redux-firebase'
 import fbConfig from './config/fbConfig'
-// npm i -D typescript @types/node @types/react @types/react-do  
 import domtoimage from 'dom-to-image';
 import fileDownload from "js-file-download"; 
-import {Redirect} from 'react-router-dom';
 import Cards from './components/Cards';
 import SubNavBar from './components/SubNavBar';
  

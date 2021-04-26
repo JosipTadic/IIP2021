@@ -5,7 +5,7 @@ import { compose } from 'redux'
 import {withRouter} from 'react-router-dom' 
 import Post from './Post'
 const PostDetails = ( props ) => { 
-    const { project , auth} = props;  
+    const { project } = props;  
     if(project) {
  
         return (
@@ -13,7 +13,7 @@ const PostDetails = ( props ) => {
         <Post />      
              
             <div className="blog-preview">
-                <div className="imgHolder"> <img  src={project.image} />  </div>  
+                <div className="imgHolder"> <img  src={project.image} alt=""/>  </div>  
                  <h1 className="center-post-text"> {project.title}</h1>    
                 <p> {project.content}</p>             
             
