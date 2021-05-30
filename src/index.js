@@ -27,6 +27,7 @@ import domtoimage from 'dom-to-image';
 import fileDownload from "js-file-download"; 
 import Cards from './components/Cards';
 import SubNavBar from './components/SubNavBar';
+import UploadCsv from './components/UploadCsv';
  
 
 const App = () => {
@@ -227,7 +228,9 @@ const App = () => {
                <Col md={{ offset: 0 }}><ButtonComp variant={"danger"} text='Delete Table'  onClick={deleteAll} /></Col>
               </ButtonGroup>
             </Row>
+            <UploadCsv setRows={setRows}/>
           </Container>
+          
         </Route>
 
         <Route exact path="/two/line">
@@ -274,6 +277,7 @@ const App = () => {
               </ButtonGroup>
             </Row>
           </Container>
+          <UploadCsv setRows={setRows}/>
         </Route>
 
         <Route exact path="/three/threeline">
@@ -322,6 +326,7 @@ const App = () => {
               </ButtonGroup>
             </Row>
           </Container>
+          <UploadCsv setRows={setRows}/>
         </Route>
 
         <Route exact path="/one/onearea">
@@ -368,6 +373,7 @@ const App = () => {
               </ButtonGroup>
             </Row>
           </Container>
+          <UploadCsv setRows={setRows}/>
         </Route>
 
         <Route exact path="/two/area">
@@ -420,6 +426,7 @@ const App = () => {
               </ButtonGroup>
             </Row>
           </Container>
+          <UploadCsv setRows={setRows}/>
         </Route>
 
         <Route exact path="/three/threearea">
@@ -478,6 +485,7 @@ const App = () => {
               </ButtonGroup>
             </Row>
           </Container>
+          <UploadCsv setRows={setRows}/>
         </Route>
         
         <Route exact path="/one/onebar">
@@ -519,6 +527,7 @@ const App = () => {
               </ButtonGroup>
             </Row>
           </Container>
+          <UploadCsv setRows={setRows}/>
         </Route>
 
         <Route exact path="/two/bar">
@@ -563,6 +572,7 @@ const App = () => {
               </ButtonGroup>
             </Row>
           </Container>
+          <UploadCsv setRows={setRows}/>
         </Route>
         
         <Route exact path="/three/threebar">
@@ -610,6 +620,7 @@ const App = () => {
               </ButtonGroup>
             </Row>
           </Container>
+          <UploadCsv setRows={setRows}/>
         </Route>
 
         <Route exact path="/two/composed">
@@ -658,6 +669,7 @@ const App = () => {
               </ButtonGroup>
             </Row>
           </Container>
+          <UploadCsv setRows={setRows}/>
         </Route>
 
         <Route exact path="/three/composed">
@@ -708,6 +720,7 @@ const App = () => {
               </ButtonGroup>
             </Row>
           </Container>
+          <UploadCsv setRows={setRows}/>
         </Route>
 
         <Route exact path="/three/composed2">
@@ -758,6 +771,7 @@ const App = () => {
               </ButtonGroup>
             </Row>
           </Container>
+          <UploadCsv setRows={setRows}/>
         </Route>
 
         <Route exact path="/three/composed3">
@@ -808,6 +822,7 @@ const App = () => {
               </ButtonGroup>
             </Row>
           </Container>
+          <UploadCsv setRows={setRows}/>
         </Route>
 
         <Route exact path="/one/onescatter">
@@ -848,6 +863,7 @@ const App = () => {
               </ButtonGroup>
             </Row>
           </Container>
+          <UploadCsv setRows={setRows}/>
         </Route>
           
         <Route exact path="/two/scatter">
@@ -890,6 +906,7 @@ const App = () => {
               </ButtonGroup>
             </Row>
           </Container>
+          <UploadCsv setRows={setRows}/>
         </Route>
         <Route exact path="/three/threescatter">
           <SubNavBar variableNumber={3} chartsSetter={chartsSetter} />
@@ -933,6 +950,7 @@ const App = () => {
               </ButtonGroup>
             </Row>
           </Container>
+          <UploadCsv setRows={setRows}/>
         </Route>
       </Switch>
     </Router>
