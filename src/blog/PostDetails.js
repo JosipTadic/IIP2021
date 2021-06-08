@@ -16,11 +16,7 @@ const PostDetails = ( props ) => {
 
                 <div class="blogPhoto" dangerouslySetInnerHTML={{ __html: project.image }}/> <br/>
                  <h1 className="center-post-text"> {project.title}</h1>    <br/>
-                 <div dangerouslySetInnerHTML={{ __html: project.content }} />         
-
-                <div className="imgHolder"> <img  src={project.image} alt=""/>  </div>  
-                 <h1 className="center-post-text"> {project.title}</h1>    
-                <p> {project.content}</p>             
+                 <div dangerouslySetInnerHTML={{ __html: project.content }} />            
 
             
             <div className="blog-details">

@@ -8,8 +8,6 @@ const ProjectSum = ({project}) => {
 
           <div class="blogPhoto" dangerouslySetInnerHTML={{ __html: project.image }} /> 
 
-          <div > <img class="blogPhoto" src={project.image} alt=""/> </div>
-
           <ul class="details">             
             <li class="date">{project.createdAt.toDate().toDateString()}</li> 
             <li class="date">{project.description}</li>            
