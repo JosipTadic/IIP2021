@@ -5,7 +5,7 @@ const ProjectSum = ({project}) => {
 
       <div class="blog-card">
         <div class="meta">
-          <div > <img class="blogPhoto" src={project.image} /> </div>
+          <div class="blogPhoto" dangerouslySetInnerHTML={{ __html: project.image }} /> 
           <ul class="details">             
             <li class="date">{project.createdAt.toDate().toDateString()}</li> 
             <li class="date">{project.description}</li>            

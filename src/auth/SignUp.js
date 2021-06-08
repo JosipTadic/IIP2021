@@ -25,28 +25,34 @@ class SignUp extends Component {
         const {  auth} = this.props;
         if (auth.uid) return <Redirect to='/' />
         return (
-            <div className="container"> 
-                <form className="create" onSubmit={this.handleSubmit} >
-                    <h5>Sign Up</h5>
-                    <div>
-                        <label htmlFor="email"> Email</label>
-                        <input type="email" id="email" onChange={this.handleChange} />
-                    </div>
-                    <div>
-                        <label htmlFor="password"> password</label>
-                        <input type="password" id="password" onChange={this.handleChange} />
-                    </div>
-                    <div>
-                        <label htmlFor="firstName"> First Name</label>
-                        <input type="text" id="firstName" onChange={this.handleChange} />
-                    </div>
-                    <div>
-                        <label htmlFor="lastName"> Last Name</label>
-                        <input type="text" id="lastName" onChange={this.handleChange} />
-                    </div>
-                    <div> <button> Login </button></div>
-                </form>
-            </div>
+            
+
+        <div className="right">
+        <div className="content">
+            <h2>Sign Up</h2>
+            <form id="form-login" method="post" onSubmit={this.handleSubmit}>
+                <div className="form-element form-stack">
+                    <label for="username-login" className="form-label">Email</label>
+                    <input type="email" id="email" onChange={this.handleChange}/>
+                </div>
+                <div className="form-element form-stack">
+                    <label for="password-login" className="form-label">Password</label>
+                    <input type="password" id="password" onChange={this.handleChange}/>
+                </div>
+                <div className="form-element form-stack">
+                    <label for="firstName-login" className="form-label">First Name</label>
+                    <input type="text" id="firstName" onChange={this.handleChange} />
+                </div>
+                <div className="form-element form-stack">
+                    <label for="lastName-login" className="form-label">Last Name</label>
+                    <input type="text" id="lastName" onChange={this.handleChange} />
+                </div>
+                <div className="form-element form-submit">
+                    <button id="logIn" className="login" type="submit" name="login">Sign up</button> 
+                </div>
+            </form>
+        </div> 
+        </div> 
         )
     }
 }

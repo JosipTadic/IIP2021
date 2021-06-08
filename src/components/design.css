@@ -249,7 +249,7 @@ p{
   height: 100%;
   padding: 5px;
 }
-.blogPhoto{
+.blogPhoto img{
   width: 100%; 
   display: block;
   min-height: 28rem; /* layout hack */
@@ -605,38 +605,82 @@ border-radius: 8px;
 cursor: pointer;
 }
 
+.ql-editor {
+  min-height: 300px;
+}
 
 /* create new blog form */
-.create { 
-max-width: 600px;
-margin: 15px auto; 
+.right {
+  width: 50%;
+  margin: auto;
+  padding: 10px;
 }
-.create label {
-text-align: left;
-display: block;
+.right label {
+  color: black;
 }
-.create h2 {
-font-size: 20px;
-color: #f4a261;
-margin-bottom: 30px;
+.right input {
+  border-bottom: 1px solid black;
 }
-.create input, .create textarea, .create select {
-width: 100%;
-padding: 6px 10px;
-margin: 10px 0;
-border: 1px solid #ddd;
-box-sizing: border-box; 
-overflow-y: scroll;
-height: 100px;
+.right input:focus, .right input:active {
+  border-color: black;
+}
+.right input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px #f4a261 inset;
+  -webkit-text-fill-color: black;
 }
 
-.create button {
-background: #f4a261;
-color: #fff;
-border: 0;
-padding: 8px;
-border-radius: 8px;
-cursor: pointer;
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100%;
+  width: 80%;
+  margin: 0 auto;
+  position: relative;
+}
+.content input {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px solid black ;
+  outline: 0;
+  font-size: 1em;
+  padding: 8px 1px;
+  margin-top: 0.1em;
+}
+
+.content h2 {
+  font-weight: 300;
+  font-size: 2.6em;
+  margin: 0.2em 0 0.1em;
+}
+
+.right .content h2 {
+  color: #f4a261;
+}
+.form-element {
+  margin: 1.6em 0;
+}
+.form-element.form-submit {
+  margin: 1.6em 0 0;
+}
+.form-stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.login{
+  background: #f4a261;
+  padding: 0.8em 1.2em;
+  margin: 0 10px 0 0;
+  width: auto;
+  font-weight: 600;
+  text-transform:  uppercase;
+  font-size: 1.1em;
+  color: #fff;
+  line-height: 1em;
+  letter-spacing: 0.6px;
+  border-radius: 3px;
+  border: #f4a261;
 }
 .imgHolder{
 height:40em;
@@ -654,9 +698,9 @@ transform: translate(-50%, -10%);
 position:absolute; 
 }
 .center-post-text {   
-font-size: 48px;
-letter-spacing: 10px;
-font-weight: bolder; 
-color: #f4a261;
+font-size: 56px;
+letter-spacing: 6px;
+color: #8f572a;
 text-transform: uppercase;  
+    text-align: center;
 }
