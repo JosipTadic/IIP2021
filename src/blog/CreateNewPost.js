@@ -1,4 +1,5 @@
-import React,{ Component } from "react"; 
+
+import React,{ Component } from "react";  
 import Post from './Post'
 import {connect} from 'react-redux'
 import {createPost} from '../store/actions/postActions.js'

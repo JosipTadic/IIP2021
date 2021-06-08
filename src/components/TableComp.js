@@ -12,27 +12,10 @@ const TableComp = ({rows, deleteRow, modifyRow, chartState}) => {
     switch(chartState.numberOfVariables) {
       case 1:
         return(
-          <Table striped bordered hover size="sm">
-            <tbody>
-              <tr>
-                <th>1st Value</th>
-                <th>Name</th>
-                <th className="table-icons"></th>
-              </tr>{
-                rows.map(row => <TableRow key={row.id} deleteRow={() => deleteRow(row.id)} chartState={chartState}
-                modifyRow={(axis, newValue) => modifyRow(row.id, axis, newValue)} row={row}/>)
-              }
-            </tbody>
-          </Table>
-        )
-        case 3:
-          return(
             <Table striped bordered hover size="sm">
               <tbody>
                 <tr>
                   <th>1st Value</th>
-                  <th>2nd Value</th>
-                  <th>3rd Value</th>
                   <th>Name</th>
                   <th className="table-icons"></th>
                 </tr>{
@@ -41,22 +24,39 @@ const TableComp = ({rows, deleteRow, modifyRow, chartState}) => {
                 }
               </tbody>
             </Table>
+        )
+        case 3:
+          return(
+              <Table striped bordered hover size="sm">
+                <tbody>
+                  <tr>
+                    <th>1st Value</th>
+                    <th>2nd Value</th>
+                    <th>3rd Value</th>
+                    <th>Name</th>
+                    <th className="table-icons"></th>
+                  </tr>{
+                    rows.map(row => <TableRow key={row.id} deleteRow={() => deleteRow(row.id)} chartState={chartState}
+                    modifyRow={(axis, newValue) => modifyRow(row.id, axis, newValue)} row={row}/>)
+                  }
+                </tbody>
+              </Table>
           )
       default:
         return(
-          <Table striped bordered hover size="sm">
-            <tbody>
-              <tr>
-                <th>1st Value</th>
-                <th>2nd Value</th>
-                <th>Name</th>
-                <th className="table-icons"></th>
-              </tr>{
-                rows.map(row => <TableRow key={row.id} deleteRow={() => deleteRow(row.id)} chartState={chartState}
-                 modifyRow={(axis, newValue) => modifyRow(row.id, axis, newValue)} row={row}/>)
-              }
-            </tbody>
-          </Table>
+            <Table striped bordered hover size="sm">
+              <tbody>
+                <tr>
+                  <th>1st Value</th>
+                  <th>2nd Value</th>
+                  <th>Name</th>
+                  <th className="table-icons"></th>
+                </tr>{
+                  rows.map(row => <TableRow key={row.id} deleteRow={() => deleteRow(row.id)} chartState={chartState}
+                   modifyRow={(axis, newValue) => modifyRow(row.id, axis, newValue)} row={row}/>)
+                }
+              </tbody>
+            </Table>
         )
     }
 }

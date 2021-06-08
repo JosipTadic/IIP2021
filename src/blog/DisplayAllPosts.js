@@ -7,7 +7,7 @@ import {compose} from 'redux'
 class DisplayAllPosts extends Component {
   render() {  
   
-  const {projects, auth} = this.props;
+  const {projects} = this.props;
  // if (!auth.uid) return <Redirect to='/signin' />
     return(
       <div className="home">

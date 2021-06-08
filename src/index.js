@@ -1,42 +1,33 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
 import Home from './components/Home'; 
 import Blog from './components/Blog';
 import CreateNewPost from './blog/CreateNewPost';
-import Container from 'react-bootstrap/Container';
 import {nanoid} from 'nanoid';
 import './index.css';
 import { ResponsiveContainer, LineChart, Line, Area, AreaChart, CartesianGrid, LabelList,
    ScatterChart, Scatter, ComposedChart, BarChart, XAxis, YAxis, Tooltip, Legend, Bar } from 'recharts';
-import { ButtonGroup } from 'react-bootstrap';
-import { useRechartToPng } from "recharts-to-png";
-//import FileSaver from "file-saver";
+import {ButtonGroup, Col, Row, Nav, Navbar, Container} from 'react-bootstrap';
 import {BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
 import TableComp from './components/TableComp';
 import ParameterCustomization from './components/ParameterCustomization';
 import ButtonComp from './components/ButtonComp';
-
 import PostDetails from './blog/PostDetails'; 
 import SignIn from './auth/SignIn';
 import SignUp from './auth/SignUp';
 import {createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from './store/reducers/rootReducer';
 import {Provider} from 'react-redux';
-import thunk from 'redux-thunk'
-import {reduxFirestore, getFirestore} from 'redux-firestore'
-import {reactReduxFirebase, getFirebase} from 'react-redux-firebase'
-import fbConfig from './config/fbConfig'
-// npm i -D typescript @types/node @types/react @types/react-do  
+import thunk from 'redux-thunk';
+import {reduxFirestore, getFirestore} from 'redux-firestore';
+import {reactReduxFirebase, getFirebase} from 'react-redux-firebase';
+import fbConfig from './config/fbConfig';
 import domtoimage from 'dom-to-image';
 import fileDownload from "js-file-download"; 
-import {Redirect} from 'react-router-dom';
 import Cards from './components/Cards';
 import SubNavBar from './components/SubNavBar';
+import UploadCsv from './components/UploadCsv';
  
 
 const App = () => {
@@ -45,9 +36,9 @@ const App = () => {
   const [rows, setRows] = useState([{
       id: nanoid(),
       a: '1',
-      b: '1',
-      c: '1',
-      labelName: 'fff',
+      b: '2',
+      c: '1.55',
+      labelName: 'first name',
   }]);
 
   const [params, setParams] = useState(
@@ -125,12 +116,6 @@ const App = () => {
   const deleteAll = () => {
     setRows([]);
   }
-
- //const [png, ref] = useRechartToPng();
-
-   /*const handleDownload = React.useCallback(async () => {
-    FileSaver.saveAs(png, "myChart.png");
-  }, [png]);*/
 
   var handleSaveClick = (idOfChart) => {
     domtoimage.toBlob(document.getElementById(idOfChart))
@@ -222,12 +207,19 @@ const App = () => {
               </ResponsiveContainer>
             </Container>
           </div>
-          <div>
-            <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>
-          </div>              
-          <Container className="fixed scroll">
-            <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
-          </Container>
+          <Container fluid>
+            <Row>
+              <Col>
+              <h4 style={{margin: '0px 20px 15px 30px'}}>Enter data in table:</h4>       
+                <Container className="fixed scroll">
+                  <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
+                </Container>
+              </Col>
+              <Col md="auto">
+                <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>  
+              </Col>
+            </Row>
+          </Container> 
           <Container className="buttonContainer">
             <Row>
               <ButtonGroup>
@@ -236,7 +228,9 @@ const App = () => {
                <Col md={{ offset: 0 }}><ButtonComp variant={"danger"} text='Delete Table'  onClick={deleteAll} /></Col>
               </ButtonGroup>
             </Row>
-          </Container>         
+            <UploadCsv setRows={setRows}/>
+          </Container>
+          
         </Route>
 
         <Route exact path="/two/line">
@@ -261,21 +255,29 @@ const App = () => {
               </ResponsiveContainer>
             </Container>
           </div>
-          <div>
-            <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>
-          </div>
-          <Container className="fixed scroll">
-            <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
+          <Container fluid>
+            <Row>
+              <Col>
+              <h4 style={{margin: '0px 20px 15px 30px'}}>Enter data in table:</h4>       
+                <Container className="fixed scroll">
+                  <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
+                </Container>
+              </Col>
+              <Col md="auto">
+                <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>  
+              </Col>
+            </Row>
           </Container>
           <Container className="buttonContainer">
             <Row>
               <ButtonGroup>
               <Col md={{ offset: 2 }}><ButtonComp variant={"primary"} text='Add new row' onClick={increaseRows}/></Col>
-              <Col md={{ offset: 0 }}><ButtonComp variant={"primary"} text='Download Chart 1' onClick={() => handleSaveClick("blob2")}/></Col>
+              <Col md={{ offset: 0 }}><ButtonComp variant={"primary"} text='Download Chart' onClick={() => handleSaveClick("blob2")}/></Col>
               <Col md={{ offset: 0 }}><ButtonComp variant={"danger"} text='Delete Table'  onClick={deleteAll} /></Col>
               </ButtonGroup>
             </Row>
           </Container>
+          <UploadCsv setRows={setRows}/>
         </Route>
 
         <Route exact path="/three/threeline">
@@ -302,11 +304,18 @@ const App = () => {
               </ResponsiveContainer>
             </Container>
           </div>
-          <div>
-            <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>
-          </div>
-          <Container className="fixed scroll">
-            <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
+          <Container fluid>
+            <Row>
+              <Col>
+              <h4 style={{margin: '0px 20px 15px 30px'}}>Enter data in table:</h4>       
+                <Container className="fixed scroll">
+                  <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
+                </Container>
+              </Col>
+              <Col md="auto">
+                <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>  
+              </Col>
+            </Row>
           </Container>
           <Container  className="buttonContainer">
             <Row>
@@ -317,6 +326,7 @@ const App = () => {
               </ButtonGroup>
             </Row>
           </Container>
+          <UploadCsv setRows={setRows}/>
         </Route>
 
         <Route exact path="/one/onearea">
@@ -341,11 +351,18 @@ const App = () => {
               </AreaChart>
             </Container>
           </div>
-          <div>
-            <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>
-          </div>
-          <Container className="fixed scroll">
-            <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
+          <Container fluid>
+            <Row>
+              <Col>
+              <h4 style={{margin: '0px 20px 15px 30px'}}>Enter data in table:</h4>       
+                <Container className="fixed scroll">
+                  <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
+                </Container>
+              </Col>
+              <Col md="auto">
+                <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>  
+              </Col>
+            </Row>
           </Container>
           <Container  className="buttonContainer">
             <Row>
@@ -356,6 +373,7 @@ const App = () => {
               </ButtonGroup>
             </Row>
           </Container>
+          <UploadCsv setRows={setRows}/>
         </Route>
 
         <Route exact path="/two/area">
@@ -386,11 +404,18 @@ const App = () => {
               </AreaChart>
             </Container>
           </div>
-          <div>
-            <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>
-          </div>
-          <Container className="fixed scroll">
-            <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
+          <Container fluid>
+            <Row>
+              <Col>
+              <h4 style={{margin: '0px 20px 15px 30px'}}>Enter data in table:</h4>       
+                <Container className="fixed scroll">
+                  <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
+                </Container>
+              </Col>
+              <Col md="auto">
+                <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>  
+              </Col>
+            </Row>
           </Container>
           <Container className="buttonContainer">
             <Row>
@@ -401,6 +426,7 @@ const App = () => {
               </ButtonGroup>
             </Row>
           </Container>
+          <UploadCsv setRows={setRows}/>
         </Route>
 
         <Route exact path="/three/threearea">
@@ -437,12 +463,18 @@ const App = () => {
               </AreaChart>
             </Container>
           </div>
-          <div>
-            <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>
-          </div>
-        
-          <Container className="fixed scroll">
-            <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
+          <Container fluid>
+            <Row>
+              <Col>
+              <h4 style={{margin: '0px 20px 15px 30px'}}>Enter data in table:</h4>       
+                <Container className="fixed scroll">
+                  <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
+                </Container>
+              </Col>
+              <Col md="auto">
+                <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>  
+              </Col>
+            </Row>
           </Container>
           <Container className="buttonContainer">
             <Row>
@@ -453,6 +485,7 @@ const App = () => {
               </ButtonGroup>
             </Row>
           </Container>
+          <UploadCsv setRows={setRows}/>
         </Route>
         
         <Route exact path="/one/onebar">
@@ -472,11 +505,18 @@ const App = () => {
               </BarChart>
             </Container>
           </div>
-          <div>
-            <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>
-          </div>
-          <Container className="fixed scroll">
-            <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
+          <Container fluid>
+            <Row>
+              <Col>
+              <h4 style={{margin: '0px 20px 15px 30px'}}>Enter data in table:</h4>       
+                <Container className="fixed scroll">
+                  <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
+                </Container>
+              </Col>
+              <Col md="auto">
+                <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>  
+              </Col>
+            </Row>
           </Container>
           <Container className="buttonContainer">
             <Row>
@@ -487,6 +527,7 @@ const App = () => {
               </ButtonGroup>
             </Row>
           </Container>
+          <UploadCsv setRows={setRows}/>
         </Route>
 
         <Route exact path="/two/bar">
@@ -509,11 +550,18 @@ const App = () => {
               </BarChart>
             </Container>
           </div>
-          <div>
-            <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>
-          </div>
-          <Container className="fixed scroll">
-            <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
+          <Container fluid>
+            <Row>
+              <Col>
+              <h4 style={{margin: '0px 20px 15px 30px'}}>Enter data in table:</h4>       
+                <Container className="fixed scroll">
+                  <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
+                </Container>
+              </Col>
+              <Col md="auto">
+                <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>  
+              </Col>
+            </Row>
           </Container>
           <Container  className="buttonContainer">
             <Row>
@@ -524,6 +572,7 @@ const App = () => {
               </ButtonGroup>
             </Row>
           </Container>
+          <UploadCsv setRows={setRows}/>
         </Route>
         
         <Route exact path="/three/threebar">
@@ -549,11 +598,18 @@ const App = () => {
               </BarChart>
             </Container>
           </div>
-          <div>
-            <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>
-          </div>
-          <Container className="fixed scroll">
-            <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
+          <Container fluid>
+            <Row>
+              <Col>
+              <h4 style={{margin: '0px 20px 15px 30px'}}>Enter data in table:</h4>       
+                <Container className="fixed scroll">
+                  <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
+                </Container>
+              </Col>
+              <Col md="auto">
+                <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>  
+              </Col>
+            </Row>
           </Container>
           <Container  className="buttonContainer">
             <Row>
@@ -564,6 +620,7 @@ const App = () => {
               </ButtonGroup>
             </Row>
           </Container>
+          <UploadCsv setRows={setRows}/>
         </Route>
 
         <Route exact path="/two/composed">
@@ -590,11 +647,18 @@ const App = () => {
               </ComposedChart>
             </Container>
           </div>
-          <div>
-            <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>
-          </div>
-          <Container className="fixed scroll">
-            <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
+          <Container fluid>
+            <Row>
+              <Col>
+              <h4 style={{margin: '0px 20px 15px 30px'}}>Enter data in table:</h4>       
+                <Container className="fixed scroll">
+                  <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
+                </Container>
+              </Col>
+              <Col md="auto">
+                <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>  
+              </Col>
+            </Row>
           </Container>
           <Container  className="buttonContainer">
             <Row>
@@ -605,6 +669,7 @@ const App = () => {
               </ButtonGroup>
             </Row>
           </Container>
+          <UploadCsv setRows={setRows}/>
         </Route>
 
         <Route exact path="/three/composed">
@@ -633,11 +698,18 @@ const App = () => {
               </ComposedChart>
             </Container>
           </div>
-          <div>
-            <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>
-          </div>        
-          <Container className="fixed scroll">
-            <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
+          <Container fluid>
+            <Row>
+              <Col>
+              <h4 style={{margin: '0px 20px 15px 30px'}}>Enter data in table:</h4>       
+                <Container className="fixed scroll">
+                  <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
+                </Container>
+              </Col>
+              <Col md="auto">
+                <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>  
+              </Col>
+            </Row>
           </Container>
           <Container className="buttonContainer">
             <Row>
@@ -648,6 +720,7 @@ const App = () => {
               </ButtonGroup>
             </Row>
           </Container>
+          <UploadCsv setRows={setRows}/>
         </Route>
 
         <Route exact path="/three/composed2">
@@ -676,11 +749,18 @@ const App = () => {
               </ComposedChart>
             </Container>
           </div>
-          <div>
-            <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>
-          </div>        
-          <Container className="fixed scroll">
-            <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
+          <Container fluid>
+            <Row>
+              <Col>
+              <h4 style={{margin: '0px 20px 15px 30px'}}>Enter data in table:</h4>       
+                <Container className="fixed scroll">
+                  <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
+                </Container>
+              </Col>
+              <Col md="auto">
+                <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>  
+              </Col>
+            </Row>
           </Container>
           <Container className="buttonContainer">
             <Row>
@@ -691,6 +771,7 @@ const App = () => {
               </ButtonGroup>
             </Row>
           </Container>
+          <UploadCsv setRows={setRows}/>
         </Route>
 
         <Route exact path="/three/composed3">
@@ -719,11 +800,18 @@ const App = () => {
               </ComposedChart>
             </Container>
           </div>
-          <div>
-            <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>
-          </div>      
-          <Container className="fixed scroll">
-            <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
+          <Container fluid>
+            <Row>
+              <Col>
+              <h4 style={{margin: '0px 20px 15px 30px'}}>Enter data in table:</h4>       
+                <Container className="fixed scroll">
+                  <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
+                </Container>
+              </Col>
+              <Col md="auto">
+                <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>  
+              </Col>
+            </Row>
           </Container>
           <Container className="buttonContainer">
             <Row>
@@ -734,6 +822,7 @@ const App = () => {
               </ButtonGroup>
             </Row>
           </Container>
+          <UploadCsv setRows={setRows}/>
         </Route>
 
         <Route exact path="/one/onescatter">
@@ -752,11 +841,18 @@ const App = () => {
               </ScatterChart>
             </Container>
           </div>
-          <div>
-            <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>
-          </div>
-          <Container className="fixed scroll">
-            <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
+          <Container fluid>
+            <Row>
+              <Col>
+              <h4 style={{margin: '0px 20px 15px 30px'}}>Enter data in table:</h4>       
+                <Container className="fixed scroll">
+                  <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
+                </Container>
+              </Col>
+              <Col md="auto">
+                <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>  
+              </Col>
+            </Row>
           </Container>
           <Container className="buttonContainer">
             <Row>
@@ -767,6 +863,7 @@ const App = () => {
               </ButtonGroup>
             </Row>
           </Container>
+          <UploadCsv setRows={setRows}/>
         </Route>
           
         <Route exact path="/two/scatter">
@@ -787,11 +884,18 @@ const App = () => {
               </ScatterChart>
             </Container>
           </div>
-          <div>
-            <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>
-          </div>
-          <Container className="fixed scroll">
-            <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
+          <Container fluid>
+            <Row>
+              <Col>
+              <h4 style={{margin: '0px 20px 15px 30px'}}>Enter data in table:</h4>       
+                <Container className="fixed scroll">
+                  <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
+                </Container>
+              </Col>
+              <Col md="auto">
+                <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>  
+              </Col>
+            </Row>
           </Container>
           <Container className="buttonContainer">
             <Row>
@@ -802,6 +906,7 @@ const App = () => {
               </ButtonGroup>
             </Row>
           </Container>
+          <UploadCsv setRows={setRows}/>
         </Route>
         <Route exact path="/three/threescatter">
           <SubNavBar variableNumber={3} chartsSetter={chartsSetter} />
@@ -823,11 +928,18 @@ const App = () => {
               </ScatterChart>
             </Container>
           </div>
-          <div>
-            <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>
-          </div>
-          <Container className="fixed scroll">
-            <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
+          <Container fluid>
+            <Row>
+              <Col>
+              <h4 style={{margin: '0px 20px 15px 30px'}}>Enter data in table:</h4>       
+                <Container className="fixed scroll">
+                  <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
+                </Container>
+              </Col>
+              <Col md="auto">
+                <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>  
+              </Col>
+            </Row>
           </Container>
           <Container className="buttonContainer">
             <Row>
@@ -838,6 +950,7 @@ const App = () => {
               </ButtonGroup>
             </Row>
           </Container>
+          <UploadCsv setRows={setRows}/>
         </Route>
       </Switch>
     </Router>
@@ -859,106 +972,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 )
-
-/* const DashSelect = ({modifyParams, param}) => {
-return(
-<>
-  <input type="number" placeholder="Dash" name="strokeDash" onChange={e => modifyParams(param.id, 'strokeDash', e.target.value)}/>
-  <select onChange={e => modifyParams(param.id, 'strokeLinecap', e.target.value)}>
-            <option value="butt">Butt</option>
-            <option value="round">Round</option>
-            <option value="square">Square</option>
-        </select>
-  <input type="number" placeholder="Opacity" name="stroke_Opacity" onChange={e => modifyParams(param.id, 'stroke_Opacity', e.target.value)}/>
-  <input type="number" placeholder="Width" name="strokeWidth" onChange={e => modifyParams(param.id, 'strokeWidth', e.target.value)}/>
-</>
-<Line strokeWidth={params[0].strokeWidth} stroke-opacity={params[0].stroke_Opacity} strokeLinecap={params[0].strokeLinecap}
-               strokeDasharray={params[0].firstDash} type={params[0].lineType} dataKey="a" stroke={params[0].color} fill={params[0].color}/>
-)
-}*/
-/* Pie, PieChart, RadarChart, PolarGrid, 
-  PolarAngleAxis, PolarRadiusAxis, Radar,
-<Nav.Link as={Link}  to="/pie" onClick={pieChartSetter}><b>Pie Chart</b></Nav.Link>
-<Nav.Link as={Link}  to="/radar" onClick={radarChartSetter}><b>Radar Chart</b></Nav.Link>
-<Route exact path="/radar">
-        <Container className="marginTop">
-        <RadarChart outerRadius={90} width={730} height={250} data={rows}>
-          <PolarGrid />
-          <PolarAngleAxis dataKey="labelName" />
-          <PolarRadiusAxis angle={30} domain={[0, 150]} />
-          <Radar name="Mike" dataKey="a" stroke="#8884d8" fill={params[0].color} fillOpacity={params[0].strokeOpacity} />
-          <Radar name="Lily" dataKey="b" stroke="#82ca9d" fill={params[1].color} fillOpacity={params[1].strokeOpacity} />
-          <Legend />
-        </RadarChart>
-        </Container>
-        <div>
-          <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>
-        </div>
-        
-          <Container className="fixed scroll">
-            <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
-          </Container>
-          <Container>
-            <Row>
-              <ButtonGroup>
-              <Col md={{ offset: 2 }}><ButtonComp variant={"primary"} text='Add new row' onClick={increaseRows}/></Col>
-              <Col md={{ offset: 0 }}><ButtonComp variant={"primary"} text='Download Chart' onClick={handleDownload}/></Col>
-              <Col md={{ offset: 0 }}><ButtonComp variant={"danger"} text='Delete Table'  onClick={deleteAll} /></Col>
-              </ButtonGroup>
-            </Row>
-          </Container>
-          </Route>
-<Route exact path="/pie">
-        <Container className="marginTop">
-          <ResponsiveContainer className="justify-content-md-center">
-            <Row>
-            <PieChart width={730} height={250}>
-              <Pie data={rows} dataKey="a" nameKey="labelName" cx="50%" cy="50%" outerRadius={50} fill={params[0].color} />
-            </PieChart>
-            </Row>
-          </ResponsiveContainer>
-        </Container>
-        <div>
-          <ParameterCustomization params={params} modifyParams={modifyParams} chartState={chartState}/>
-        </div>
-        
-        
-          <Container className="fixed scroll">
-            <TableComp rows={rows} deleteRow={deleteRow} modifyRow={modifyRow} chartState={chartState}/>
-          </Container>
-          <Container>
-            <Row>
-              <ButtonGroup>
-              <Col md={{ offset: 2 }}><ButtonComp variant={"primary"} text='Add new row' onClick={increaseRows}/></Col>
-              <Col md={{ offset: 0 }}><ButtonComp variant={"primary"} text='Download Chart' onClick={handleDownload}/></Col>
-              <Col md={{ offset: 0 }}><ButtonComp variant={"danger"} text='Delete Table'  onClick={deleteAll} /></Col>
-              </ButtonGroup>
-            </Row>
-          </Container>
-        </Route>
-*/
-/*  const [isLabel, setIsLabel] = useState(true)
-  const showLabel = (props) => {
-    if(!props.isLabel){return(null)}
-    return(
-      <>
-      {props.dataKey="labelName"} {props.position="center"} {props.angle="15"}
-      </>
-    )
-  }
-              <Nav.Link as={Link}  to="/one/oneline" onClick={onelineChartSetter}><b>Line Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/two/line" onClick={lineChartSetter}><b>Line Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/three/threeline" onClick={threelineChartSetter}><b>Line Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/one/onearea" onClick={oneareaChartSetter}><b>Area Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/two/area" onClick={areaChartSetter}><b>Area Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/three/threearea" onClick={threeareaChartSetter}><b>Area Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/one/onebar" onClick={onebarChartSetter}><b>Bar Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/two/bar" onClick={barChartSetter}><b>Bar Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/three/threebar" onClick={threebarChartSetter}><b>Bar Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/one/onescatter" onClick={onescatterChartSetter}><b>Scatter Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/two/scatter" onClick={scatterChartSetter}><b>Scatter Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/three/threescatter" onClick={threescatterChartSetter}><b>Scatter Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/three/composed" onClick={composedChartSetter}><b>Composed Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/three/composed2" onClick={composedChartSetter}><b>Composed 2 Chart</b></Nav.Link>
-              <Nav.Link as={Link}  to="/three/composed3" onClick={composedChartSetter}><b>Composed 3 Chart</b></Nav.Link>
-  */
