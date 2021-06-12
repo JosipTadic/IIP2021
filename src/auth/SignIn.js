@@ -21,7 +21,7 @@ class SignIn extends Component {
     }
 
     render() {
-        const {authError, auth} = this.props;
+        const {auth, authError} = this.props;
         if (auth.uid) return <Redirect to='/blog' />
         return (        
             <div className="right">
@@ -38,8 +38,8 @@ class SignIn extends Component {
                         </div>
                         <div className="form-element form-submit">
                             <button id="logIn" className="login" type="submit" name="login">Log In</button> 
-                            <div> {authError ? <p>{authError}</p> : null }</div>
                         </div>
+                        <div> {authError ? <p style={{color:'red'}}>{authError}</p> : null }</div>
                     </form>
                 </div> 
                 </div> 

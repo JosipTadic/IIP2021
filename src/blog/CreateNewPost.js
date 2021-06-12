@@ -74,7 +74,7 @@ class CreateNewPost extends Component {
             /> <br/>
            <ReactQuill
               type="snow"
-              placeholder="Učitajte sliku za naslovnu, koristite CTRL+V kako biste samo kopirali sliku sa interneta, ili ju samo dovucite iz Vaše datoteke."
+              placeholder="Clicking on image button, chose image from your files"
               modules={CreateNewPost.modulesNaslovna}
               formats={CreateNewPost.formatsNaslovna}
               onChange={this.handleChangeNaslovna}
@@ -160,24 +160,4 @@ const mapDispatchToProps = dispatch => {
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateNewPost));
  
-/*   <CKEditor 
-                    id="content"
-                    editor={ ClassicEditor } 
-                    onChange={ ( event, editor ) => {
-                      const data = editor.getData();
-                      this.setState({
-                        content: data
-                      })
-                      console.log( { event, editor, data } );
-                  } }
-                 
-                />
-                <div className="form-element form-stack">
-            <label htmlFor="image">Project Image</label>
-            <p> *For upload of image, use URL </p>
-            <input type="text" id="image" onChange={this.handleChange}/>
-            
-          </div> 
-                
-                
-                */
+ 

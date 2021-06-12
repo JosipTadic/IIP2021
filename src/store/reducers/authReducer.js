@@ -8,7 +8,7 @@ const initState = {
         console.log('error login');
         return {
           ...state,
-          authError: 'Login failed'
+          authError: action.err.message
         }
       case 'LOGIN_SUCCESS':
         console.log('login success');

@@ -22,8 +22,8 @@ class SignUp extends Component {
     }
 
     render() {
-        const {  auth} = this.props;
-        if (auth.uid) return <Redirect to='/' />
+        const {  auth, authError} = this.props;
+        if (auth.uid) return <Redirect to='/blog' />
         return (
             
 
@@ -49,6 +49,9 @@ class SignUp extends Component {
                 </div>
                 <div className="form-element form-submit">
                     <button id="logIn" className="login" type="submit" name="login">Sign up</button> 
+                </div>
+                <div >
+                    {authError ? <p style={{color:'red'}}>{authError}</p> : null}
                 </div>
             </form>
         </div> 
