@@ -74,7 +74,7 @@ class CreateNewPost extends Component {
             /> <br/>
            <ReactQuill
               type="snow"
-              placeholder="Click on image button to choose image from your files or copy paste selected image from internet"
+              placeholder="Click on image button to choose image from your files or copy then paste selected image from internet"
               modules={CreateNewPost.modulesNaslovna}
               formats={CreateNewPost.formatsNaslovna}
               onChange={this.handleChangeNaslovna}

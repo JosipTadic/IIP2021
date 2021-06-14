@@ -11,7 +11,7 @@ class PostDetails extends Component{
   handleClick = () => {
     const { firestore, id } = this.props;
     firestore.delete({ collection: "projects", doc: id });
-    this.props.history.push("/");
+    this.props.history.push("/blog");
   };
  
   render() {
