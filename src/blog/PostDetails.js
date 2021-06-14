@@ -3,14 +3,20 @@ import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import {withRouter} from 'react-router-dom'  
- 
+import { Redirect } from "react-router-dom";
 import Post from './Post'
 import { Component } from 'react' 
 class PostDetails extends Component{
-  
+
+  handleClick = () => {
+    const { firestore, id } = this.props;
+    firestore.delete({ collection: "projects", doc: id });
+    this.props.history.push("/");
+  };
  
   render() {
-    const { project} = this.props;   
+    const { project, id, auth } = this.props;
+    //if (!auth.uid) return <Redirect to="/signin" />;   
     if(project) {
  
         return (
@@ -28,7 +34,12 @@ class PostDetails extends Component{
                 <span>Created by: {project.authorFirstName} {project.authortLastName}  </span> <br/>
                 <span>Created at: {project.createdAt.toDate().toDateString()}</span>
             </div> 
-            </div>  
+            </div> 
+            {project.authorId === auth.uid && (
+              <button className="login" onClick={this.handleClick}>
+                Izbriši članak 
+              </button>
+            )} 
         </div>
         )
      
@@ -50,7 +61,10 @@ class PostDetails extends Component{
         console.log("projects", project)
         console.log("project id", projects[id])
         return {
-          project: project
+          project: project,
+          auth: state.firebase.auth,
+          id: ownProps.match.params.id,
+          doc: ownProps.match.params.id
         }
       }
    
