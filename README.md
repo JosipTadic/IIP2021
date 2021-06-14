@@ -1,72 +1,95 @@
-***APP STILL IN DEVELOPMENT*** - https://iip2021.netlify.app/
+# D-Wiz - app for making your own charts!
 
-# Getting Started with Create React App
+Live versions:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Link 1](https://iip2021.vercel.app/)
 
-## Available Scripts
+[Link 2](https://iip2021.netlify.app/)
 
-In the project directory, you can run:
+## Key features
 
-### `npm start`
+- Generating and customising charts
+- Downloading charts
+- Upload .csv to data
+- Blog with news/posts
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Charts
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Charts can be made with 1-3 values (number of data values are unlimited, they are called "rows" in application). Charts with 1 value have: Line, Bar, Area, Scatter charts, while Charts with 2-3 values also have Composed(Combo) Charts. Each chart has its own customising parameters depending on Chart Type, for example there is no Line Type or Dash parameter for Bar Chart. Parameters for customising are: Colors, Dashes, Types, Widths, Opacities, Legends(Names).
 
-### `npm test`
+## Charts - How to
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+On the top right corner of the screen, you can choose to work with One, Two or Three values (you can go to other anytime).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Values](https://user-images.githubusercontent.com/33669118/121954939-a3492880-cd5f-11eb-8b3a-dc734b4997ce.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+After choosing number of values, choose the type of chart you wish to work with (you can change it on the go).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![ChartCard](https://user-images.githubusercontent.com/33669118/121954944-a3e1bf00-cd5f-11eb-9fed-619ccc773da1.png)
 
-### `npm run eject`
+### Add new row(add new data value)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+To add a new value to the chart use button "Add new row". After adding the row, you can modify values in the table, and watch it change the Chart! You can also use decimal, or negative values. You can hover directly on the Chart for more info of single value.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Delete
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+To delete a value you can press on the small icon for deleting on the row you wish to delete. Or you can delete whole table with "Delete table" button, just be careful as your work will be deleted.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Download
 
-## Learn More
+To download a Chart, after you made it as you wish, simply press the "Download chart" button.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Customise
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Below the chart on the right part of the screen, there are options for customising the Chart you are creating.
 
-### Code Splitting
+![UI](https://user-images.githubusercontent.com/33669118/121954947-a512ec00-cd5f-11eb-9ad6-913aa4541787.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Upload from .csv file
 
-### Analyzing the Bundle Size
+To upload the .csv file simply drag and drop the file to the bottom on the screen, where it states "Drop your csv here!", your csv must contain headers 'a', 'b', 'c', 'labelName'. You have the example on this repo "Book1.csv" so you can try it out.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![csv](https://user-images.githubusercontent.com/33669118/121954949-a512ec00-cd5f-11eb-8e31-17daac8ec749.png)
 
-### Making a Progressive Web App
+## Blog
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Blog is a part of the platform which is used to interact with users, however you must be registered/logged on to create new posts (charts can be made without registering). On the Blog anyone can make posts, the topic of the Blog is Data Visualization, or tutorials from authors on how to create something.
 
-### Advanced Configuration
+![blog](https://user-images.githubusercontent.com/33669118/121954934-a17f6500-cd5f-11eb-9d77-61486ac4aeb4.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Blog - How to
 
-### Deployment
+To visit the blog section head to the starting page and go to the bottom of the site, click "Read more" button. What you are seeing are posts ("All posts") made by others, you can see Header of the post, as well as the Author and date of publishment. On hover you can see more info.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+![Blogs](https://user-images.githubusercontent.com/33669118/121954936-a2b09200-cd5f-11eb-9ef9-f3343cb2baa2.png)
 
-### `npm run build` fails to minify
+### Register
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+To register go to "Sign up" link, and complete the form for registration.
+
+### Log in
+
+After you registered you are automatically logged in, but next time you can go to "Login" and simply log on to your account. If you wish to Log out simply press "Log out" link.
+
+![Logged user](https://user-images.githubusercontent.com/33669118/121954955-a6441900-cd5f-11eb-80e9-e25b2e896b4f.PNG)
+
+### Create new post
+
+To create a post go to "Create new post", and fill out the form; Title, Description, Text, and Photo. Press button "Create" and your post is published!
+
+![CreateNew](https://user-images.githubusercontent.com/33669118/121954958-a6dcaf80-cd5f-11eb-8e49-f21284c1b8fb.PNG)
+
+### Documentation(on Croatian) - Repo - Dokumentacija IIP2021
+
+## Technologies and libraries used
+
+`HTML` `CSS` `JavaScript` `React.js` `Recharts` `Firebase` `Bootstrap`
+
+## Authors
+
+[Marija Kantolić](https://github.com/mkantolic)
+- Design, Blog
+
+[Josip Tadić](https://github.com/JosipTadic)
+- Charts
