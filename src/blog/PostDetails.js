@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import {withRouter} from 'react-router-dom'  
-import { Redirect } from "react-router-dom";
 import Post from './Post'
 import { Component } from 'react' 
 class PostDetails extends Component{
@@ -15,7 +14,7 @@ class PostDetails extends Component{
   };
  
   render() {
-    const { project, id, auth } = this.props;
+    const { project, auth } = this.props;
     //if (!auth.uid) return <Redirect to="/signin" />;   
     if(project) {
  
