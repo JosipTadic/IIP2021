@@ -86,6 +86,9 @@ To create a post go to "Create new post", and fill out the form; Title, Descript
 
 `HTML` `CSS` `JavaScript` `React.js` `Recharts` `Firebase` `Bootstrap`
 
+## Video
+Explanation on how to use website can be checked on video:
+https://www.dropbox.com/s/sl0x9x2agcp0x8t/final.mp4?dl=0 
 ## Authors
 
 [Marija Kantolić](https://github.com/mkantolic)
